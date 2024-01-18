@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        Document  //document  间接构造构造函数，不能new,
+        //原型在构造函数上
+        Document.prototype.abc = 'abc';
+        //document.abc = 'abc';
+        HTMLDocument.prototype = {
+
+
+            __proto__:Document.prototype
+        }
+
+        //document --> HTMLDocument.prototype -->Document.prototype
+
+
+        var div = document.createElement('div');
+        div.innerHTML = 123;
+        document.body.appendChild(div);
+        
+    </script>
+</body>
+</html>

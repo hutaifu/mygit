@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //封装insertAfter
+        Element.prototype.insertAfter = function(
+            targetNode,afterNode
+        ){
+            var beforeNode = afterNode.nextElementSibling;
+            if(beforeNode === null){
+                this.appendChild(targetNode);
+            }else{
+                this.insertBefore(targetNode,beforeNode)
+            }
+        }
+
+
+        //日期对象,系统提供好的
+        var date = new Date();
+        date.getDate();//返回一个月中第几天
+        date.getDay()//返回一周中第几天，周日为0，0-6;
+        date.getMonth()//0-11,  少一个
+        date.getYear()//弃用，
+        date.getFullYear()//四位数
+        date.getHours();
+        date.getMinutes();
+        date.getSeconds();
+        date.getMilliseconds()//毫秒
+        date.getTime();//返回毫秒时间戳，最常用，1970.1.1
+
+        //对应的set方法
+        date.setDate(15);
+        date.setMinutes(16);
+        var i = 0;
+        var timer = setInterval(function(){
+            i++;
+            if(i>10){
+                clearInterval(timer)
+            }
+
+        },1000)
+        //每隔1千毫秒，将函数放到消息队列里面，并不准。
+        // clearInterval(timer)
+
+        //类似clearTimeout()；
+        //由于是全局对象window上的方法，内部函数this指向window；
+        //注意：回调函数也能写字符串；是否可以代替eval?
+
+
+
+
+    </script>
+</body>
+</html>

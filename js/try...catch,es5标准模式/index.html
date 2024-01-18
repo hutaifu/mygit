@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script> 
+   // "use strict" //必须写到函数逻辑或者js标签最顶端 (推荐使用局部)
+        //在tyr里面发生的错误，不会执行错误后的try里面的代码
+        try{
+            console.log('1')
+            console.log('2')
+            console.log(b)
+            console.log('c')
+    
+        }catch(e){    // error 对象，error.message  ,error.name
+            console.log(e)
+            console.log(e.name + ":" + e.message)
+        }  
+    
+        console.log('d')
+        var data = null;
+    
+    
+    
+        //Error.name 分为六种
+        //  1.EvalError:eval() 的使用与定义不一致
+        // 2.RangeError:数值越界
+        //3.ReferenceError:非法或不能识别的引用数值
+        // 4.SyntaxError:发生语法解析错误
+        //  5.TypeError:操作数类型错误
+        //    6.URIError:URI处理函数使用不当
+    
+        //3.引用错误
+        //console.log(b);//引用错误
+       // b()//引用错误
+    
+        //4.语法解析错误
+        // function test(){
+    
+        // }
+        // function demo(){
+        //     :
+        // }
+    
+    
+        // var str = abcd;
+
+
+        //es5.0 严格模式
+
+
+        function test(){
+            "use strict"
+            console.log(arguments.callee)
+        }
+
+
+        test()
+    
+    
+        
+        
+    
+    
+    
+    </script>
+</body>
+
+</html>

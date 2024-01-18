@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="1"></div>
+    <script>
+        var div = document.getElementById('1');//得到单个dom，ie8以下，不区分id和name
+        div = document.getElementsByTagName('div');//得到类数组，既能当数组也能当对象，
+        div = document.getElementsByClassName()//ie9以下没有,之前浏览器，只有部分标签生效
+        //id基本不用
+        div = document.querySelector()//识别css选择器,获取一个(最后一个，或者第一个，忘了)
+        div = document.querySelectorAll()//识别css选择器，获取所有
+        //querySelector 是静态方法，只获取当时页面元素
+        //getElement...   是实时获取页面元素
+
+
+        //节点的类型
+        //1.元素节点   ----1(节点类型返回值)
+        //2.属性节点    -----2
+        //3.文本节点    ----3
+        //4.注释节点 -----8
+        //5.docment -----9
+        //6.DocumentFragment ----11
+
+
+
+
+
+        //遍历节点树 //任何一个浏览器都好使
+        div.parentNode   //父节点
+        div.childNodes //子节点们 类数组
+        div.firstChild //第一个子节点
+        div.lastChild //最后一个子节点、
+        div.nextSibling // 后一个兄弟节点
+        div.previousSibling // 前一个兄弟节点
+
+
+        //遍历元素节点树  除了children属性外，ie9 以下不兼容
+        div.parentElement //父元素节点   和div.parentNode有一个区别，没有document节点 
+        div.children //元素子节点
+        div.firstElementChild //第一个元素子节点
+        div.lastElementChild // 最后一个元素子节点
+        div.nextElementSibling //下一个元素节点
+        div.previousElementSibling //前一个元素节点
+
+
+        //节点的四个属性
+        div.nodeName //只读属性，元素的标签名，返回大写字符串
+        nodeValue //Text节点或注释节点的内容，可改
+        div.nodeType//节点类型，只读
+        div.attributes  //返回属性节点的类数组
+        div.attributes[0].name // name不可改
+        div.attributes[0].value // value可改
+        //这两个不常用，以后用setAttribute，getAttribute
+        div.hasChildNodes() //是否有子节点，文本节点也算
+        
+
+
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>

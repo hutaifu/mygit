@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //查看body滚动条滚动距离,ie8即以下浏览器不兼容
+        window.pageXOffset;
+        window.pageYOffset;
+
+        //ie8及以下(兼容性混乱)
+        document.body.scrollLeft;
+        document.body.scrollTop;
+        document.documentElement.scrollLeft/Top;
+        //一个有值，另一个一定没值
+
+        //查看视口尺寸(受放大缩小影响)
+        window.innerWidth;//一般1440像素
+        window.innerHeight;
+        //ie8及以下
+        //浏览器两种渲染模式（怪异/标准模式），怪异模式兼容之前版本的语法，（基本没啥用）
+        //去掉文档类型<!DOCTYPE html> ，就会进入怪异模式。
+        //标准模式
+        document.documentElement.clientHeight;
+        document.documentElement.clientWidth;//client---客户端
+        //怪异模式
+        document.body.clientHeight//width
+        
+        //查看元素几何尺寸
+        var div = document.getElementById("id");
+        div.getBoundingClientRect();//返回一个对象，包含元素几何信息，兼容性较好
+        //left和top代表该元素左上角X和Y坐标，right和bottom代表元素右下角坐标
+        //高宽属性ie未实现，可以计算。
+
+        //查看元素尺寸
+        div.offsetHeight;//取代上面，得到的是边框盒尺寸
+        div.offsetWidth;
+
+        //查看元素位置（相对最近定位父级元素的位置（不管是不是定位元素））
+        div.offsetLeft;
+        div.offsetTop;
+
+        //让滚动条滚动
+        window.scroll(0,10);//两个参数,x轴距离初始位置滚动距离，和y轴距离初始滚动距离
+        window.scrollTo();//和上面一样
+        window.scrollBy(0,10);//x轴，y轴在当前位置继续滚动的距离
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>
