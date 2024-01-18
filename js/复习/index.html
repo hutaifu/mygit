@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var num = 123;
+        window.num = 123;
+        delete window.num //false;
+        delete num //false;
+        //一旦经历了var的操作，所得出的属性，window，这种属性不可配置
+        window.name = 123;
+        delete window.name //true;
+
+        //Object.create()//原型，特性
+
+       // 1.预编译 this --->window
+        //2.谁用的 this指向谁
+        //3.call apply
+        //4,全局this =>window
+
+        // [] == [] //false
+        // [] === [] //false
+        let arr = [1,2];
+        for(let key in arr){
+           console.log(key)
+        }     
+        
+        function User(a){
+            this.name = a;
+        }
+        let usesr = new User(1);
+        for(let key in usesr){
+            console.log(key)
+        }
+
+
+
+    </script>
+</body>
+</html>
