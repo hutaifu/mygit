@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // function test(){
+        //     console.log(arguments.callee === test);
+        // }
+        // test();
+
+
+        // var num = (function(n){
+        //     if(n == 1){
+        //         return 1;
+        //     }else{
+        //         return n * arguments.callee(n - 1)
+        //     }
+        // })(20)
+//"use strict"
+
+        function test(){
+            demo();
+        }
+
+        function demo(){
+            console.log(demo.caller)
+        }
+        test();
+
+// 克隆对象
+var obj = {
+    name:'abc',
+    age:123,
+    sex:'female'
+}
+
+var obj1 = {};
+
+function colne(oringe,target){
+    target = target || {};
+    for(var key in oringe){
+        if(oringe.hasOwnProperty(key)){
+            target[key] = oringe[key];
+        }
+    }
+    return target;
+}
+
+
+//深度克隆方法
+function deepClone(oringe){
+    //判断对象，数组，原始值
+    let target;
+    let toStr = Object.prototype.toString;
+    arrStr = "[object Array]";
+    objStr = "[object Object]";
+    if(toStr.call(oringe) === arrStr){
+        target = [];
+    }else if(toStr.call(oringe) === objStr){
+        target = {};
+    
+    } else {
+        return oringe;
+    }
+       for(let key in oringe){
+            if(oringe.hasOwnProperty(key)){
+                target[key] = deepClone(oringe[key]);
+            }
+        }
+        return target;
+}
+//判断是不是原始值 typeof() Object   
+
+
+function deepClone2 (oring,target){
+    var target = target || {},
+        toStr = Object.prototype.toString,
+        arrStr = "[object Array]";
+
+        for(var prop in oring){
+            if(oring.hasOwnProperty(prop)){
+                if(oring[prop] !== null && oring[prop] === "object"){
+                    if(toStr.call([prop]) === arrStr){
+                        target[prop] = []
+                    }else{
+                        target[prop] = {}
+                    }
+                    deepClone2(oring[prop],target[prop]);
+                }else{
+                    target[prop] = oring[prop];
+                }
+            }
+        }
+        return target;
+}
+    </script>
+</body>
+</html>
