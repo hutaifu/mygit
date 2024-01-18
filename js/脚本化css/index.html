@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+    <style>
+        div::after{
+            content: "";
+            width: 10px;
+            height: 10px;
+            background-color: red;
+            display: inline-block;
+        }
+    </style>
+<body>
+    <div>
+
+
+    </div>
+   <script>
+        let div = document.getElementsByTagName('div')[0];
+        div.style//CSSStyleDecalration :{},元素样式声明
+        //得到的是行间样式，修改也是改行间样式 ；
+        //声明的行间样式组成类数组，后面是样式表，行间样式没有的为空
+        div.style.width = "200px";
+        //floae 属性关键字改为 cssFloat;
+        //符合属性建议拆解，
+        div.style.borderWidth = "5px"
+        //必须是字符串格式 。
+
+        //查询计算样式属性
+        window.getComputedStyle(Element,null)//
+        //计算样式只读，并且都是计算后的绝对值，没有相对单位
+        //展示当前元素一切的css最终显示值，只读不可修改
+        //ie8及ie8以下不兼容。
+        window.getComputedStyle(div,null).width;
+        //第二个参数获取伪元素，
+        window.getComputedStyle(div,'after').width;
+
+        //查询样式
+        //ele.currentStyle,计算样式只读，返回的计算样式不是经过转换的绝对值,ie独有的属性
+        //
+
+
+
+
+
+
+
+
+
+   </script> 
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div style="width: 100px;height: 100px;background-color: red;"></div>
+
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</body>
+<script>
+    let div = document.getElementsByTagName('div')[0];
+    div.onclick = function(){
+
+    }
+
+    //如何绑定事件
+    //1.
+    div.onclick = function(){
+        this.style.backgroundColor = 'green';    
+    } 
+    //兼容性很好，但是只能绑定一个函数，对象的属性赋值新值覆盖旧值；
+    //和写在行间的效果完全一致，行间不用写function；
+    //2.ie9一下不兼容
+    //div.addEventListener('事件类型','处理函数'，false);
+    div.addEventListener('click',function(){
+        console.log("a")
+    },false)
+    //事件监听部分的执行不是js做的，是webscore执行的
+    div.addEventListener('click',function(){
+        console.log("b")
+    },false);
+    //可以绑定多个函数，并且不会覆盖onclick事件：，同一个地址的函数不能绑定多次
+
+    //3.ie独有的
+    //div.attachEvent('on + 事件类型','处理函数')
+    //div.attachEvent('onClick',function(){});//和上面基本相同，但是同一个地址的函数能绑定多次
+    
+    let li = document.querySelectorAll('li');
+    for(let i = 0;i<li.length;i++){
+        (function(i){
+            li[i].addEventListener('click',function(){
+                console.log(i)
+                div.innerHTML = i + 1;
+            },false)
+        })(i)
+    }
+
+    //运行环境的this
+    //element.on.... =   function(){},函数的this指向元素本身
+    div.onclick = function(){
+        console.log(this)
+    }
+
+    //addEventLisener //函数的this也是指向自己。
+
+    //attachEvent //函数的this指向window
+
+    //解除事件处理程序
+    //ele.onclik
+    div.onclick = function(){
+        console.log("a")
+    }
+    div.onclick = null;
+
+    //addEventListener
+    let test = function(){
+        console.log("a")
+    }
+    div.addEventListener('click',test,false)
+    div.removeEventListener('click',test,false);//清除必须要接受函数引用值
+    //绑定匿名函数，无法删除
+
+
+    //***事件处理模型，事件冒泡，事件捕获
+
+    
+
+
+
+
+
+
+
+
+
+    
+
+
+    
+
+
+
+
+
+</script>
+</html>

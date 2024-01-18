@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function inhrit(Fn1,Fn2){
+    Fn1.prototype = Fn2.prototype;
+}
+
+//圣杯模式
+function inhrits(Fn1,Fn2){
+    function F(){};
+    F.prototype = Fn2.prototype;
+    Fn1.prototype = new F();
+    Fn1.prototype.constructor = Fn1;
+    Fn1.prototype.uber = Fn2.prototype;
+}
+
+//雅虎
+var inherit = (function (){
+var F = function (){};
+return function(Target,Origin){
+    F.prototype = Origin.prototype;
+    Target.prototype = new F();
+    Target.prototype.constructor = Target;
+    Target.prototype.uber = Origin.prototype;
+}
+})();
+
+
+//私有变量
+function Deng (name,wife){
+    var prepareWife = "小张";
+    this.name = name;
+    this.wife = wife;
+    this.divorce = function(){
+        this.wife = prepareWife;
+    }
+    this.change = function (target){
+        prepareWife = target;
+    }
+    this.say = function(){
+        console.log(prepareWife);
+    }
+}
+
+
+
+
+//命名空间
+//很早之前处理
+var org = {
+    departMent1 : {
+        jicheng:{
+            name:"abc",
+            age:"123",
+        }
+    }
+}
+
+    var jicheng = org.departMent1.jicheng;
+//现在webpack
+
+
+//闭包实现命名空间
+var name = 'bcd';
+var init = (function(){
+    var name = "abc";
+
+    function callName(){
+        console.log(name);
+    }
+
+    return function(){
+        callName();
+    }
+
+}())
+
+init();
+
+
+//连续链式调用  
+var deng = {
+    smoke : function(){
+        console.log('Smoking,... xuan coll!!!')
+        return this;
+    },
+    drink : function(){
+        console.log('drinking...,ye coll!');
+        return this;},
+    
+    perm : function(){
+        console.log('preming....,cool!')
+        return this;
+    }
+}
+deng.smoke().drink().perm().smoke()
+
+// 枚举
+var arr = [1,2,3,4,5,6,7,8,9]
+//遍历 枚举 enumenration
+for(var i = 0;i < arr.length;i++){
+    console.log(arr[i]);
+}
+var obj = {
+    name:'13',
+    age:123,
+    sex:'male',
+    height:180,
+    weight:75,
+    __proto__:{
+        lastName:'deng'
+    }
+}
+for(var prop in obj){
+    console.log(prop + " " + typeof(prop))
+}
+//可以打印原型链的属性，但是不会遍历到Object.prototype,
+
+
+var obj1 = {
+    a:123,
+    b:234,
+    c:345
+}
+var key;
+for(key in obj1){
+    obj1[key] ++;
+}
+//obj.name ===> obj['name']
+
+// hssOwnProperty方法  判断是否是自己的属性而不是原型链的属性
+for(var prop in obj){
+    if(obj.hasOwnProperty(prop)){
+        console.log(prop + " " + typeof(prop))
+    }
+}
+
+// in 
+'height' in obj  //原型链和自己的属性都返回true,基本没用
+
+// instanceof
+function Person(){
+
+}
+var person = new Person();
+
+// 官方解释   A 对象是否是B构造函数构造出来的
+//A instanceof B 
+// 看A对象的原型链上有没有B的原型
+person instanceof Person;
+
+
+var arr = {};//[];
+//判断arr 是否是数组还是对象
+//1
+[].constructor;
+obj.constructor;
+
+//2.
+[] instanceof(Array);
+obj instanceof(Array);
+
+//3
+Object.prototype.toString.call([]);
+
+
+Object.prototype.toString = function(){
+    //识别this
+    //返回相应结果
+}
+
+    </script>
+</body>
+</html>

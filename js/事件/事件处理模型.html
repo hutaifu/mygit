@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+       .wrapper{
+        width: 300px;
+        height: 300px;
+        background-color: red;
+       } 
+       .content{
+        width: 200px;
+        height: 200px;
+        background-color: green;
+       }
+       .box{
+        width: 100px;
+        height: 100px;
+        background-color: orange;
+       }
+
+
+
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="content">
+            <div class="box"></div>
+        </div>
+    </div>
+
+    <a href="https://www.baidu.com">www.baidu.com</a>
+</body>
+    <script>
+        //事件处理模型
+        let wrapper = document.querySelector('.wrapper')
+        let content = document.querySelector('.content')
+        let box = document.querySelector('.box')
+
+        wrapper.addEventListener('click',function(){
+console.log("wrapper")
+
+        },false);
+
+        content.addEventListener('click',function(){
+
+console.log("content")
+        },false);
+
+
+        box.addEventListener('click',function(){
+console.log("box")
+
+        },false);
+
+        //事件会重复触发，叫做事件冒泡，结构上存在上下嵌套关系事件就能从子元素向父元素冒泡
+
+
+        //事件捕获，w3c规定，ie浏览器没有
+
+        //一个事件类型只能存在一个事件模型，要么冒泡，要么捕获
+
+
+        //addEventListener，第三个参数传true,事件处理模型变为捕获
+        //执行顺序和冒泡顺序相反，事件从结构最外层捕获至事件源元素
+
+        //触发顺序，先触发捕获类型事件，后触发冒泡事件类型事件，源元素的事件执行顺序和绑定顺序一致。
+
+
+        document.onclick = function(){
+            console.log("你闲的啊")
+        }
+
+        wrapper.onclick = function(e){
+            console.log(e)
+            this.style.backgroundColor = 'black'
+        }
+
+        
+        //事件对象，  每个事件处理函数可以接受一个事件对象
+        //阻止冒泡
+        wrapper.onclick = function(e){
+            console.log(e)
+            e.stopPropagation();//ie   event.cancelBubble = true;
+            this.style.backgroundColor = 'black'
+        }
+
+
+        //阻止默认事件,右键出菜单事件，1.句柄的方式
+        document.oncontextmenu = function(){
+            console.log("a")
+            // return false;//阻止默认事件出现菜单，只有以对象属性的方式注册的事件才生效//句柄的方式,兼容性好
+        }
+
+        //2.w3c规定
+        document.oncontextmenu = function(e){
+            console.log("a")
+            // e.preventDefault();//w3c规定，ie9以下不兼容,
+        }
+
+        //3,兼容ie
+        document.oncontextmenu = function(e){
+            console.log("a")
+        //    e.returnValue = false;
+        }
+
+        let a = document.querySelector("a")
+        a.onclick = function(e){
+            console.log(e)
+        //   return false;
+        e.preventDefault();
+        }
+
+
+        wrapper.onclick = function(e){
+            let event = e || window.event;
+            let target = event.target || event.srcElement;
+            console.log(target)
+        }
+
+
+
+        
+
+
+
+
+
+
+
+
+    </script>
+</html>
