@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div style="height: 100px;width: 100px;background-color: red;position: absolute;left: 0;top: 0;"></div>
+    <span style="width: 100px;height: 100px;background-color: green;left: 200px;position: relative;">63415241541</span>
+</body>
+<script>
+    let div = document.querySelector('div');
+    let divX;
+    let divY;
+    div.addEventListener("mousedown",function(e){
+        let event = e|| window.event;
+        divX = event.pageX - parseInt(div.style.left);
+        divY = event.pageY - parseInt(div.style.top);
+   
+        document.addEventListener("mousemove",drag,false);
+    },false)
+
+    div.addEventListener('mouseup',function(){
+        document.removeEventListener("mousemove",drag)
+    })
+
+    let drag = function(e){
+            let event = e || window.event;
+            div.style.left = event.pageX - divX + "px";
+            div.style.top = event.pageY - divY + "px";
+        }
+
+//暂时只使用边距为0的定位元素
+        function dragElement(element){
+            let eleX;
+            let eleY;
+            element.addEventListener("mousedown",function(e){
+                let event = e || window.event;
+                eleX = event.clientX - parseInt(element.getBoundingClientRect().left);
+                eleY  = event.clientY - parseInt(element.getBoundingClientRect().top);
+                document.addEventListener("mousemove",mouseMove);
+                document.addEventListener("mouseup",mouseUp);
+                event.stopPropagation();
+                event.preventDefault();
+            },false);
+            function mouseMove(e){
+                let evnet = e || window.event;
+                element.style.left = evnet.clientX - eleX + "px";
+                element.style.top = event.clientY - eleY + "px";
+            }
+            function mouseUp(e){
+                let event = e || window.event;
+                document.removeEventListener("mousemove",mouseMove);
+                document.removeEventListener("mouseup",mouseUp);
+            }
+        }
+
+
+        let span = document.querySelector("span");
+        dragElement(span)
+
+
+
+
+        
+</script>
+</html>
