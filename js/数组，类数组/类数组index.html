@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function test(){
+            console.log(arguments)
+        }
+        test(1,3,3,4,5,6)
+
+        var obj = {
+            "0" : 'a',
+            "1" : 'b',
+            "2" : 'c',
+            name:"fis",
+            'length':3,
+            'push':Array.prototype.push,
+            'splice':Array.prototype.splice
+        }
+        var arr = ['a','b','c']
+        obj.push('d')
+        //obj =》{}
+        //类数组：属性要为索引(数字)属性，必须有length属性，最好加上push方法
+        //对象一旦加上splice方法，对象就和数组长得一样了，其实还是对象，可以当数组一样用
+        //好处 既能当对象也能当数组
+        // Array.prototype.push = function(target){
+        //     this[this.length]  = target;
+        //     obj.length ++;
+        // }
+
+        //封装type()方法
+
+        function type(target){
+            //数组
+            if(Object.prototype.toString.call(target) === "[Object array]"){
+                return "array";
+            }
+
+            //对象
+            if(Object.prototype.toString.call(target) === "[Object object]"){
+                return "object";
+            }
+            //方法
+            if(typeof target === "function"){
+                return "function";
+            }
+            //数字包装类
+            if(Object.prototype.toString.call(target) === "[object Number]"){
+                return "Number"
+            }
+            //数字
+            if(typeof target === "number"){
+                return 'number';
+            }
+                //字符串
+    if (typeof target === "string") {
+        return "string";
+    }
+
+    //布尔值
+    if (typeof target === "boolean") {
+        return "boolean";
+    }
+                //空值
+             if (target === null) {
+             return "null";
+            }
+
+            //未定义
+            if (typeof target === "undefined") {
+            return "undefined";
+            }
+        }
+
+
+        function type(target){
+            let ret = typeof target;
+            let template= {
+                '[object Array]' : "array",
+                '[object Object]' : "object",
+                '[object Number]' : "number - object",
+                '[object Boolean]' : "boolean - object",
+                '[object String]' : 'string - object'
+            }
+            //1.分两类，原始值，引用值
+            //2.区分引用值
+            if(target === null){
+                return 'null';
+            }else if(ret === "object"){
+                //数组，对象，包装类 Object.prototype.toStirng;
+                let str = Object.prototype.toString.call(target);
+                return template[str];
+            } else{
+                return ret;
+            }
+        }
+
+
+
+
+        //数组去重，要求在原型链上编程
+        //Array.prototype.unique = functin(){}
+
+        Array.prototype.unique = function(){
+            let arr = [];
+            for(let i = 0;i < this.length;i++){
+                if(!arr.includes(this[i])){
+                    arr.push(this[i])
+                }
+            }
+            return arr;
+        }
+
+        let arr = [1,1,1,1,1,2,2,2,2,3,3,3,3];
+        let obj = {"1":"abc",}
+
+        Array.prototype.unique = function(){
+            let temp = {};
+            let arr = [];
+            let len = this.length;
+            for(let i = 0; i < len;i ++){
+                if(!temp[this[i]]){
+                    temp[this[i]] = 'aldj';
+                    arr.push(this[i])
+                }
+            }
+            return arr;
+        }
+
+    </script>
+</body>
+</html>

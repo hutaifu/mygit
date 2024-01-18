@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var arr = [];
+        arr = new Array();
+        //Array.prototype;
+        arr = [,]; //undefined
+        var brr = [1,,1]//undefine * 2; //稀疏数组
+        var crr = new Array(1,2,3,4,4);//[1,2,3,4,4]
+        var drr = new Array(10);//[undefind]
+        //var err = new Array(10.2);  报错
+        Array()//返回[]
+        //数组读和写,基于对象
+        //es3.0  数组常用方法
+        //改变原数组
+        //push
+            var frr = [];
+            frr.push(10,1,3,4)//在数组的最后一位添加数据，可以同时添加，返回数组长度
+            Array.prototype.push = function(){
+                for(var i = 0;i< arguments.length;i++){
+                    this[this.length] = arguments[i];
+                }
+                return this.length;
+            }
+            //pop  剪切数组最后一位，没有参数 ，返回数组最后一位
+            //unshift  在数组第一位增加，和push方向相反
+            //shift  截切数组第一位 ，和pop相反
+            //reverse  倒序，返回
+    
+
+        arr = [1,1,2,2,3,3]; //splice
+        //arr.splice(从第几位开始,截取多少长度 ，在切口处添加新的数据)
+        arr.splice(1,2) //返回值  截取的数组
+        arr.splice(1,1,0,0,0,0);
+        arr.splice(2,0,4)//在arr[2] 前面添加4
+        //当传入的数组位数为负数时，
+        // splice = function(pos){
+        //     pos += pos > 0 ? 0 : this.length;
+
+        // }
+
+        arr = [1,2,3,4,0,-1,9,10]
+        arr.sort();//按字符编码排
+        // 1.必须写两形参
+        // 2. 看返回值，当返回值为负数时，那么前面的数放在前面
+        //                     为正数，那么后面的数在前面
+        //                     为0，不动
+        // 传参顺序，冒泡排序顺序
+        arr.sort(function(a,b){
+            if(a > b){
+                return 1;
+            }else{
+                return -1;
+            }
+            // return a -b; 升序
+        })
+
+
+
+        // 给一个有序的数组乱序
+        arr = [1,2,3,4,5,6,7];
+        arr.sort((a,b) =>{
+            return Math.random() - 0.5;
+        })
+
+        var cheng = {
+            name : "cheng",
+            age: 18,
+            sex : 'male',
+            face: 'handsome'
+        }
+
+        var deng = {
+            name : 'deng',
+            age: 40,
+            sex:undefined,
+            face:'amazing'
+        }
+        var zhang = {
+            name : 'zhang',
+            age:20,
+            sex:'male'
+        }
+        arr = [cheng,deng,zhang]
+        arr.sort(a,b =>{
+            return a.age -b.age;
+        })
+
+        arr = ['skld','slkdajl','askldfj']
+        arr.sort(function(a,b){
+            
+        })
+
+        //不改变原数组
+        //concat
+        arr = [1,2,3,4,5,6];
+        var arr1 = [7,8,9];
+        arr.concat(arr1);//[1,2,3,4,5,6,7,8,9]
+
+        //toString
+        arr.toString()//'1,2,3,4,5,6'
+
+        //slice
+        //slice(从该为开始截取包括该位，截取到该位不包括该位)，返回截取的数组，不改变原数组
+        //不传参数，空截，返回原数组，可以将类数组转为数组。
+
+        //join   
+        arr.join("-");
+        //split(); join的逆方法
+
+        //字符串连接，字符串存储在栈内存，栈内存先进后出，字符串拼接需要每次都进出栈内存，浪费效率.
+        //数组放到堆内存，使用散列结构，然后使用join("");效率高一些，
+        //join()不传参数按照逗号拼接。
+    </script>
+</body>
+</html>
