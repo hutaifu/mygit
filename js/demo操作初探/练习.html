@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var div = document.createElement("div");
+        document.body.appendChild(div);
+        div.style.width = "100px"
+        div.style.height = "100px"
+        div.style.backgroundColor = "red";
+        div.style.position = "absolute";
+        div.style.left = "0"
+        div.style.top = "0"
+        var speed = 5;
+        document.onkeydown = function(e){
+            switch(e.which){
+                case 38:
+                    div.style.top = parseInt(div.style.top) - speed + "px";
+                    break;
+                case 40:
+                div.style.top = parseInt(div.style.top) + speed + "px";
+                    break;
+                case 37:
+                div.style.left = parseInt(div.style.left) - speed + "px";
+                    break;
+                case 39:
+                div.style.left = parseInt(div.style.left) + speed + "px";
+                    break;
+            }
+        }
+
+        // var speed = 1;
+        // var timer = setInterval(function(){
+        //     speed += speed/20
+        //     div.style.top = parseInt(div.style.top) + speed + "px"
+        //     div.style.left = parseInt(div.style.left) + speed + "px" 
+        //     if(parseInt(div.style.top) > 200 && parseInt(div.style.left) > 200){
+        //         clearInterval(timer)
+        //     }
+        // },30)
+
+
+    </script>
+</body>
+</html>

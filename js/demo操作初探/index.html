@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .content{
+            display: none;
+            width: 200px;
+            height: 200px;
+            border: 2px solid red;
+        }
+
+        .active{
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <div>
+    </div>
+
+    <div">
+        <button class="active">1</button><button>2</button><button>3</button>
+        <div class="content" style="display: block;">成哥帅</div>
+        <div class="content">邓哥</div>
+        <div class="content"> 成哥很帅</div>
+    </div>
+    <script>
+        //找元素
+        var div = document.getElementsByTagName('div')[0];  //类数组
+        div.style.width = "100PX"
+        div.style.height = "100px"
+        div.style.backgroundColor = 'red';
+
+        div.onclick = function(){
+            if(this.style.backgroundColor !== "green"){
+                this.style.backgroundColor = "green";
+            }else{
+                this.style.backgroundColor = "red";
+            }
+        }
+
+
+        var btn = document.getElementsByTagName('button');
+        var div = document.getElementsByClassName("content")
+        //注意，btn是类数组，不能用forEach,
+        for(let i= 0;i< btn.length;i ++){
+            //注意，这里不能使用箭头函数，会将this指向改为window
+
+        //如果要在点击事件里面实时使用i,需要考虑闭包问题，因为点击事件不会立即执行，只会
+        //拿到最终的值，必须要使用立即执行函数来获取实时的i
+        (function(n){
+            btn[i].onclick = function(){
+                console.log(btn)
+                for(let j = 0;j< btn.length;j++){
+                    // btn[j].classList = [];
+                    btn[j].className = ""
+                    div[j].style.display = "none"
+                }
+                // this.classList.add("active");
+                console.log(this)
+                this.className = "active";
+                div[n].style.display = "block"
+            }
+        }(i))
+        }
+        //注意，箭头函数中的this会捕获上下文的this，不会收到函数的调用方式影响，箭头函数不适合作为方法，
+        //它会捕获上层作用域的this,可能会导致意外行为，普通的function会根据调用方式动态改变this的指向，
+
+        
+
+
+
+
+
+    </script>
+</body>
+</html>
