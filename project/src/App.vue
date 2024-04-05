@@ -4,6 +4,7 @@
     <div id="hello"></div>
     <HelloWorld :msg="msg" ref="myRef" @click="myClick" :key="new Date().getTime().toString()" v-model="myModel" :class="myClass" id="myId">
         <p>123</p>
+      <template v-slot:myslot>测试具名插槽</template>
     </HelloWorld>
     <button @click="msg = '123' ">测试响应式</button> 
   </div>
@@ -11,8 +12,8 @@
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
-import Vue from "vue"
-import { CreateElement } from 'vue';
+// import Vue from "vue"
+// import { CreateElement } from 'vue';
 import { addComponent } from './js/addCompoent.js';
 
 export default {
@@ -29,7 +30,7 @@ export default {
   },
   methods:{
     myClick(){
-
+      console.log("触发了我的点击事件")
     }
   },
   beforeCreate(){

@@ -1,6 +1,7 @@
-import Vue from "vue";
+import Vue from "vue/dist/vue";
 
 export function addComponent(vue, compoenent, elString, templateString) {
+
     let myComp;
     //得到组件构造函数
     let Compoent = Vue.extend(compoenent);
@@ -93,10 +94,10 @@ export function addComponent(vue, compoenent, elString, templateString) {
                 attrs[item] = obj.attributes[item]
             })
             let options = {on, props, nativeOn, attrs, ref, key};
-            if (JSON.stringify(on) === JSON.stringify({})) {
+            if (Object.keys(on).length === 0) {
                 delete options.on;
             }
-            if (JSON.stringify(nativeOn) === JSON.stringify({})) {
+            if (Object.keys(nativeOn).length === 0) {
                 delete options.nativeOn;
             }
             //生成虚拟dom
@@ -108,6 +109,7 @@ export function addComponent(vue, compoenent, elString, templateString) {
         }
     })
     //拼接vnode
+    debugger
     let vNodesTree = concatVNodes(tree[0]);
     //挂载组件
     myComp = new Compoent({
