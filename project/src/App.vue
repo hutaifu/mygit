@@ -4,7 +4,7 @@
     <div id="hello"></div>
     <HelloWorld :msg="msg" ref="myRef" @click="myClick" :key="new Date().getTime().toString()" v-model="myModel" :class="myClass" id="myId">
         <p>123</p>
-      <template v-slot:myslot>测试具名插槽</template>
+      <template v-slot:myslot="scope">测试具名插槽{{scope}}</template>
     </HelloWorld>
     <button @click="msg = '123' ">测试响应式</button> 
   </div>
@@ -12,7 +12,7 @@
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
-// import Vue from "vue"
+import Vue from "vue/dist/vue"
 // import { CreateElement } from 'vue';
 import { addComponent } from './js/addCompoent.js';
 
@@ -48,7 +48,10 @@ export default {
   //   let comVm = new Cons({
   //     _isComponent:true,
   //     parent:this,
-  //     _parentVnode:this.$createElement('HelloWorld',{on:{
+  //     _parentVnode:this.$createElement('HelloWorld',{
+  //       scopedSlots:{
+  //         myslot:props => {return this.$createElement('h1',`测试作用域插槽${props.myslotProp}`)},
+  //       },on:{
   //       click:function(){
   //         console.log("js增加的点击事件")
   //       },},
@@ -67,7 +70,9 @@ export default {
   // props:{
   //   msg:this.msg
   // }
-  //     },['紫芜丘陵未有雪，我未执枪已十三年'])
+  //     },['紫芜丘陵未有雪，我未执枪已十三年',/*this.$createElement('template',{
+  //       slot:"myslot"
+  //     },['测试具名插槽'])*/])
   //
   //   });
   //   comVm.$mount("#hello"); // 手动挂载
@@ -81,6 +86,7 @@ export default {
     addComponent(this,HelloWorld,"#hello",`  <HelloWorld :msg="msg" ref="myRef" @click="myClick" :key="new Date().getTime().toString()" v-model:sk="myModel" :class="myClass" id="myId" v-on="muClick">
         <p>123</p>
         '紫芜丘陵未有雪，我未执枪已十三年'
+           <template v-slot:myslot="scope">测试作用域插槽{{scope.myslotProp}}</template>
     </HelloWorld>`)
   }
 }

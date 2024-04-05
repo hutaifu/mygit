@@ -2,12 +2,19 @@ import Vue from "vue/dist/vue";
 
 export function addComponent(vue, compoenent, elString, templateString) {
 //原生事件不要加，
-    //
+    //js表达式相关逻辑处理没有
+    //作用域插槽总配置项
+    let scopedSlots = {};
     let myComp;
     //得到组件构造函数
     let Compoent = Vue.extend(compoenent);
     let tree = parseHTML(templateString);
-    dealTree(tree, (obj, parent) => {
+    dealTree(tree[0], (obj, parent) => {
+        //如果父组件是作用域插槽
+        let slotScope = "";
+        if (parent?.slotKey){
+            slotScope = parent.attributes[parent.slotKey]
+        }
         //找到绑定事件
         let on = {};
         let props = {};
@@ -15,8 +22,28 @@ export function addComponent(vue, compoenent, elString, templateString) {
         let key = "";
         let ref = "";
         let attrs = {};
-
-        if (obj.attributes) {
+        if (obj.tagName === "template"){
+            //插槽
+            //是否有v-slot属性
+            let sltoKey =  Object.keys(obj.attributes).filter(item =>/^v-slot:/.test(item))[0];
+            let afterSltoKey = sltoKey.replace(/^v-slot:/,"");
+            if (afterSltoKey && afterSltoKey !== 'default'){
+                //是否有参数
+                if (obj.attributes[sltoKey]){
+                    //作用域插槽
+                    scopedSlots[afterSltoKey] = afterSltoKey;
+                    obj.slotKey = sltoKey;
+                    obj._vnodeConfig = [obj.tagName,{}]
+                }else {
+                    //非传参插槽
+                    obj._vnodeConfig = [obj.tagName,{slot:obj.attributes[sltoKey]}]
+                }
+            }else {
+                //默认插槽
+                obj._vnodeConfig = [obj.tagName,{slot:'default'}]
+            }
+        }
+        if (obj.attributes && obj.tagName !== 'template') {
             let keys = Object.keys(obj.attributes)
 
             // 匹配事件绑定
@@ -30,6 +57,10 @@ export function addComponent(vue, compoenent, elString, templateString) {
                         let modifiers = match[2]; // 获取修饰符
                         // 检查事件名是否存在于组件定义中，如果存在则说明是组件事件，否则是原生事件
                         let fn = vue[obj.attributes[item]];
+                        //是否为插槽
+                 /*       if(slotScope && !fn){
+
+                        }*/
                         if (match[2] !== 'native') {
                             on[eventName] = fn?.bind(vue);
                         } else {
@@ -103,14 +134,15 @@ export function addComponent(vue, compoenent, elString, templateString) {
             }
             //生成虚拟dom
             obj._vnodeConfig = [obj.tagName, options];
-        }
-        if (obj.content) {
+        }else if (obj.content) {
             //如果是文本节点，
-            obj._vnodeConfig = [obj.content];
+            if (slotScope){
+               obj.content =  convertToTemplateString(obj.content,slotScope)
+            }
+                obj._vnodeConfig = [obj.content];
         }
     })
     //拼接vnode
-    debugger
     let vNodesTree = concatVNodes(tree[0]);
     //挂载组件
     myComp = new Compoent({
@@ -125,14 +157,24 @@ export function addComponent(vue, compoenent, elString, templateString) {
         if (isOneLevel) {
             node._vnodeConfig[0] = compoenent;
         }
-
         // let result = node._vnode;
-
         if (node.children && node.children.length > 0) {
             let childrenVnod = [];
             node.children.forEach(child => {
                 childrenVnod.push(concatVNodes(child, false));
+                if(Object.keys(scopedSlots)?.includes(node.slotKey?.replace(/^v-slot:/,""))){
+                    scopedSlots[node.slotKey.replace(/^v-slot:/,"")] =(props)=> {
+                        debugger
+                        let str = JSON.stringify(childrenVnod[childrenVnod.length - 1]).replace("[[","${").replace("]]","}");
+                        return JSON.parse(eval(`\`${str}\``));}
+                }
             });
+            if (isOneLevel && Object.keys(scopedSlots).length !== 0){
+                if (!node._vnodeConfig[1]){
+                    node._vnodeConfig[1] = {};
+                }
+                node._vnodeConfig[1].scopedSlots = scopedSlots;
+            }
             return vue.$createElement(...node._vnodeConfig, childrenVnod)
         } else {
             //末级节点
@@ -192,13 +234,24 @@ function parseAttributes(attributeString) {
 }
 
 //递归函数
-function dealTree(tree, callback) {
-    if (Array.isArray(tree) && tree.length !== 0) {
-        tree.forEach(item => {
-            callback(item, tree);
-            if (item?.children?.length > 0) {
-                dealTree(item.children, callback);
+function dealTree(tree, callback,parent) {
+    {
+        if (typeof tree === "object"){
+            callback(tree, parent);
+            if (tree?.children?.length > 0) {
+                tree.children.forEach(item =>{
+                    dealTree(item,callback,tree);
+                })
             }
-        })
+        }
     }
+}
+
+function convertToTemplateString(fixedString, dynamicIdentifier) {
+    let resString = `({{)(${dynamicIdentifier})(\\..+)*}}`
+    // 将动态部分的标识符添加到固定字符串中，以便后续替换
+    let stringWithIdentifier = fixedString.replace(new RegExp(resString,'g'), function ($1,$2,$3,$4){
+       return `[[props${$4?$4:''}]]`
+    });
+    return stringWithIdentifier;
 }
