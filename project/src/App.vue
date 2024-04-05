@@ -78,7 +78,7 @@ export default {
   //       comVm.$forceUpdate();
   //     },deep:false
   //   });
-    addComponent(this,HelloWorld,"#hello",`  <HelloWorld :msg="msg" ref="myRef" @click="myClick" :key="new Date().getTime().toString()" v-model:sk="myModel" :class="myClass" id="myId" v-on="muClick" @click.native="myTest" @blur.native="myBlur">
+    addComponent(this,HelloWorld,"#hello",`  <HelloWorld :msg="msg" ref="myRef" @click="myClick" :key="new Date().getTime().toString()" v-model:sk="myModel" :class="myClass" id="myId" v-on="muClick">
         <p>123</p>
         '紫芜丘陵未有雪，我未执枪已十三年'
     </HelloWorld>`)

@@ -1,7 +1,8 @@
 import Vue from "vue/dist/vue";
 
 export function addComponent(vue, compoenent, elString, templateString) {
-
+//原生事件不要加，
+    //
     let myComp;
     //得到组件构造函数
     let Compoent = Vue.extend(compoenent);
