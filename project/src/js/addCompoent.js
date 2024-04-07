@@ -1,4 +1,4 @@
-import Vue from "vue/dist/vue";
+import Vue from "vue";
 
 export function addComponent(vue, compoenent, elString, templateString) {
 //原生事件不要加，
