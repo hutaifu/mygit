@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box1{
+            margin: 0 auto;
+            height: 400px;
+            width: 400px;
+            font-size: 40px;
+            padding: 50px;
+            border: 50px dashed #0005;
+            background-image: url(Default.jpg);
+            background-size: 300px;
+            /* 背景图片的默认原点是填充盒左上角，但是背景图超出border部分会在对面border显示 */
+            background-size: 100px;
+            background-repeat: no-repeat;
+            background-origin: border-box;
+            /* 修改背景图片原点位置 */
+            background-origin: content-box;
+            background-size: 500px;
+            background-clip: border-box;
+            /* 默认值，边框以外的背景图,背景颜色不可见 */
+            background-clip: padding-box;
+            background-clip: content-box;
+            -webkit-background-clip: text;
+            /* 背景显示在字体上，测试中 */
+            color: #0001;
+            background-clip: border-box;
+        }
+    </style>
+</head>
+<body>
+    <div class="box1">
+        你好啊
+    </div>
+</body>
+</html>

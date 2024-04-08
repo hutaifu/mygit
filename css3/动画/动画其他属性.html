@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .outer{
+            width: 1000px;
+            height: 100px;
+            border: 1px solid black;
+        }
+        .inner{
+            width: 100px;
+            height: 100px;
+            background-color: deepskyblue;
+            /* 应用动画到元素 */
+            animation-name: wangyoudong;
+            /* 动画持续时间 */
+            animation-duration: 3s;
+            /* 动画延迟时间 */
+            animation-delay: 0.2s;
+
+            /* 其他属性 */
+            /* 设置动画的方式 */
+            animation-timing-function: linear;
+            /* animation-timing-function: steps(20); */
+            /*  设置动画的播放次数   */
+            animation-iteration-count: 3;
+            /* 设置无限次数 */
+            animation-iteration-count: infinite;
+            /* 动画的方向  */
+            /* 相反 */
+            animation-direction: reverse;
+            /* 往复运动，次数只有一次不生效 */
+            animation-direction: alternate;
+            /* 相反方向往复 */
+            animation-direction: alternate-reverse;
+            /* 动画以外的状态,最终状态，无限次数动画不起效 */
+            /* animation-fill-mode: forwards; */
+            /* 开始状态 */
+            /* animation-fill-mode: backwards; */
+            /* 动画的播放状态 */
+            /* animation-play-state: paused; */
+        }
+        /* 定义动画,定义一组关键帧，第一种方式 */
+        @keyframes wangyoudong {
+            /* 第一帧 */
+            from{
+                
+            }
+            /* 最后一帧 */
+            to{
+                transform: translate(900px) rotate(360deg);
+                background-color: purple;
+                border-radius: 50%;
+            }
+        }
+    .outer:hover .inner{
+        animation-play-state: paused;
+        /* animation-play-state: running; */
+    }
+    /* 动画复合属性和过渡相同，只用注意动画时间在延迟时间之前 */
+    </style>
+</head>
+<body>
+    <div class="outer">
+        <div class="inner"></div>
+    </div>
+</body>
+</html>

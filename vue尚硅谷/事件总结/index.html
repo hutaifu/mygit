@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        修饰符可以连续写
+        键盘事件也可以连写
+
+
+     -->
+    <!-- 准备好一个容器 -->
+    <div id ="root">
+        <h1>学校名称：{{name}}</h1>
+        <h3>学校地址：{{address}}</h3>
+    </div>
+</body>
+
+
+    <script src="../js/vue.js"></script>
+    <script>
+        Vue.config.productionTip = false;
+        let vm = new Vue({
+            el:'#root',
+            data:{
+                name:'jack',
+                address:"科技园"
+            }
+        })
+
+        //vue实例对象通过get,set去代理data里面的数据。
+    </script>
+</html>

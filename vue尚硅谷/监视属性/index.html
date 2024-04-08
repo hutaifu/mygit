@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 准备好一个容器 -->
+    <div id ="root">
+        <h2>今天天气很{{info}}</h2>
+        <button @click="isNot = !isNot">切换天气</button>
+    </div>
+</body>
+    <script src="../js/vue.js"></script>
+    <script>
+        Vue.config.productionTip = false;
+
+        let vm = new Vue({
+            el:'#root',
+            data:{
+                isNot:true
+            },
+            computed:{
+                info(){
+                    return this.isNot ? '炎热':"凉爽"
+                }
+            },
+            methods: {      
+                change(){
+                    this.isNot = !this.isNot
+                }
+            },
+            watch:{
+                //可以监听计算属性
+                isNot:{
+                    //当isNot发生改变触发
+                    handler(newvalue,oldvalue){
+                        console.log(newvalue)
+
+                    }
+                    ,
+                    //初始化时调用一下handler
+                    immediate:true
+
+                }
+            }
+        })
+        //手动添加监视
+        vm.$watch('',{
+
+        })
+        //vue实例对象通过get,set去代理data里面的数据。
+        //当数据的改变不体现再页面上时，开发者工具可能不会更新数据
+        //可以使用类似es6属性方法类似的简写，
+        vm.$watch('',function(newvalue,oldvalue){
+
+        })
+        //$watch简写不要写箭头函数，改变this指向为window
+        
+    </script>
+</html>

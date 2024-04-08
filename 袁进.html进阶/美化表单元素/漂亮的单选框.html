@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>漂亮的单选框</title>
+    <style>
+        .radion{
+            width: 12px;
+            height: 12px;
+            border: 1px solid #999;
+            border-radius: 50%;
+            cursor: pointer;
+            display: inline-block;
+        }
+        .checked{
+            border-color: #008c8c;
+        }
+        .radion.checked::after{
+            content: "";
+            display: block;
+            width: 5px;
+            height: 5px;
+            background-color: #008c8c;
+            margin-left: 3.5px;
+            margin-top: 3.5px;
+            border-radius: 50%;
+        }
+        input:checked+.radion::after{
+            content: "";
+            display: block;
+            width: 5px;
+            height: 5px;
+            background-color: #008c8c;
+            margin-left: 3.5px;
+            margin-top: 3.5px;
+            border-radius: 50%;
+        }
+        input:checked+.radion{
+            border-color: #008c8c;
+        }
+        input:checked~span{
+            color: #008c8c;
+        }
+        .radion-item input[type="radio"]{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="radion checked"></div>
+    <p>
+        请选择性别:
+        <label class="radion-item">
+            <input name="sex" type="radio">
+            <span class="radion"></span>
+            <span>男</span>
+        </label>
+
+        <label class="radion-item">
+            <input name="sex" type="radio">
+            <span class="radion"></span>
+            <span>女</span>
+        </label>
+
+    </p>
+
+</body>
+</html>

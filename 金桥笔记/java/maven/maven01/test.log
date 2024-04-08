@@ -1,0 +1,125 @@
+2022-09-06 15:47:05 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:143) BaseJdbcLogger.java DEBUG ==>  Preparing: select empno,ename,job,hiredate from emp 
+2022-09-06 15:47:05 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:143) BaseJdbcLogger.java DEBUG ==> Parameters: 
+2022-09-06 15:47:06 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.trace(BaseJdbcLogger.java:149) BaseJdbcLogger.java TRACE <==    Columns: empno, ename, job, hiredate
+2022-09-06 15:47:06 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.trace(BaseJdbcLogger.java:149) BaseJdbcLogger.java TRACE <==        Row: 1, 李四, 扫地, 2010-09-09
+2022-09-06 15:47:06 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.trace(BaseJdbcLogger.java:149) BaseJdbcLogger.java TRACE <==        Row: 2, 小丽, 财务, 2021-08-09
+2022-09-06 15:47:06 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.trace(BaseJdbcLogger.java:149) BaseJdbcLogger.java TRACE <==        Row: 3, 张三, 清洁工, 2020-01-01
+2022-09-06 15:47:06 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.trace(BaseJdbcLogger.java:149) BaseJdbcLogger.java TRACE <==        Row: 4, 张三, 清洁工, 2020-01-01
+2022-09-06 15:47:06 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:143) BaseJdbcLogger.java DEBUG <==      Total: 4
+2022-09-06 15:57:03 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:143) BaseJdbcLogger.java DEBUG ==>  Preparing: update emp set ename = ?,job = ?,hiredate = ? where empno = ? 
+2022-09-06 15:57:03 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:143) BaseJdbcLogger.java DEBUG ==> Parameters: 李四(String), 扫地(String), 2010-09-09(String), 1(Integer)
+2022-09-06 15:57:03 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:143) BaseJdbcLogger.java DEBUG <==    Updates: 1
+2022-09-06 15:58:41 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:143) BaseJdbcLogger.java DEBUG ==>  Preparing: update emp set ename = ?,job = ?,hiredate = ? where empno = ? 
+2022-09-06 15:58:41 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:143) BaseJdbcLogger.java DEBUG ==> Parameters: 李四(String), 扫地(String), 2010-09-09(String), 1(Integer)
+2022-09-06 15:58:41 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:143) BaseJdbcLogger.java DEBUG <==    Updates: 1
+2022-09-06 16:32:56 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:143) BaseJdbcLogger.java DEBUG ==>  Preparing: select empno,ename,job,hiredate from emp where ename = ? and job = ? 
+2022-09-06 16:32:56 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:143) BaseJdbcLogger.java DEBUG ==> Parameters: 李四(String), 扫地(String)
+2022-09-06 16:32:56 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.trace(BaseJdbcLogger.java:149) BaseJdbcLogger.java TRACE <==    Columns: empno, ename, job, hiredate
+2022-09-06 16:32:56 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.trace(BaseJdbcLogger.java:149) BaseJdbcLogger.java TRACE <==        Row: 1, 李四, 扫地, 2010-09-09
+2022-09-06 16:32:56 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:143) BaseJdbcLogger.java DEBUG <==      Total: 1
+2022-09-06 16:36:33 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:143) BaseJdbcLogger.java DEBUG ==>  Preparing: select empno,ename,job,hiredate from emp where ename = ? and job = ? 
+2022-09-06 16:36:33 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:143) BaseJdbcLogger.java DEBUG ==> Parameters: 李四(String), 扫地(String)
+2022-09-06 16:36:34 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.trace(BaseJdbcLogger.java:149) BaseJdbcLogger.java TRACE <==    Columns: empno, ename, job, hiredate
+2022-09-06 16:36:34 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.trace(BaseJdbcLogger.java:149) BaseJdbcLogger.java TRACE <==        Row: 1, 李四, 扫地, 2010-09-09
+2022-09-06 16:36:34 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:143) BaseJdbcLogger.java DEBUG <==      Total: 1
+2022-09-06 16:52:10 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:143) BaseJdbcLogger.java DEBUG ==>  Preparing: select empno,ename,job,hiredate from emp where ename = ? and job = ? 
+2022-09-06 16:52:10 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:143) BaseJdbcLogger.java DEBUG ==> Parameters: 李四(String), 扫地(String)
+2022-09-06 16:52:10 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.trace(BaseJdbcLogger.java:149) BaseJdbcLogger.java TRACE <==    Columns: empno, ename, job, hiredate
+2022-09-06 16:52:10 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.trace(BaseJdbcLogger.java:149) BaseJdbcLogger.java TRACE <==        Row: 1, 李四, 扫地, 2010-09-09
+2022-09-06 16:52:10 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:143) BaseJdbcLogger.java DEBUG <==      Total: 1
+2022-09-07 09:58:59 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:143) BaseJdbcLogger.java DEBUG ==>  Preparing: select job from emp where ename = ? 
+2022-09-07 09:58:59 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:143) BaseJdbcLogger.java DEBUG ==> Parameters: 李四(String)
+2022-09-07 09:58:59 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.trace(BaseJdbcLogger.java:149) BaseJdbcLogger.java TRACE <==    Columns: job
+2022-09-07 09:58:59 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.trace(BaseJdbcLogger.java:149) BaseJdbcLogger.java TRACE <==        Row: 扫地
+2022-09-07 09:58:59 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:143) BaseJdbcLogger.java DEBUG <==      Total: 1
+2022-09-07 10:15:36 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:143) BaseJdbcLogger.java DEBUG ==>  Preparing: select job from emp where ename = 李四 
+2022-09-07 10:15:36 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:143) BaseJdbcLogger.java DEBUG ==> Parameters: 
+2022-09-07 10:16:41 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:143) BaseJdbcLogger.java DEBUG ==>  Preparing: select job from emp where ename = '李四' 
+2022-09-07 10:16:41 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:143) BaseJdbcLogger.java DEBUG ==> Parameters: 
+2022-09-07 10:16:41 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.trace(BaseJdbcLogger.java:149) BaseJdbcLogger.java TRACE <==    Columns: job
+2022-09-07 10:16:41 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.trace(BaseJdbcLogger.java:149) BaseJdbcLogger.java TRACE <==        Row: 扫地
+2022-09-07 10:16:41 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:143) BaseJdbcLogger.java DEBUG <==      Total: 1
+2022-09-07 10:27:38 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:143) BaseJdbcLogger.java DEBUG ==>  Preparing: select job from emp where ename like '%' ? '%' 
+2022-09-07 10:27:38 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:143) BaseJdbcLogger.java DEBUG ==> Parameters: 四(String)
+2022-09-07 10:27:38 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.trace(BaseJdbcLogger.java:149) BaseJdbcLogger.java TRACE <==    Columns: job
+2022-09-07 10:27:38 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.trace(BaseJdbcLogger.java:149) BaseJdbcLogger.java TRACE <==        Row: 扫地
+2022-09-07 10:27:38 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:143) BaseJdbcLogger.java DEBUG <==      Total: 1
+2022-09-07 10:30:53 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:143) BaseJdbcLogger.java DEBUG ==>  Preparing: select job from emp --where ename like '%' ? '%' where ename like concat('%',?,'%') 
+2022-09-07 10:31:53 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:143) BaseJdbcLogger.java DEBUG ==>  Preparing: select job from emp where ename like concat(concat('%',?),'%') 
+2022-09-07 10:31:53 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:143) BaseJdbcLogger.java DEBUG ==> Parameters: 四(String)
+2022-09-07 10:31:53 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.trace(BaseJdbcLogger.java:149) BaseJdbcLogger.java TRACE <==    Columns: job
+2022-09-07 10:31:53 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.trace(BaseJdbcLogger.java:149) BaseJdbcLogger.java TRACE <==        Row: 扫地
+2022-09-07 10:31:53 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:143) BaseJdbcLogger.java DEBUG <==      Total: 1
+2022-09-07 10:33:09 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:143) BaseJdbcLogger.java DEBUG ==>  Preparing: select job from emp where ename like concat('%',?,'%') 
+2022-09-07 10:33:09 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:143) BaseJdbcLogger.java DEBUG ==> Parameters: 四(String)
+2022-09-07 10:33:09 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.trace(BaseJdbcLogger.java:149) BaseJdbcLogger.java TRACE <==    Columns: job
+2022-09-07 10:33:09 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.trace(BaseJdbcLogger.java:149) BaseJdbcLogger.java TRACE <==        Row: 扫地
+2022-09-07 10:33:09 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:143) BaseJdbcLogger.java DEBUG <==      Total: 1
+2022-09-07 10:51:37 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:143) BaseJdbcLogger.java DEBUG ==>  Preparing: select empno,ename,job,hiredate from emp limit ?,? 
+2022-09-07 10:51:37 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:143) BaseJdbcLogger.java DEBUG ==> Parameters: 0(Integer), 5(Integer)
+2022-09-07 10:51:37 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.trace(BaseJdbcLogger.java:149) BaseJdbcLogger.java TRACE <==    Columns: empno, ename, job, hiredate
+2022-09-07 10:51:37 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.trace(BaseJdbcLogger.java:149) BaseJdbcLogger.java TRACE <==        Row: 1, 李四, 扫地, 2010-09-09
+2022-09-07 10:51:37 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.trace(BaseJdbcLogger.java:149) BaseJdbcLogger.java TRACE <==        Row: 2, 小丽, 财务, 2021-08-09
+2022-09-07 10:51:37 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.trace(BaseJdbcLogger.java:149) BaseJdbcLogger.java TRACE <==        Row: 3, 张三, 清洁工, 2020-01-01
+2022-09-07 10:51:37 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.trace(BaseJdbcLogger.java:149) BaseJdbcLogger.java TRACE <==        Row: 4, 张三, 清洁工, 2020-01-01
+2022-09-07 10:51:37 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.trace(BaseJdbcLogger.java:149) BaseJdbcLogger.java TRACE <==        Row: 5, 小明, null, null
+2022-09-07 10:51:37 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:143) BaseJdbcLogger.java DEBUG <==      Total: 5
+2022-09-07 11:21:41 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:143) BaseJdbcLogger.java DEBUG ==>  Preparing: select empno,ename,job,hiredate from emp where ename = ? and job = ? 
+2022-09-07 11:21:41 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:143) BaseJdbcLogger.java DEBUG ==> Parameters: 李四(String), 扫地(String)
+2022-09-07 11:21:41 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.trace(BaseJdbcLogger.java:149) BaseJdbcLogger.java TRACE <==    Columns: empno, ename, job, hiredate
+2022-09-07 11:21:41 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.trace(BaseJdbcLogger.java:149) BaseJdbcLogger.java TRACE <==        Row: 1, 李四, 扫地, 2010-09-09
+2022-09-07 11:21:41 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:143) BaseJdbcLogger.java DEBUG <==      Total: 1
+2022-09-07 11:36:00 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:143) BaseJdbcLogger.java DEBUG ==>  Preparing: select empno,ename,job,hiredate from emp WHERE ename like '%' ? '%' and job like '%' ? '%' 
+2022-09-07 11:36:01 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:143) BaseJdbcLogger.java DEBUG ==> Parameters: 李(String), 地(String)
+2022-09-07 11:36:01 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.trace(BaseJdbcLogger.java:149) BaseJdbcLogger.java TRACE <==    Columns: empno, ename, job, hiredate
+2022-09-07 11:36:01 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.trace(BaseJdbcLogger.java:149) BaseJdbcLogger.java TRACE <==        Row: 1, 李四, 扫地, 2010-09-09
+2022-09-07 11:36:01 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:143) BaseJdbcLogger.java DEBUG <==      Total: 1
+2022-09-07 11:43:47 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:143) BaseJdbcLogger.java DEBUG ==>  Preparing: delete from emp where empno in ? , ? , ? 
+2022-09-07 11:43:47 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:143) BaseJdbcLogger.java DEBUG ==> Parameters: 1(Integer), 2(Integer), 3(Integer)
+2022-09-07 11:45:05 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:143) BaseJdbcLogger.java DEBUG ==>  Preparing: delete from emp where empno in ( ? , ? , ? ) 
+2022-09-07 11:45:05 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:143) BaseJdbcLogger.java DEBUG ==> Parameters: 1(Integer), 2(Integer), 3(Integer)
+2022-09-07 11:45:05 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:143) BaseJdbcLogger.java DEBUG <==    Updates: 3
+2022-09-07 15:10:17 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:143) BaseJdbcLogger.java DEBUG ==>  Preparing: delete from emp where empno in ( ? , ? , ? ) 
+2022-09-07 15:10:17 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:143) BaseJdbcLogger.java DEBUG ==> Parameters: 1(Integer), 2(Integer), 3(Integer)
+2022-09-07 15:10:17 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:143) BaseJdbcLogger.java DEBUG <==    Updates: 0
+2022-09-07 15:10:29 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:143) BaseJdbcLogger.java DEBUG ==>  Preparing: select e.empno, e.ename, e.job,e.deptno,d.dname from emp e join dept d on e.deptno = d.deptno 
+2022-09-07 15:10:29 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:143) BaseJdbcLogger.java DEBUG ==> Parameters: 
+2022-09-07 15:10:29 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.trace(BaseJdbcLogger.java:149) BaseJdbcLogger.java TRACE <==    Columns: empno, ename, job, deptno, dname
+2022-09-07 15:10:29 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.trace(BaseJdbcLogger.java:149) BaseJdbcLogger.java TRACE <==        Row: 4, 张三, 清洁工, 1, 部门一
+2022-09-07 15:10:29 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.trace(BaseJdbcLogger.java:149) BaseJdbcLogger.java TRACE <==        Row: 5, 小明, null, 2, 部门二
+2022-09-07 15:10:29 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.trace(BaseJdbcLogger.java:149) BaseJdbcLogger.java TRACE <==        Row: 6, 王武, null, 3, 部门三
+2022-09-07 15:10:29 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:143) BaseJdbcLogger.java DEBUG <==      Total: 3
+2022-09-07 15:13:18 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:143) BaseJdbcLogger.java DEBUG ==>  Preparing: select e.empno, e.ename, e.job,e.deptno,d.dname from emp e join dept d on e.deptno = d.deptno 
+2022-09-07 15:13:18 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:143) BaseJdbcLogger.java DEBUG ==> Parameters: 
+2022-09-07 15:13:18 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.trace(BaseJdbcLogger.java:149) BaseJdbcLogger.java TRACE <==    Columns: empno, ename, job, deptno, dname
+2022-09-07 15:13:18 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.trace(BaseJdbcLogger.java:149) BaseJdbcLogger.java TRACE <==        Row: 4, 张三, 清洁工, 1, 财务部
+2022-09-07 15:13:18 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.trace(BaseJdbcLogger.java:149) BaseJdbcLogger.java TRACE <==        Row: 5, 小明, null, 2, 行政部
+2022-09-07 15:13:18 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.trace(BaseJdbcLogger.java:149) BaseJdbcLogger.java TRACE <==        Row: 6, 王武, null, 3, 商务部
+2022-09-07 15:13:18 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:143) BaseJdbcLogger.java DEBUG <==      Total: 3
+2022-09-07 15:16:14 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:143) BaseJdbcLogger.java DEBUG ==>  Preparing: select e.empno, e.ename, e.job,e.deptno,d.dname,hiredate from emp e join dept d on e.deptno = d.deptno 
+2022-09-07 15:16:14 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:143) BaseJdbcLogger.java DEBUG ==> Parameters: 
+2022-09-07 15:16:14 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.trace(BaseJdbcLogger.java:149) BaseJdbcLogger.java TRACE <==    Columns: empno, ename, job, deptno, dname, hiredate
+2022-09-07 15:16:14 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.trace(BaseJdbcLogger.java:149) BaseJdbcLogger.java TRACE <==        Row: 4, 张三, 清洁工, 1, 财务部, 2020-01-01
+2022-09-07 15:16:14 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.trace(BaseJdbcLogger.java:149) BaseJdbcLogger.java TRACE <==        Row: 5, 小明, null, 2, 行政部, null
+2022-09-07 15:16:14 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.trace(BaseJdbcLogger.java:149) BaseJdbcLogger.java TRACE <==        Row: 6, 王武, null, 3, 商务部, null
+2022-09-07 15:16:14 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:143) BaseJdbcLogger.java DEBUG <==      Total: 3
+2022-09-07 15:40:03 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:143) BaseJdbcLogger.java DEBUG ==>  Preparing: select e.empno, e.ename, e.job,e.deptno,d.dname,hiredate from emp e join dept d on e.deptno = d.deptno 
+2022-09-07 15:40:03 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:143) BaseJdbcLogger.java DEBUG ==> Parameters: 
+2022-09-07 15:40:03 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.trace(BaseJdbcLogger.java:149) BaseJdbcLogger.java TRACE <==    Columns: empno, ename, job, deptno, dname, hiredate
+2022-09-07 15:40:03 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.trace(BaseJdbcLogger.java:149) BaseJdbcLogger.java TRACE <==        Row: 4, 张三, 清洁工, 1, 财务部, 2020-01-01
+2022-09-07 15:40:03 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.trace(BaseJdbcLogger.java:149) BaseJdbcLogger.java TRACE <==        Row: 5, 小明, null, 2, 行政部, null
+2022-09-07 15:40:03 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.trace(BaseJdbcLogger.java:149) BaseJdbcLogger.java TRACE <==        Row: 6, 王武, null, 3, 商务部, null
+2022-09-07 15:40:03 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:143) BaseJdbcLogger.java DEBUG <==      Total: 3
+2022-09-07 16:18:03 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:143) BaseJdbcLogger.java DEBUG ==>  Preparing: select e.empno, e.ename, e.job,e.deptno,d.dname,hiredate from emp e join dept d on e.deptno = d.deptno where d.deptno = ? 
+2022-09-07 16:18:03 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:143) BaseJdbcLogger.java DEBUG ==> Parameters: 1(Integer)
+2022-09-07 16:18:03 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.trace(BaseJdbcLogger.java:149) BaseJdbcLogger.java TRACE <==    Columns: empno, ename, job, deptno, dname, hiredate
+2022-09-07 16:18:03 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.trace(BaseJdbcLogger.java:149) BaseJdbcLogger.java TRACE <==        Row: 4, 张三, 清洁工, 1, 财务部, 2020-01-01
+2022-09-07 16:18:03 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:143) BaseJdbcLogger.java DEBUG <==      Total: 1
+2022-09-07 16:33:06 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:143) BaseJdbcLogger.java DEBUG ==>  Preparing: insert into emp (ename,job,hiredate,deptno) values (?,?,?,?) , (?,?,?,?) , (?,?,?,?) 
+2022-09-07 16:33:06 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:143) BaseJdbcLogger.java DEBUG ==> Parameters: 小李(String), 研发(String), 2021-1-1(String), 2(Integer), 小红(String), 测试(String), 2021-1-1(String), 1(Integer), 小黄(String), 市场(String), 2021-1-1(String), 3(Integer)
+2022-09-07 16:33:06 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:143) BaseJdbcLogger.java DEBUG <==    Updates: 3
+2022-09-07 16:49:24 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:143) BaseJdbcLogger.java DEBUG ==>  Preparing: update emp set ename = ?,jo b= ?,hiredate = ?,deptno = ? where empno = ? ; update emp set ename = ?,jo b= ?,hiredate = ?,deptno = ? where empno = ? ; update emp set ename = ?,jo b= ?,hiredate = ?,deptno = ? where empno = ? 
+2022-09-07 16:49:24 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:143) BaseJdbcLogger.java DEBUG ==> Parameters: 小李(String), 研发(String), 2021-1-1(String), 2(Integer), 7(Integer), 小红(String), 测试(String), 2021-1-1(String), 1(Integer), 8(Integer), 小黄(String), 市场(String), 2021-1-1(String), 3(Integer), 9(Integer)
+2022-09-07 16:53:25 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:143) BaseJdbcLogger.java DEBUG ==>  Preparing: update emp set ename = ?,job= ?,hiredate = ?,deptno = ? where empno = ? ; update emp set ename = ?,job= ?,hiredate = ?,deptno = ? where empno = ? ; update emp set ename = ?,job= ?,hiredate = ?,deptno = ? where empno = ? 
+2022-09-07 16:53:25 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:143) BaseJdbcLogger.java DEBUG ==> Parameters: 小李(String), 研发(String), 2021-1-1(String), 2(Integer), 4(Integer), 小红(String), 测试(String), 2021-1-1(String), 1(Integer), 5(Integer), 小黄(String), 市场(String), 2021-1-1(String), 3(Integer), 6(Integer)
+2022-09-07 16:53:25 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:143) BaseJdbcLogger.java DEBUG <==    Updates: 1

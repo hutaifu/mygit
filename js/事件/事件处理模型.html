@@ -31,10 +31,21 @@
             <div class="box"></div>
         </div>
     </div>
-
     <a href="https://www.baidu.com">www.baidu.com</a>
+    <button onclick="test(event,'1')">测试</button>
 </body>
     <script>
+        document.querySelector("button").onclick = test;
+        function test(e,s){
+            console.log(this)
+            console.log(event)
+            console.log(s)
+
+        }
+
+
+
+
         //事件处理模型
         let wrapper = document.querySelector('.wrapper')
         let content = document.querySelector('.content')

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+    </div>
+    <script src="../体验/vue.js"></script>
+    <script>
+        let Title = {
+            props:["title"],
+            template:`<h1>{{title}}</h1>`,
+            data(){
+                return{
+                    // title:"库存管理系统"
+                }
+            },
+            methods:{
+
+            },
+            computed:{
+
+            }
+        }
+        // Vue.component("myComp",Title)
+
+        //创建vue实例
+        // let vm = new Vue({
+        //     el:'#app',
+        //     template:`</div>
+        //     <my-comp></my-comp>
+        //     </div>`
+        // })
+        let vm = new Vue({
+            el:'#app',
+            components:{
+                myComp:Title
+            },
+            template:`<div>
+            <my-comp title="库存管理"></my-comp>
+            </div>`
+        })
+    </script>
+</body>
+</html>

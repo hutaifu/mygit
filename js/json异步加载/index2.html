@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div style="width: 100px;height: 100px;background-color: red;"></div>
+    <script>
+        console.log(document.readyState);//loading,script标签未构建完成
+        window.onload = function(){
+            // console.log(document.readyState)
+        }
+        document.onreadystatechange = function(){
+            console.log(document.readyState)
+        }
+        //
+        document.addEventListener('DOMContentLoaded',function(){
+            console.log('a')
+        })
+
+        //$(document).ready(function(){})//当dom解析完就执行的部分
+    </script>
+</body>
+</html>

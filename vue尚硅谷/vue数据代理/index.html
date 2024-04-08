@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 准备好一个容器 -->
+    <div id ="root">
+        <h2>今天天气很{{info}}</h2>
+        <button @click="isNot = !isNot">切换天气</button>
+    </div>
+</body>
+
+
+    <script src="../js/vue.js"></script>
+    <script>
+        Vue.config.productionTip = false;
+
+        let vm = new Vue({
+            el:'#root',
+            data:{
+                isNot:true
+            },
+            computed:{
+                info(){
+                    return this.isNot ? '炎热':"凉爽"
+                }
+            },
+            methods: {
+                change(){
+                    this.isNot = !this.isNot
+                }
+            },
+        })
+
+        //vue实例对象通过get,set去代理data里面的数据。
+        //当数据的改变不体现再页面上时，开发者工具可能不会更新数据
+    </script>
+
+</html>

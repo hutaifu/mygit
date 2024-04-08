@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //flat  半
+        //将多维数组转化位低维数组,默认降低一维
+        let arr = [1,2,3,[3,3,4,[5,6]]]
+        console.log(arr.flat())
+        //参数为深度，是一个数字
+        console.log(arr.flat(2))
+
+        //flatMap
+        arr = [1,2,3,4];
+        let result = arr.map(item =>[item * 10]);
+        console.log(result)
+
+        result = arr.flatMap(item =>[item * 10]);
+        console.log(result)
+
+
+
+
+    </script>
+</body>
+</html>

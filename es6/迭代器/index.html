@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //声明一个数组
+        const xiyou = ['唐僧','孙悟空','猪八戒','沙僧'];
+        //使用for of遍历
+        for(let v of xiyou){
+            console.log(v)
+        }
+        console.log(xiyou);
+        let iterator = xiyou[Symbol.iterator]()
+        console.log(iterator)
+        console.log(iterator.next())
+        console.log(iterator.next())//返回包含value和done属性名的对象
+    </script>
+</body>
+</html>

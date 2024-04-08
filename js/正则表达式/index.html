@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let str = 'ab\'cdef';  //反斜扛将后面的符号转换为文本
+        let a = 'ba\\ce'
+
+        str = 'sdklfjlfs';
+        //系统认为字符串不能存在多行，但是通过转义字符能够实现
+        str = 'sdfl;ajf\
+        sdlfjdsf\
+        dklsf';
+        let b = 'sflsf\tsdf' //制表符
+        let c = 'sflkdfj\r\nslkfjs ' //回车符
+        let d = 'sjflsaf\nlsdkfjdslf' //换行符
+        //利用转义字符去掉回车符号
+
+        //创建正则 RegExp
+        let reg = /abc/i;//ignoreCase,忽略大小写
+        let str1 = 'abcd';
+        reg.test(str1);//str1里面是否含有正则表达式片段
+        let reg1 = new RegExp("abc","m")
+
+        let reg2 = new RegExp(reg);//reg 和 reg2地址不同
+        let reg3 = RegExp(reg);//地址相同
+
+        let reg4 = /ad/g;
+        let str2 = 'dadadadadadadf'
+        str2.match(reg4);
+
+        let reg5 = /^a/gm; //多行匹配，匹配每一行的开头和结尾
+        let str3 = 'abcde\na';
+        str3.match(reg5)
+
+        //string.match()  返回符合正则的数组
+        //表达式
+        let reg6 = /[1234567890][1234567890][1234567890]/g;   //一个[]匹配一个字符
+        let str4 = "123242ksjfl34lsfjdlk4r34dksf";
+        //[^a] 匹配不是a的字符；
+        let reg7 = /(abc|bcd)[0-9]/g;  //匹配abc或者bcd开头，后面跟着一个数字的字符串。
+        let str7 = 'bcd2';
+        str7.match(reg7);
+
+        //元字符
+        //   \w === [0-9A-z_]; \W === [^\w];
+        // \d === [0-9]; \D === [^\d]
+        //[\w\d] 表达式里面也能写元字符
+        // \s 用于查找空白字符  换行 \n  换页 \f 回车 \r 制表符 \t 垂直制表 \v  空格
+        // \s === [\t\n\r\v\f ];
+        // \b单词边界
+        // \B非单词边界   单词开头结尾
+        //\t \n 只能匹配视觉上的 \t \n ,按下的匹配不了
+        let str8 = "slfjl\t";
+        let reg8 = /l\t/
+        str8.match(reg8)
+
+        let str9 = "slf\n";
+        let reg9 = /f\n/;
+        str9.match(reg9);
+
+        //  unicode编码 简单类型 \u0000 四位十六进制 能包括汉字
+        // 复杂的 unicode编码 十六层 第一层 \u010000  --- \u01ffff   第一层可以忽略01
+        // \u020000 --- \u02ffff    第二层  第十六层  \u100000   ---- \u10ffff      
+        //匹配 unicode编码
+        let reg10 =/[\u0000-\uffff]/g; //匹配unicode编码所有字符
+        let reg11 = /[\u4e00-\u9fa5]/;  //匹配单个汉字字符
+
+        let reg12 = /[\s\S]/   //也是查找所有
+
+        //元字符  . === [^\r\n] //匹配除了换行符和行结束符外所有字符
+
+
+        //量词
+        //  n+  变量n可以重复出现1到无数次 === {1，}  ,能匹配多个就不匹配少
+        // n* === {0,}  //能匹配多个就不匹配少，
+        let reg13 = /\w*/g
+        let str13 = "abc"
+        str13.match(reg13) // "bac",""
+        let reg14 = /\d*/;
+        str14.match(reg13) // "","","",""
+
+        // n? === {0,1}
+        // n{X} ===  {X}
+        // n{X,Y}  //贪婪匹配原则
+        // n{X,} //X到正无穷
+        //^ 开头  $结尾  同时用可以达到限定字符串的长度
+        let reg15 = /^abc$/;  
+        let str115 = "abcabc";
+        str15.match(reg15) //null,
+        reg.exex();//一次一次的匹配，返回类数组，0：匹配的字符串，index:匹配的位置，input：剩余的字符串
+
+        reg.lastIndex //游标的位置  可修改，如果不加全局匹配，lastIndex一直返回0
+
+        let str16 = "aaaa";
+        let reg16 = /(a)\1/g;   //  \1 反向引用，匹配前面第一个子表达()内容
+        reg.exex();//类数组反向引用的值一次添加
+
+        //字符串方法
+        //search() 匹配不到返回-1，加不加g不影响，返回匹配到的位置
+        //split()
+        //match()//全局匹配返回数组，非全局匹配返回类数组
+        //replace()//正常替换第一个但是如果写上正则g,就会全局替换
+        let reg17 = /(\w)\1(\w)\2/g;
+        let str17 = "aabb";
+        str17.replace(reg17,"$2$2$1$1");
+        str17.replace(reg17,function($,$1,$2){
+            return $2 + $2 + $1 + $1;
+        })
+
+        let reg18 = /-(\w)/g;
+        let str18 = "the-first-name";
+        str18.replace(reg18,function($,$1){
+            return $1.toUpperCase();
+        })
+
+        //正向预查
+        let str19 = "abaaaaa";
+        let reg19 = /a(?=b)/g;   //查找后面是b的a,
+        let reg20 = /a(?!b)/g;
+
+        //非贪婪匹配,量词后面加？
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+        
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>

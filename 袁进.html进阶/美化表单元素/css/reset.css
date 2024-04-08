@@ -1,0 +1,7 @@
+input,textarea,botton,select{
+    border: none;
+}
+input:focus,textarea:focus,button:focus,select:focus{
+    outline: none;
+    outline-offset: 0;
+}

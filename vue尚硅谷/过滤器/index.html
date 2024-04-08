@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 准备好一个容器 -->
+    <div id ="root">
+        <h2>今天天气很{{info}}</h2>
+        <button @click="isNot = !isNot">切换天气</button>
+        <h2>显示格式化的时间</h2>
+        <p>现在是{{time | timeformat | myslice}}</p>
+        <!-- 过滤器第一个参数一定是time,可以手动传第二个参数 -->
+    </div>
+</body>
+
+    <script src="../js/vue.js"></script>
+    <script>
+        Vue.config.productionTip = false;
+
+        let vm = new Vue({
+            el:'#root',
+            data:{
+                isNot:true,
+                time:Date.now()
+            },
+            computed:{
+                info(){
+                    return this.isNot ? '炎热':"凉爽"
+                }
+            },
+            methods: {
+                change(){
+                    this.isNot = !this.isNot
+                }
+            },
+            computed:{
+                fmtTime(){
+                    // return moment(time).format(YYYY)
+                }
+            },
+            //局部过滤器
+            filters:{
+                timeformat(value,str = "YYYY"){
+                    //  return "hello"
+                    return moment(value).format(str)
+                },
+                myslice(value){
+                    return value.slice(0,4)
+                }
+            }
+        })
+
+        //全局过滤器，必须再new Vue之前配置好。
+        Vue.filter('myslice',function(){
+
+        })
+        //过滤器在v-bind里面也能用，好像没啥用。
+    </script>
+
+</html>

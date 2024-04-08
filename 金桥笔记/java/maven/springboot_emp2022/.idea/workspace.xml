@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="4ea784e6-9017-4691-a737-c29303f38cf5" name="Default Changelist" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="localRepository" value="D:\meaven\rep1" />
+        <option name="mavenHome" value="D:/meaven/apache-maven-3.6.3" />
+        <option name="userSettingsFile" value="E:\maven\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="2EL4PiXiEoppnR4ZCoNSNjQ3CNB" />
+  <component name="PropertiesComponent">
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\10_学员日常\金桥60期\javahworkspace\springboot_emp2022\src\main\java" />
+      <recent name="D:\10_学员日常\金桥60期\javahworkspace\springboot_emp2022\src\main\resources" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="EmpApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="springboot_emp2022" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.jxd.emp.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.jxd.emp.EmpApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Spring Boot.EmpApplication" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="4ea784e6-9017-4691-a737-c29303f38cf5" name="Default Changelist" comment="" />
+      <created>1662453831903</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1662453831903</updated>
+      <workItem from="1662453834066" duration="907000" />
+      <workItem from="1662510136041" duration="13946000" />
+      <workItem from="1662535959701" duration="2187000" />
+      <workItem from="1662596944170" duration="1538000" />
+      <workItem from="1662623367407" duration="2882000" />
+      <workItem from="1663137803130" duration="3304000" />
+      <workItem from="1663201998335" duration="6964000" />
+      <workItem from="1663287798760" duration="2027000" />
+      <workItem from="1663547492039" duration="5403000" />
+      <workItem from="1663840503183" duration="172000" />
+      <workItem from="1663911596216" duration="918000" />
+      <workItem from="1663917399327" duration="145000" />
+      <workItem from="1663917566367" duration="1877000" />
+      <workItem from="1663922346423" duration="2410000" />
+      <workItem from="1664064504026" duration="23000" />
+      <workItem from="1664158598214" duration="3485000" />
+      <workItem from="1664172627699" duration="2548000" />
+      <workItem from="1664239299807" duration="4369000" />
+      <workItem from="1664257807222" duration="5670000" />
+      <workItem from="1664270629981" duration="600000" />
+      <workItem from="1664328048251" duration="6988000" />
+      <workItem from="1664351005919" duration="291000" />
+      <workItem from="1664351990439" duration="959000" />
+      <workItem from="1664353367936" duration="1205000" />
+      <workItem from="1664421707484" duration="592000" />
+      <workItem from="1664502233106" duration="2469000" />
+      <workItem from="1664507445913" duration="909000" />
+      <workItem from="1664516401717" duration="28000" />
+      <workItem from="1664518510765" duration="144000" />
+      <workItem from="1665297697772" duration="144000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/jxd/emp/controller/EmpController.java</url>
+          <line>60</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

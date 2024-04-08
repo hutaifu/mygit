@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h1{
+            font-size: 80px;
+            text-align: center;
+            text-shadow: 3px 3px 10px red;
+            /* 没有外沿值，内部阴影 */
+            color: white;
+        }
+        div{
+            width: 400px;
+            height: 400px;
+            border: 1px solid black;
+            font-size: 20px;
+            white-space: pre;
+            /* 按原文显示 */
+            white-space: pre-wrap;
+            /* 自动换行 */
+            white-space: pre-line;
+            /* 自动换行，无视行前行后空格 */
+            white-space: nowrap;
+            /* 不换行 */
+            white-space: normal;        
+            /* 回车变空格，空格去掉 */
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: clip;
+            /* 超出部分截掉，块容器必须配合overflow--hidden，默认值 */
+            text-overflow: ellipsis;
+            /* 超出部分提示，块容器必须配合overflow--hidden */
+            /* text-decoration: underline; */
+            text-decoration-line: underline;
+            text-decoration-style: dashed;
+            text-decoration-color: blue;
+            -webkit-text-stroke-color: red;
+            -webkit-text-stroke-width: 1px;
+            /* 文本描边，仅webkit浏览器可用 */
+            color: transparent;
+        }
+
+
+
+
+    </style>
+</head>
+<body>
+    <h1>
+        你好啊
+    </h1>
+    <div>
+       山回路转不见君，
+        雪上空留马行处,雪上空留马行处,雪上空留马行处,雪上空留马行处,雪上空留马行处
+    </div>
+</body>
+</html>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+    <!--
+        声明组件扫描器，组件就是java对象
+        base-package，指明注解在项目中的位置
+        spring会扫描base-package指定包以及子包下所有的类型类，找到相关注解
+        按照注解的功能创建对象或者属性赋值
+    -->
+    <context:component-scan base-package="com.jxd.emp"></context:component-scan>
+</beans>

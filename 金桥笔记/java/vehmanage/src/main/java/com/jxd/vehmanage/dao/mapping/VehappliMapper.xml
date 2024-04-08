@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jxd.vehmanage.dao.VehappliMapper">
+    <sql id="basesql">
+        appno,appid,appdate,appvehtypeno,exusetime,exreturntime,appreason,
+appvehnum,appgomil,gotime,appbackmil,backtime,usemil
+    </sql>
+<!-- IPage<Map<String,Object>> selectApplis(IPage<Map<String,Object>> page, @Param("appid") int appid, @Param("appvehnum") String appvehnum);-->
+    <select id="selectApplis" resultType="map">
+select <include refid="basesql"></include>,tname from vehappli v left join vehtype t on appvehtypeno = tno where
+appid = #{appid} <if test="appvehnum == null">and appvehnum = #{appvehnum}</if>
+    </select>
+<!--    boolean insertAppli(Vehappli vehappli);-->
+    <insert id="insertAppli">
+        insert into vehappli (<include refid="basesql"></include>) values (#{appno},#{appid},#{appdate},#{appvehtypeno},
+#{exusetime},#{exreturntime},#{appreason},#{appvehnum},#{appgomil},#{gotime},#{appbackmil},#{usemil})
+    </insert>
+<!--boolean updateVeh(Vehicle vehicle);-->
+    <update id="updateVeh">
+        update vehicle set vtypeno = #{vtypeno},vnum = #{vnum},vcurmil = #{vcurmil},vprutime = #{vprutime},
+        vstateno = #{vstateno},vsitnum = #{vsitnum}
+    </update>
+
+</mapper>

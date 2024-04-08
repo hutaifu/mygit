@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            padding: 30px;
+            border: 3px solid;
+        }
+        .left{
+            float: left;
+            width: 300px;
+            background-color: lightblue;
+            margin-right: 20px;
+        }
+        .right{
+            float: right;
+            width: 300px;
+            background-color: lightblue;
+            margin-left: 20px;
+        }
+        .clearfix::after{
+            content: "";
+            display: block;
+            clear: both;
+        }
+        .main{
+            overflow: hidden;
+            border: 2px solid;
+        }
+    </style>
+</head>
+<body>
+    <div class="container clearfix">
+        <aside class="left">Lorem ipsum dolor, sit amet consectetur adipisicing elit. A minima voluptates eum, suscipit quo eos ad quisquam reprehenderit iusto, quibusdam ducimus quasi quaerat facilis tenetur eaque veritatis sapiente. Vel culpa ex, dolorem natus cum, amet maxime, nulla obcaecati at atque sit odio quasi autem. Itaque tempora cupiditate deleniti iste ea similique maiores dolorem sequi eveniet magnam? Eaque tempora libero maiores, aliquid excepturi nostrum deserunt, omnis veritatis tempore officiis eligendi, rerum distinctio. Perferendis tempora repellat, deserunt porro beatae mollitia numquam aliquam culpa similique accusantium excepturi laudantium! Perferendis ea officia error non. Quae animi molestiae autem perspiciatis quasi nesciunt recusandae quam sed?</aside>
+        <aside class="right">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci quisquam facilis omnis aperiam facere commodi voluptates, aut molestias nam provident corporis reprehenderit, sunt ut impedit! Itaque fugit quibusdam, aut corporis quasi id vitae nihil repudiandae! Asperiores quaerat amet quidem facere hic maiores libero fuga ipsum error consequuntur doloremque natus, dolor obcaecati voluptate itaque veritatis iure. Esse veniam ipsum, eius doloremque laudantium distinctio placeat facilis ullam molestias deleniti ipsam, hic, mollitia ex voluptates aspernatur dolorum itaque! Doloribus cumque aspernatur quibusdam rem aperiam doloremque at. Nulla asperiores sequi laudantium modi neque ipsa, nam quam quidem vel delectus, quia ab qui, molestiae fugiat?</aside>
+        <div class="main">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Distinctio suscipit quis tempore beatae hic, aliquam iure doloribus, amet pariatur quas error, illo officia nobis aperiam corporis dolor necessitatibus rerum tenetur mollitia. Dolorum incidunt at aut quia culpa fugit quasi qui velit odio? Laudantium cupiditate aperiam, odio similique et esse quaerat deserunt eveniet culpa eum, voluptate molestiae enim temporibus nisi consequatur voluptas officia libero sunt nam nemo. Distinctio expedita quidem vitae reprehenderit illum obcaecati porro in delectus assumenda unde corrupti, temporibus soluta, omnis, tempore nostrum quae ipsa quo! Consequatur hic, deserunt voluptate illum iure ab sed unde officia praesentium quo dolores!</div>
+    </div>
+</body>
+</html>

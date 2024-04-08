@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .circl{
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            /* 边框四个角圆的半径 */
+            border: 1px solid black;
+            border-radius: 100px 50px;
+            /* 椭圆 */
+            border-top-right-radius: 50px 100px;
+            border-radius: 100px 50px 20px 10px / 50px 20px 10px 5px;
+            /* 复合属性，顺序左上开始1234，先写上下，再写左右，离谱啊 */
+            padding: 10px;
+            border: 10px solid gray;
+            font-size: 40px;
+            margin: 0 auto;
+            margin-top: 100px;
+            
+            outline-width: 20px;
+            /* 外轮廓，不参与盒子大小计算，不占据空间 */
+            outline-style: dashed;
+            outline-color: orange;
+            outline-offset: 0px;
+            /* 外轮廓偏移量 */
+        }
+    </style>
+</head>
+<body>
+    <div class="circl">
+        你好啊
+    </div>
+</body>
+</html>

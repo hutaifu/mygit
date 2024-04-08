@@ -1,0 +1,16 @@
+{
+  "id": "4220958",
+  "name": "测试",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "34452762",
+      "name": "business-icon-buyers-club",
+      "font_class": "business-icon-buyers-club",
+      "unicode": "e822",
+      "unicode_decimal": 59426
+    }
+  ]
+}

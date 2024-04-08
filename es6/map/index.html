@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // let a = new Set()
+        // a.add({1:2})
+        // console.log(a.has({1:2}))
+
+        //has方法使用===比较，对象数组比较的是地址
+
+        let m = new Map();
+        m.set("name","尚硅谷")
+        // console.log(m);
+        m.set("change",function(){
+            console.log("我们可以改变你")
+        })
+        // console.log(m)
+        let key = {
+            school:"ATGUIGU"
+        }
+        m.set(key,["北京","上海","深圳"])
+
+        //size
+        // console.log(m.size)
+        m.delete("name")
+        // console.log(m)
+        // console.log(m.get("change"))
+        // console.log(m.get(key))
+
+        //遍历
+        for(let v of m){
+            console.log(v)
+            console.log(typeof v)//类数组，0键名，
+        }
+
+
+        //清空
+        m.clear();
+    </script>
+</body>
+</html>

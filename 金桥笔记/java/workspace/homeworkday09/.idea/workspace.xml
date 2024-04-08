@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="ea707e49-ea1b-44fa-81d9-9ec852bcf016" name="Default Changelist" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="2CEJOSSQ0W5VsekeiGTFoNnYpAZ" />
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Application.TestGuessboxing">
+    <configuration name="Birthpwt" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="day09.Birthpwt" />
+      <module name="homeworkday09" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="day09.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Fuirt" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="day09.Fuirt" />
+      <module name="homeworkday09" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="day09.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test01" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="day09.Test01" />
+      <module name="homeworkday09" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="day09.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestGuessboxing" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Guessboxing.TestGuessboxing" />
+      <module name="homeworkday09" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Guessboxing.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestHappennum" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="day09.TestHappennum" />
+      <module name="homeworkday09" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="day09.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.TestGuessboxing" />
+        <item itemvalue="Application.Test01" />
+        <item itemvalue="Application.Birthpwt" />
+        <item itemvalue="Application.Fuirt" />
+        <item itemvalue="Application.TestHappennum" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ea707e49-ea1b-44fa-81d9-9ec852bcf016" name="Default Changelist" comment="" />
+      <created>1658361778611</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1658361778611</updated>
+      <workItem from="1658361782002" duration="6902000" />
+      <workItem from="1658371439564" duration="3775000" />
+      <workItem from="1658382479108" duration="2335000" />
+      <workItem from="1658393571109" duration="10670000" />
+      <workItem from="1658448920027" duration="3840000" />
+      <workItem from="1658454767414" duration="4926000" />
+      <workItem from="1658469216020" duration="110000" />
+      <workItem from="1658652315485" duration="278000" />
+      <workItem from="1658715091166" duration="711000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+</project>

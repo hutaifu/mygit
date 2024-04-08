@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li>
+            <a>肖生客的救赎</a>
+            <p>上映日期：19994-09-10</p></p>
+        </li>
+        <li>
+            <a>阿甘正传</a></a>
+            <p>上映日期：1994——07-06</p>
+        </li>
+    </ul>
+    <script>
+        //dot，除换行符以外的任意单个字符
+        let str = `
+    <ul>
+        <li>
+            <a>肖生客的救赎</a>
+            <p>上映日期：19994-09-10</p></p>
+        </li>
+        <li>
+            <a>阿甘正传</a></a>
+            <p>上映日期：1994——07-06</p>
+        </li>
+    </ul>`;
+     let reg = /<li>\s+<a>(.*?)<\/a>\s+<p>(.*?)<\/p>/;
+        let result = reg.exec(str);
+        console.log(result)
+
+
+        let reg2 = /<li>.*?<a>(.*?)<\/a>.*?<p>(.*?)<\/p>/s;
+            let result2 = reg2.exec(str);
+            console.log(result2)
+    </script>
+</body>
+</html>

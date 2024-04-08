@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="95fc40bc-ba07-47eb-a088-ad9dd24964b9" name="Default Changelist" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="2CHIErQyYPYh6Y225HRPPeuFKes" />
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.tabs" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="TestDvdAdmin" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.jxd_DVD.TestDvdAdmin" />
+      <module name="homeworkdayDVD" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.jxd_DVD.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.TestDvdAdmin" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="95fc40bc-ba07-47eb-a088-ad9dd24964b9" name="Default Changelist" comment="" />
+      <created>1658452974398</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1658452974398</updated>
+      <workItem from="1658452978480" duration="1762000" />
+      <workItem from="1658469328458" duration="985000" />
+      <workItem from="1658479000087" duration="89000" />
+      <workItem from="1658637801735" duration="14353000" />
+      <workItem from="1658652597251" duration="1053000" />
+      <workItem from="1658707776615" duration="16000" />
+      <workItem from="1658708715702" duration="378000" />
+      <workItem from="1658709618988" duration="493000" />
+      <workItem from="1658710237294" duration="9000" />
+      <workItem from="1658710544858" duration="1344000" />
+      <workItem from="1658715810169" duration="2165000" />
+      <workItem from="1659315281816" duration="61000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+</project>

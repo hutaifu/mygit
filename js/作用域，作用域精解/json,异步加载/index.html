@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="" defer></script>
+    <script src="" async></script>
+    <script defer>
+        let a;
+    </script>
+</head>
+<body>
+    <script>
+        var script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.src = "tool.js";
+        //执行到这里就会异步下载
+        //script.readyState = 'loading';//loaded,complete;
+        if(script.readyState){
+            script.onreadystatechange = function(){
+            if(['complete','loaded'].includes(script.readyState)){
+                test();
+            }
+        }
+        }else{
+        //但凡需要下载都有load事件
+        script.onload = function(){
+            //ie不兼容
+            test();
+         }
+        }
+        document.head.appendChild(script);
+        //这里加载完就会执行
+    </script>
+    
+</body>
+</html>

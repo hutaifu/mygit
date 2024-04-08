@@ -1,0 +1,33 @@
+2022-09-06 19:40:44 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:143) BaseJdbcLogger.java DEBUG ==>  Preparing: insert into bookmanger (booksname,eitor,puber,pubdate,booknum,bookpri,typeno) values (?,?,?,?,?,?,?) 
+2022-09-06 19:42:57 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:143) BaseJdbcLogger.java DEBUG ==>  Preparing: insert into bookmanger (booksname,eitor,puber,pubdate,booknum,bookpri,typeno) values (?,?,?,?,?,?,?) 
+2022-09-06 19:43:30 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:143) BaseJdbcLogger.java DEBUG ==>  Preparing: insert into bookmanger (booksname,eitor,puber,pubdate,booknum,bookpri,typeno) values (?,?,?,?,?,?,?) 
+2022-09-06 19:43:30 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:143) BaseJdbcLogger.java DEBUG ==> Parameters: 诗经(String), 诗人(String), 出版社(String), 1000-09-08(String), 30(Integer), 30.0(Double), 2(Integer)
+2022-09-06 19:43:30 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:143) BaseJdbcLogger.java DEBUG <==    Updates: 1
+2022-09-06 19:46:55 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:143) BaseJdbcLogger.java DEBUG ==>  Preparing: select bookno,booksname,eitor,puber,pubdate,booknum,bookpri,typename,b.typeno from bookmanger b left join booktype t on b.typeno = t.typeno 
+2022-09-06 19:46:55 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:143) BaseJdbcLogger.java DEBUG ==> Parameters: 
+2022-09-06 19:46:55 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.trace(BaseJdbcLogger.java:149) BaseJdbcLogger.java TRACE <==    Columns: bookno, booksname, eitor, puber, pubdate, booknum, bookpri, typename, typeno
+2022-09-06 19:46:55 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.trace(BaseJdbcLogger.java:149) BaseJdbcLogger.java TRACE <==        Row: 3, 西游记, 吴承恩, 出版, 1999-09-09, 12, 20, 历史, 1
+2022-09-06 19:46:55 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.trace(BaseJdbcLogger.java:149) BaseJdbcLogger.java TRACE <==        Row: 4, 三国演义, 罗贯中, 出版社, 1999-01-01, 12, 13, 神话, 2
+2022-09-06 19:46:55 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.trace(BaseJdbcLogger.java:149) BaseJdbcLogger.java TRACE <==        Row: 6, 红楼梦, null, 第三方, 1988-09-09, 56, 34, 神话, 2
+2022-09-06 19:46:55 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.trace(BaseJdbcLogger.java:149) BaseJdbcLogger.java TRACE <==        Row: 7, 水浒传, null, 的, 1900-09-09, 67, 23, 神话, 2
+2022-09-06 19:46:55 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.trace(BaseJdbcLogger.java:149) BaseJdbcLogger.java TRACE <==        Row: 8, 聊斋志异, 曹雪, 不知道, 2020-08-31, 90, 90, 神话, 2
+2022-09-06 19:46:55 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.trace(BaseJdbcLogger.java:149) BaseJdbcLogger.java TRACE <==        Row: 9, 诗经, 诗人, 出版社, 1000-09-08, 30, 30, 神话, 2
+2022-09-06 19:46:55 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:143) BaseJdbcLogger.java DEBUG <==      Total: 6
+2022-09-07 08:48:32 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:143) BaseJdbcLogger.java DEBUG ==>  Preparing: update bookmanger set booksname=?,eitor=?,puber=?,pubdate=?,booknum=?,bookpri=?,typeno=? where bookno = ? 
+2022-09-07 08:48:32 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:143) BaseJdbcLogger.java DEBUG ==> Parameters: 诗经(String), 诗人(String), 出版社(String), 1000-09-08(String), 30(Integer), 30.0(Double), 3(Integer), 9(Integer)
+2022-09-07 08:48:32 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:143) BaseJdbcLogger.java DEBUG <==    Updates: 1
+2022-09-07 08:51:58 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:143) BaseJdbcLogger.java DEBUG ==>  Preparing: select bookno,booksname,eitor,puber,pubdate,booknum,bookpri,typename,typeno from bookmanger where bookno = ? 
+2022-09-07 08:51:58 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:143) BaseJdbcLogger.java DEBUG ==> Parameters: 9(Integer)
+2022-09-07 08:53:11 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:143) BaseJdbcLogger.java DEBUG ==>  Preparing: select bookno,booksname,eitor,puber,pubdate,booknum,bookpri,typeno from bookmanger where bookno = ? 
+2022-09-07 08:53:11 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:143) BaseJdbcLogger.java DEBUG ==> Parameters: 9(Integer)
+2022-09-07 08:53:11 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.trace(BaseJdbcLogger.java:149) BaseJdbcLogger.java TRACE <==    Columns: bookno, booksname, eitor, puber, pubdate, booknum, bookpri, typeno
+2022-09-07 08:53:11 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.trace(BaseJdbcLogger.java:149) BaseJdbcLogger.java TRACE <==        Row: 9, 诗经, 诗人, 出版社, 1000-09-08, 30, 30, 2
+2022-09-07 08:53:11 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:143) BaseJdbcLogger.java DEBUG <==      Total: 1
+2022-09-07 08:58:28 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:143) BaseJdbcLogger.java DEBUG ==>  Preparing: select typename,typeno from booktype 
+2022-09-07 08:58:29 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:143) BaseJdbcLogger.java DEBUG ==> Parameters: 
+2022-09-07 08:58:29 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.trace(BaseJdbcLogger.java:149) BaseJdbcLogger.java TRACE <==    Columns: typename, typeno
+2022-09-07 08:58:29 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.trace(BaseJdbcLogger.java:149) BaseJdbcLogger.java TRACE <==        Row: 历史, 1
+2022-09-07 08:58:29 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.trace(BaseJdbcLogger.java:149) BaseJdbcLogger.java TRACE <==        Row: 神话, 2
+2022-09-07 08:58:29 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.trace(BaseJdbcLogger.java:149) BaseJdbcLogger.java TRACE <==        Row: 军事, 3
+2022-09-07 08:58:29 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.trace(BaseJdbcLogger.java:149) BaseJdbcLogger.java TRACE <==        Row: 传记, 4
+2022-09-07 08:58:29 org.apache.ibatis.logging.jdbc.BaseJdbcLogger.debug(BaseJdbcLogger.java:143) BaseJdbcLogger.java DEBUG <==      Total: 4

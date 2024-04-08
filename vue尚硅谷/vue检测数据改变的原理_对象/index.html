@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        虚拟dom对比
+        先在同一层级找到相同的key找到对比的两个节点(v-for不写key，默认按照索引作为key)
+        节点不断的分层递归对比，注意vue虚拟节点有文本节点，元素节点，组件节点，函数节点，注释节点，
+        对比到最小不可分层级的节点，如果让真实对应的节点替换
+        用户输入input框不会改变input对应的虚拟dom
+     -->
+    <!-- 准备好一个容器 -->
+    <div id ="root">
+        <li v-for="(p,index) of persons" :key="index">
+            {{p.name + "----" + p.age + "key" + index}}
+        </li>
+        <label for="">姓名</label> <input type="text" v-model="formData.name">
+        <label for="">值</input></label> <input type="text" v-model="formData.value">
+        <button @click="update">更新张三信息</button>
+        <button @click="update2">测试对象</button>
+    </div>
+
+</body>
+
+    <script src="../js/vue.js"></script>
+    <script>
+        Vue.config.productionTip = false;
+        new Vue({
+            el:'#root',
+            data:{
+                persons:[
+                    {id:1,name:"张三",age:18},
+                    {id:2,name:"李四",age:19},
+                    {id:3,name:"王五",age:20},
+                ],
+                formData:{
+                    name:"测试1",
+                    value:"测试2"
+                }
+            },
+            methods: {
+                update(){
+                //    this.persons[0].name = "张四"//奏效
+                //    this.persons[0] = {id:1,name:"马老师",age:18}
+                // this.persons = []
+                // this.formData = {}
+                // this.persons.push({})
+                },
+                update2(){
+                    // this.formData.name = "123"
+                    this.persons[3].name = '123'
+                }
+            },
+        })
+    </script>
+</html>

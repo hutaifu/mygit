@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .content{
+            display: flex;
+            flex-direction: column;
+        }
+        .footer,
+        .head{
+            background-color: green;
+            height: 50px;
+        }
+        .main{
+            background-color: red;
+            height: 200px;
+            display: flex;
+        }
+        .left,.right{
+            flex: 0 1 15%;
+            background-color: pink;
+        }
+        .midle{
+            flex: 0 1 70%;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <div class="head">头部</div>
+        <div class="main">
+            <div class="left">左</div>
+            <div class="midle">中</div>
+            <div class="right">右</div>
+        </div>
+        <div class="footer">底部</div>
+    </div>
+</body>
+</html>

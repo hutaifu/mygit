@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 准备好一个容器 -->
+    <div id ="root">
+      <h2>学校名称：{{name}}</h2>
+      <h2>学校地址；{{address}}</h2>
+      <hr>
+      <h2>学生姓名：{{student.name}}</h2>
+      <h2>性别：{{student.sex}}</h2>
+      <h2>学生年龄：{{student.age.rAge}},对外{{student.age.sAge}}</h2>
+      <h2>朋友们</h2>
+      <ul>
+        <li v-for="(f,index) in student.friends" ::key="index">
+            {{f.name + "--" +  f.age}}
+        </li>
+      </ul>
+    </div>
+</body>
+<script src="../js/vue.js"></script>
+<script>
+    Vue.config.productionTip = false;
+    let vm = new Vue({
+        el:'#root',
+        data:{
+            name:'尚硅谷',
+            address:"北京",
+            student:{
+                name:"tom",
+                age:{
+                    rAge:40,
+                    sAge:29
+                },
+                friends:[
+                    {name:'jerry',age:35},
+                    {name:"tony",age:36}
+                ],
+                hobby:{
+
+                }
+            }
+        }
+    })
+    //push,pop,shift,unshift,splice,sort,reverse,vue会监听改变数组的这几个方法
+    //直接改数组索引值不会触发vue更新。vue重写了data里面数组的这些方法
+    //用这七个方法或者set方法，更新vue
+    
+
+    
+</script>
+</html>

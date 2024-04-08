@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace 目前可以自定义要唯一，将来面向接口编程时对应dao接口，一 接口，一
+个 个mapper 相当于一个dao 接口的实现类 -->
+<!--namespace翻译过来叫命名空间，拥有唯一的值，值是dao接口的全限定名称（包名加类名）-->
+<!--mapper根标签，-->
+<mapper namespace="com.jxd.bookmanger.dao.IBookDao">
+<!--    select表示查询操作
+          id属性：要执行sql语句的唯一标识，要求使用接口定义的抽象方法的名称-->
+<!--
+ List<VoBook> selectMore(String snakey, Integer typeno);
+-->
+<!--    resultType 返回类型；或者返回值为集合时，是集合的泛型类型，查询必须要写resulType-->
+    <select id="selectMore" resultType="voBook">
+        select bookno,booksname,eitor,puber,pubdate,booknum,bookpri,typename,b.typeno from bookmanger b left join booktype t on b.typeno = t.typeno
+        <where>
+            <if test="snakey != null and snakey != ''">
+                booksname like '%' #{snakey} '%'
+            </if>
+            <if test="typeno != null and typeno != ''">
+                and b.typeno = #{typeno}
+            </if>
+        </where>
+        limit #{count},#{limit}
+    </select>
+<!--    当实体类属性不能和表中自段完全对应时，可以使用resultMap配置映射关系
+<resultMap>的id可以被<select>的resultMap属性所引用，查询结果会封装按照配置的映射关系封装，type属性，实体类，查询结果封装到这个类中-->
+   <!-- <select id="getAllEmp2" resultMap="empMap">
+        select empno,ename,job,hiredate from emp
+    </select>
+    主键列用id标签来配置，非主键用result标签来配置
+    colunm属性 数据库字段名
+    property属性：实体类属性名
+    <resultMap id="empMap" type="emp2">
+        <id column="empno" property="eno"></id>
+        <result column="ename" property="ename"></result>
+        <result column="job" property="job"></result>
+        <result column="hiredate" property="hiredate"></result>
+    </resultMap>-->
+<!--    boolean addbook(Book Book);-->
+<!--    因为增删改返回值类型比较简单，可以自动处理，不用写resultType-->
+    <insert id="addBook">
+        insert into bookmanger (booksname,eitor,puber,pubdate,booknum,bookpri,typeno) values (#{booksname},#{eitor},#{puber},#{pubdate},#{booknum},#{bookpri},#{typeno})
+    </insert>
+<!--     boolean upBook(Book Book);-->
+    <update id="upBook">
+        update bookmanger set booksname=#{booksname},eitor=#{eitor},puber=#{puber},pubdate=#{pubdate},booknum=#{booknum},bookpri=#{bookpri},typeno=#{typeno} where bookno = #{bookno}
+    </update>
+<!--    boolean delMore(int[] booknos);-->
+    <delete id="delMore">
+        delete from bookmanger where bookno in <foreach collection="array" separator="," item="no" open="(" close=")">
+        #{no}
+    </foreach>
+    </delete>
+    <!--<sql id="basesql">
+        empno,ename,job,hiredate
+    </sql>-->
+<!--    Book selectOne(int bookno);-->
+    <select id="selectOne" resultType="book">
+        select bookno,booksname,eitor,puber,pubdate,booknum,bookpri,typeno from bookmanger where bookno = #{bookno}
+    </select>
+<!--     Emp getEmpByNameAndJob(String ename,String job);-->
+<!--    传入一个简单类型的参数时，获取参数可以写完#{任意字符}-->
+<!--    传入多个简单类型的参数时，mybatis会将这些参数封装起来
+key:arg0 arg1 arg2 ···
+key:param1 param2 param3 ···
+value 会按照书写顺序写入这些map元素中-->
+</mapper>
+

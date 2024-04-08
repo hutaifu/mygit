@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box1{
+            height: 200px;
+            width: 200px;
+            background-color: deepskyblue;
+            padding: 5px;
+            border: 5px solid black;
+            box-sizing: border-box;
+            resize: horizontal;
+            /* 水平方向可以调整,必须加上overflow属性，子元素超出处理 */
+            overflow: hidden;
+            resize: vertical;
+            /* 垂直方向调整 */
+            resize: both;
+            /* 两边都能调整 */
+            box-shadow: 10px 10px;
+            /* 写两个值 影子水平和垂直方向的位移值*/
+            margin: 0 auto;
+            margin-top: 100px;
+            box-shadow: 10px 10px blue;
+            /* 三个值加上颜色*/
+            box-shadow: 10px 10px 10px;
+            /*  第三个值，阴影的模糊程度*/
+            box-shadow: 10px 10px 20px blue;
+            /* 四个值(比较常用) */
+            box-shadow: 10px 10px 20px 0px blue;
+            /* 五个值，第四个值，阴影的外沿程度(一般不给，太丑) */
+            box-shadow: 10px 10px 50px 0px blue inset;
+            /*  六个值， 内阴影*/
+            box-shadow: 0px 0px 60px 0px red inset;
+            background-color: yellow;
+            border: 0;
+            position: relative;
+            top: 0;
+            left: 0;
+            transition: 1s linear all;
+            background-color: orange;
+            opacity: 0.5;
+            /* 不透明度，默认1 ，0完全透明  包括盒子里面的内容，遮罩常用，和堆叠上下文相关 */
+        }
+        .box1:hover{
+            box-shadow: 0px 0px 20px black;
+            top: -10px;
+            left: 0;
+            border-radius: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="box1"></div>
+</body>
+</html>

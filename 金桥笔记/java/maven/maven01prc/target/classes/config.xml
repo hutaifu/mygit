@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<!-- mybatis的核心配置信息 -->
+<configuration>
+    <!--引入外部数据库参数属性文件-->
+    <properties resource="db.properties"></properties>
+    <!--设置运行时的一些参数-->
+    <settings>
+        <!--在控制台打印sql-->
+        <setting name="logImpl" value="STDOUT_LOGGING"/>
+        <!--配置log4j-->
+        <!--<setting name="logImpl" value="LOG4J"></setting>-->
+    </settings>
+   <!-- <typeAliases>
+        &lt;!&ndash;mybatis会在该包名下搜索需要的实体类&ndash;&gt;
+        <package name="com.jxd.model"></package>
+    </typeAliases>-->
+    <environments default="development">
+        <!--配置数据源环境-->
+        <environment id="development">
+            <!--事务管理采用jdbc方式-->
+            <transactionManager type="jdbc"></transactionManager>
+            <!--配置连接池方式的数据源，属性为连接数据库的四大参数-->
+            <dataSource type="POOLED">
+                <property name="driver" value="${driver}"></property>
+                <property name="url" value="${url}"></property>
+                <property name="username" value="${username}"></property>
+                <property name="password" value="${password}"></property>
+            </dataSource>
+        </environment>
+    </environments>
+    <!--注册映射文件-->
+    <mappers>
+        <!--告诉mybatis去哪里执行sql-->
+        <mapper resource="com/jxd/stu/dao/mapping/StuMapper.xml"></mapper>
+<!--        <mapper resource="mapper/DeptMapper.xml"></mapper>-->
+    </mappers>
+</configuration>

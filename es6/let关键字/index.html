@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // let a;
+        // let b,c,d;
+        // let e = 100;
+        // let f = 521, g = 'livls',h = [];
+        //1.变量不能重复声明 ,但是var可以
+        // let star = '罗志祥';
+        // let star = '小猪';
+        //2.let声明变量有块级作用域，在块级作用域外面不能访问(var可以) 全局，函数，eval
+        //if else while for
+        // {
+        //     let girl = "周三了房间"
+        // }
+        // console.log(girl)
+
+        //3.不存在变量提示
+        // console.log(song)
+        // let song = '烈爱大人'
+        //4.不影响作用域链
+        // {
+        //     let school = "书法家"
+        //     function fn(){
+        //         console.log(school)
+        //     }
+        //     fn();
+        // }
+
+        //最终要的是块级作用域
+        // let items = document.querySelectorAll('div')
+        // for(let i = 0;i < items.length;i++){
+        //     items[i].onclick = function(){
+        //         //this.style.background = 'pink'
+        //         items[i].style.backgroundColor = 'pink';
+        //         //由于for每一次循环都拥有一个块级作用域，所以使用items[i]没有问题
+        //         //但是如果使用var i,不存在块级作用域，就会存在问题      
+        //     }
+        // }
+
+        let obj = {}
+        // {
+        //     let i = 0; if(i < 10){obj[i] = function(){console.log(i)}}
+        // }
+        // {
+        //     let i = 1;if(i < 10){obj[i] = function(){console.log(i)}}
+        // }
+        {
+            var i = 0; if(i < 10){obj[i] = function(){console.log(i)}}
+        }
+        {
+            var i = 1;if(i < 10){obj[i] = function(){console.log(i)}}
+        }
+
+        Object.values(obj).forEach(itme =>{
+            if(typeof itme ==="function"){
+                itme()
+            }
+        })
+
+
+
+
+    </script>
+</body>
+</html>

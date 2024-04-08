@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Object.is//判断两个值是否完全相等
+        console.log(Object.is(120,120));//===
+        console.log(Object.is(NaN,NaN));//true;
+
+        // Object.assign;//对象合并
+        const config = {
+            host:"localhost",
+            port:3306,
+            name:'root',
+            pass:'root',
+            test:'test',
+        }
+        const config2 = {
+            host:"http://atguigu.com",
+            port:33060,
+            name:"atguigu.com",
+            pass:"liloveyou",
+            test2:'test2'
+        }
+        console.log(Object.assign(config,config2))
+        //对象合并并且后面对象的属性覆盖前面对象的属性
+
+        // Object.setPrototypeOf//设置原型对象
+        const shcool = {
+            name:"尚硅谷",
+        }
+        const cities = {
+            xiaoqu:['北京',"上海","深圳"]
+        }
+        Object.setPrototypeOf(shcool,cities);
+        console.log(Object.getPrototypeOf(shcool))
+        console.log(shcool)
+        //建议使用Objct.creat 创建对象时就把原型给上
+
+
+
+    </script>
+</body>
+</html>

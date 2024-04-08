@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        let person = {
+            name:"张三",
+            sex:'男',
+        }
+        let number = 18;
+        Object.defineProperty(person,"age",{
+            // value:number,
+            // enumerable:true,//控制属性是否可枚举，默认false
+            // writable:true,//是否可以修改，默认false
+            // configurable:true,//控制属性是否可以被删除，默认可删
+            get(){
+                return number;
+            },
+            set(value){
+                number = value;
+            }
+        })
+        //不可遍历
+        // console.log(Object.keys(person))
+        console.log(person.age)
+        setTimeout(function(){
+            number = 19
+            console.log(person.age)
+        },1000)
+
+
+
+
+    </script>
+</body>
+</html>

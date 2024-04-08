@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        h1{
+            height: 200px;
+            background-color: gray;
+            line-height: 200px;
+            font-size: 100px;
+        }
+        /* 检查到视口的宽度为800px时，应用如下样式 */
+    @media (width:800px){
+        h1{
+            background-color: green;
+        }
+    }
+    /* 检查到视口的宽度小于等于700px,应用如下样式 */
+    @media (max-width:700px){
+        h1{
+            background-color: orange;
+        }
+    }
+    /* 能直接写运算符号 */
+    @media (width > 800px){
+        h1{
+            background-color: red;
+        }
+    }
+    /* 判断设备分辨率的屏幕宽度，受到系统缩放的影响 */
+    @media (device-width:2560px){
+        h1{
+            background-image: linear-gradient(red,green);
+        }
+    }
+    /* orientation 为 portrait 视口高度大于宽度，纵向，为landscape ，视口处于横向 */
+    /* 能够写 and 且条件  or(,)或条件 */
+    /* @media () or (){
+
+    } */
+    /* not ，only（没用）运算符  */
+    /* 也能直接在link标签中使用media判断来引入对应的css */
+    </style>
+    <link rel="stylesheet" media="screen and (min-width:1200px)" href=""></link>
+</head>
+<body>
+    <h1>你好啊</h1>
+</body>
+</html>

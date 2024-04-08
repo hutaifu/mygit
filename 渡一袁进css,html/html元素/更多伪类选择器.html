@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 选中第一个子元素，并且要是li元素 */
+        li:first-child{
+            color: red;
+        }
+        /* 选中子元素中的第一个li元素 */
+        li:first-of-type{
+            color: red;
+        }
+        /* 选中第五个子元素，并且必须是li元素 */
+        li:nth-child(5){
+            color: red;
+        }
+        /* 必须是li元素，必须是第偶数个子元素,2n可以用even替代 */
+        li:nth-child(2n){
+            color: red;
+        }
+        p::first-letter{
+            font-size: 2em;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <ul>
+            <p>alfjk</p>
+            <li>Lorem.</li>
+            <li>Provident!</li>
+            <li>Fuga?</li>
+            <li>Blanditiis?</li>
+            <li>Eos.</li>
+            <li>Amet!</li>
+            <li>Maxime.</li>
+            <li>Dolore.</li>
+            <li>Libero.</li>
+            <li>Veniam.</li>
+        </ul>
+    </div>
+</body>
+</html>

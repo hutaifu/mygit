@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //实例化promise对象
+        const p = new Promise(function(resolve,reject){
+            setTimeout(function(){
+                //
+                // let data = "数据库中的用户数据"
+                //resolve
+                // resolve(data);
+                let err = "数据读取失败";
+                reject(err);
+            },1000)
+        })
+
+        //调用promise对象的then方法
+        p.then(function(value){
+            console.log(value)
+        },function(reason){
+            console.error(reason)
+        })
+    </script>
+    <script src="promise读取文件.js"></script>
+</body>
+</html>

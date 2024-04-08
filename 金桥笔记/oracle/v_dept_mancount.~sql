@@ -1,0 +1,4 @@
+create view v_dept_mancount
+as
+select dname,count(empno)from
+(select * from dept inner join emp on dept.deptno = emp.deptno)group by dname

@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="bca61c5d-b285-400e-a64e-615e023adf4e" name="Default Changelist" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+        <option value="Interface" />
+        <option value="mapper-xml" />
+      </list>
+    </option>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="localRepository" value="D:\meaven\rep1" />
+        <option name="mavenHome" value="D:/meaven/apache-maven-3.6.3" />
+        <option name="userSettingsFile" value="D:\meaven\apache-maven-3.6.3\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+        <option name="vmOptionsForImporter" value="-Xmx768m" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="2EL7gQPVE3wlnusXTmi1M1XwLZ5" />
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../maven01prc" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\java\maven\maven01\src\main\rerouces" />
+      <recent name="D:\java\maven\maven01\src\main\java\com\jxd\emp\until" />
+      <recent name="D:\java\maven\src\main\rerouces" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="JUnit.Test01.testUpdateBatchEmp">
+    <configuration name="Test01.testAddBatchEmp" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="maven01" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="Test01" />
+      <option name="METHOD_NAME" value="testAddBatchEmp" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test01.testGetAllDept" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="maven01" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="Test01" />
+      <option name="METHOD_NAME" value="testGetAllDept" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test01.testGetDeptByEno" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="maven01" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="Test01" />
+      <option name="METHOD_NAME" value="testGetDeptByEno" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test01.testGetEmpAndDept" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="maven01" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="Test01" />
+      <option name="METHOD_NAME" value="testGetEmpAndDept" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test01.testUpdateBatchEmp" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="maven01" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="Test01" />
+      <option name="METHOD_NAME" value="testUpdateBatchEmp" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.Test01.testUpdateBatchEmp" />
+        <item itemvalue="JUnit.Test01.testAddBatchEmp" />
+        <item itemvalue="JUnit.Test01.testGetDeptByEno" />
+        <item itemvalue="JUnit.Test01.testGetAllDept" />
+        <item itemvalue="JUnit.Test01.testGetEmpAndDept" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="bca61c5d-b285-400e-a64e-615e023adf4e" name="Default Changelist" comment="" />
+      <created>1662363121166</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1662363121166</updated>
+      <workItem from="1662363124408" duration="8549000" />
+      <workItem from="1662377540434" duration="1712000" />
+      <workItem from="1662428870467" duration="6862000" />
+      <workItem from="1662436228415" duration="36000" />
+      <workItem from="1662446651515" duration="8517000" />
+      <workItem from="1662457773329" duration="36000" />
+      <workItem from="1662457843724" duration="3000" />
+      <workItem from="1662458066568" duration="1137000" />
+      <workItem from="1662460128588" duration="29000" />
+      <workItem from="1662460918612" duration="1208000" />
+      <workItem from="1662463742370" duration="1222000" />
+      <workItem from="1662511130312" duration="21000" />
+      <workItem from="1662514879116" duration="7490000" />
+      <workItem from="1662529718185" duration="9953000" />
+      <workItem from="1662597433208" duration="1624000" />
+      <workItem from="1662627542229" duration="616000" />
+      <workItem from="1662630492427" duration="57000" />
+      <workItem from="1662630622210" duration="395000" />
+      <workItem from="1662683846141" duration="1582000" />
+      <workItem from="1662706488120" duration="38000" />
+      <workItem from="1662960094418" duration="10000" />
+      <workItem from="1662960321709" duration="440000" />
+      <workItem from="1662985592436" duration="8000" />
+      <workItem from="1663310084210" duration="26000" />
+      <workItem from="1663310232504" duration="186000" />
+      <workItem from="1664267348611" duration="73000" />
+      <workItem from="1664269989798" duration="14000" />
+      <workItem from="1664270288778" duration="328000" />
+      <workItem from="1665628541156" duration="18000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+</project>

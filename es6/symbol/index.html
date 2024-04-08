@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //创建Symbol
+        let s = Symbol();
+        console.log(s,typeof s)
+        //也能传参，根据参数得到的值不唯一
+        let s2 = Symbol('尚硅谷');
+        let s3 = Symbol('尚硅谷');
+        console.log(s2 === s3); //不相等
+        //Symbol.for创建 ，根据参数得到的值唯一
+        let s4 = Symbol.for('尚硅谷');
+        let s5 = Symbol.for("尚硅谷");
+        console.log(s4,typeof s4)
+        console.log(s4 === s5) //相等
+
+        
+    </script>
+</body>
+</html>

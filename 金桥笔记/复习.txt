@@ -1,0 +1,177 @@
+01-什么是数据库  为什么要用数据库
+	》用于永久保存用户数据
+02-数据库的分类
+	》关系型数据库   oracle  mysql  sqlserver
+	》网状型数据库
+	》层次型数据库
+03-oracle
+	》服务端    一个项目一个数据库服务
+	》客户端
+	》第三方工具   plsql   navicat
+04-服务
+	》实例服务，数据库本身
+	》监听服务Listener，监听客户端的请求
+05-数据库组成
+	》数据库服务平台
+	》数据库实例，一个实例就是一个数据仓库
+	》表空间，实例的逻辑分区
+	》用户
+	》表、序列、视图等对象
+06-数据库常见命令（sqlplus）
+	》conn 用户/密码;  conn sys/sys as sysdba;
+	》show user;
+	》passw;   自己密码    passw 用户名;
+	》disc; 
+	》exit;	
+07-用户管理
+	》create user 用户名 identified by 密码;
+	》grant connect,resource,dba to 用户名;
+	》revoke dba from 用户名;
+	》drop user 用户名 cascade;
+		》cascade：级联删除，删除用户下的对象
+	》alter user 用户名 account unlock;	--解锁用户
+	
+08-表和序列
+	》create table 表名 (
+		列名 类型 not null,
+		列名 类型,
+		列名  类型
+	)
+	》alter table 表名 add constraint pk_stu primary key (sno);
+	》五大约束：主键  check  unique  not Null 外键
+	》常见类型：number   varchar2  varchar char  date
+	
+	》序列为了实现主键的自增
+	》create sequence 序列名称
+		start with  1
+		increment by 1
+		nomaxvalue
+	》select 序列.nextval from dual; --下一个值
+	》select 序列.currval from dual; --当前值,不会引起序列变化
+09-数据的增删改
+	》insert into 表名 values (所有的值);
+	》insert into 表名  (列名，列名) values （值，值）;
+	》delete from 表名 [where 条件];
+	》update 表名 set 列 = 值,列 = 值 [where 条件]
+10-数据的查询
+	》select * from 表名 where 条件  order by 排序
+	》通用判断：
+		》=   !=  
+		》in 、not in  select * from emp where deptno in (10,20)
+		》and  or not
+			》select * from emp where deptno = 10 or deptno = 20;
+			》select * from emp where deptno != 10 and deptno != 20;
+	》字符串：
+		》like  
+			select ename from emp where ename like '张__%'
+		》_匹配一个任意字符
+		》%匹配任意个任意字符串
+	》数字和日期
+		》 + -  */  (日期的+-是进行天的操作)
+		》<  > 
+		》between and
+			》select * from emp where sal between 2000 and 3000;--包含边界
+	》升序  asc  降序  desc
+		》order by sal desc,deptno 
+	》去掉某一列中重复的值  distinct
+		》select distinct job from emp;
+	》null  is null  is not null
+		select * from emp where comm is not null
+11-函数
+	》转换函数
+		》to_char : 将日期转换为字符串，用在select 
+			select to_char(hiredate,'yyyy') from emp;
+		》to_date：将字符串转换为日期 用在insert update
+			update emp set hiredate = to_date('1999-08-08','yyyy-mm-dd')
+	》其他函数
+		》nvl 
+			》select ename,nvl(comm,0) from emp;
+		》decode -----case when then  end
+			》select ename,decode(job,'CLERK','业务员') from emp
+	》聚组函数
+		》sum()   count()  avg()  max() min()
+		》分组求聚合
+			》select deptno,avg(sal) from emp group by deptno
+			》having 筛选不合适的分组
+		》各个部门manager平均工资
+			select deptno,avg(sal) from emp
+			where job = 'manager'
+			group by deptno
+			having avg(sal) > 2000
+			order by avg(sal)
+		》where --》group by --》having --》 order by	
+12-关联查询
+	》自然连接 natural join
+	》内连接  inner join  on 关联字段
+		》能够对应上的数据
+	》等值连接 
+		select * from emp,dept where 关联字段
+	》左连接   left join on
+		》左表为主表，主表数据全部显示
+	》全外连接  full outer join  on
+		》全部显示
+	》自连接
+	
+	》连接语法：
+		select * from emp e inner join dept d on e.deptno = d.detpno
+13-子查询
+	》作为过滤条件
+		》单行子查询
+			select * from emp where deptno = (select deptno from dept where dname = 'SALES')
+		》in子查询
+			select * from students where scode in (select studentid from score where score > 90)
+	》作为临时表
+		》部门的详细信息和平均工资
+	》作为字段
+14-伪列
+	》rowid：存储地址
+	》rownum：对查询结果的编号
+		》where之后，order by之前
+	》工资前5位
+		》select rownum,t.* from (select * from emp order by sal desc ) t where rownum <= 5
+	》6-10
+		》select *from
+		(select rownum r,t1.* from
+			(select * from emp order by sal desc) t1) t2
+		where t2.r >= 6 and t2.r <= 10
+15-union /union all
+	》连接查询结果集    
+	》union去重   
+	》批量插入
+		insert into dept
+		select 常量  from dual
+		union
+		select 常量  from dual
+16-数据库对象
+	》存储过程： procedure 
+	》触发器： trigger
+		》特殊的存储过程
+		》DML触发器
+		》系统触发器
+		》替代触发器
+	》视图：view
+		》只有dba才能创建
+		》视图不存数据
+		》drop view 视图名
+		》select * from 视图
+		》create view 视图名
+		  as
+		  select * from emp
+		  with read only  --只读操作保证视图只能进行查询
+	》索引：index
+		》提高查询效率
+	》表空间
+	》事务：最小的执行单元
+17-常识
+	》ER图
+	》映射关系
+		》1:1   1：M   M:N
+	》三大范式
+		》列不可再分
+		》每列都和主键相关
+		》每列都和主键直接相关
+	》导入导出
+		》plsql：tools 
+		》exp   imp
+			
+	

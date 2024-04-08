@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jxd.vehmanage.dao.VehicleMapper">
+    <sql id="vsql">vno,vtypeno,vnum,vcurmil,vprutime,vstateno,vsitnum</sql>
+<!--    IPage<Map<String,Object>> selectVehicles(IPage<Map<String,Object>> page, @Param("vno") int vno, @Param("vtypeno") int vtypeno,
+                                             @Param("vstateno") int vstateno, @Param("vsitnum") int vsitnum);-->
+    <select id="selectVehicles" resultType="map">
+        select <include refid="vsql"></include>,tname,sname from (select <include refid="vsql"></include>,tname from vehicle left join vehtype on vtypeno = tno) f
+        left join vehstate on vstateno = sno <where>
+        <if test="vno != null and vno != '' ">
+            vno = #{vno}
+        </if>
+        <if test="vtypeno != null and vtypeno != '' ">
+            and vtypeno = #{vtypeno}
+        </if>
+        <if test="vstateno != null and vstateno != '' ">
+            and vstateno = #{vstateno}
+        </if>
+        <if test="vsitnum != null and vsitnum != '' ">
+            and vsitnum >= #{vsitnum}
+        </if>
+        <if test="vnum != null and vnum != ''">
+            and vnum = #{vnum}
+        </if>
+    </where>
+    order by vno
+    </select>
+<!--     boolean insertVeh(Vehicle vehicle);-->
+    <insert id="insertVeh">
+        insert into vehicle (<include refid="vsql"></include>) values (#{vno},#{vtypeno},
+        #{vnum},#{vcurmil},#{vprutime},#{vstateno},#{vsitnum})
+    </insert>
+<!--     boolean updateVeh(Vehicle vehicle);-->
+    <update id="updateVeh">
+        update vehicle set vtypeno = #{vtypeno},vnum = #{vnum},vcurmil = #{vcurmil},
+        vprutime = #{vprutime},vstateno = #{vstateno},vsitnum = #{vsitnum} where vno = #{vno}
+    </update>
+<!--     boolean delVeh(int[] vnos);-->
+    <delete id="delVeh">
+        delete from vehicle where vno in <foreach collection="vnos" separator="," item="vno"
+                                                  close=")" open="(">#{vno}</foreach>
+    </delete>
+<!--    Map<String,Object> selectType();-->
+    <select id="selectType" resultType="map">
+        select tno,tname from vehtype
+    </select>
+<!--        Map<String,Object> selectState();-->
+    <select id="selectState" resultType="map">
+        select sno,sname from vehstate;
+    </select>
+</mapper>

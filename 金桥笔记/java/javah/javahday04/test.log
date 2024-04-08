@@ -1,0 +1,4 @@
+2022-08-04 15:48:55 com.jxd_ch05.Test01.main(Test01.java:25) Test01.java INFO 用户输入了被除数：200
+2022-08-04 15:48:58 com.jxd_ch05.Test01.main(Test01.java:28) Test01.java INFO 用户输入了除数：4
+2022-08-04 15:48:58 com.jxd_ch05.Test01.main(Test01.java:31) Test01.java INFO 用户执行了除法操作，结果是：50
+2022-08-04 15:50:31 com.jxd_ch05.Test01.main(Test01.java:38) Test01.java ERROR 用户输入的内容不是整数

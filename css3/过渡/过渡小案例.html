@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        .outer{
+            width: 400px;
+            height: 224px;
+            overflow: hidden;
+            
+        }
+        img{
+            width: 400px;
+            height: 224px;
+            transition: 0.5s all;
+            display: block;
+        }
+        body{
+            display: flex;
+            justify-content: center;       
+            height: 100vh;
+            align-items: center;
+            flex-direction: column;
+        }
+        div:hover img{
+            transform: rotateZ(59deg) scaleX(1.2) scaleY(1.2);
+        }
+        .mask{
+            width: 400px;
+            height: 224px;
+            background-color: black;
+            color: white;
+            text-align: center;
+            line-height: 224px;
+            font-size: 100px;
+            opacity: 0;
+            transition: 1s;
+            cursor: pointer;;
+            position: relative;
+            top: -224px; 
+        }
+        .outer:hover .mask{
+            opacity: 0.5;
+        }
+    </style>
+</head>
+<body>
+    <div class="outer">
+        <img src="../新增背景属性/Default.jpg" alt="">
+        <div class="mask">上海</div>
+    </div>
+</body>
+</html>

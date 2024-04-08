@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // function Phone(){
+        // }
+        // Phone.name = "手机";
+        // Phone.change = function(){
+        //     console.log("我可以改变世界")
+        // }
+        // let nokia = new Phone();
+        // console.lgo(nokia.name);//示例对象没有构造函数对象上的属性
+        class Phone{
+            //静态属性
+            static name = "手机";
+            static change(){
+                console.log("我可以改变世界")
+            }
+            constructor(){
+            }
+        }
+
+        let nokia = new Phone();
+        console.log(nokia.name) //undefined
+        console.log(Phone.name) //手机
+
+
+
+
+
+    </script>
+</body>
+</html>

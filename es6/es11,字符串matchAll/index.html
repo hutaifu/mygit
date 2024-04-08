@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //dot，除换行符以外的任意单个字符
+        let str = `
+    <ul>
+        <li>
+            <a>肖生客的救赎</a>
+            <p>上映日期：19994-09-10</p></p>
+        </li>
+        <li>
+            <a>阿甘正传</a></a>
+            <p>上映日期：1994——07-06</p>
+        </li>
+    </ul>`;
+
+    //声明正则
+    const reg = /<li>.*?<a>(.*?)<\/a>.*?<p>(.*?)<\/p>/sg
+
+        //调用方法 
+        const reslut = str.matchAll(reg);
+        // for(let v of reslut){
+        //     console.log(v)
+        // }
+
+        const arr = [...reslut];
+        //迭代器只能迭代一次
+        console.log(arr)
+    </script>
+</body>
+</html>

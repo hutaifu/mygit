@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //es6允许给函数参数赋予初始值
+        //1.形参初始值,具有默认值的参数一般靠后
+        function add(a,b,c = 10){
+            return a + b + c;
+        }
+        let reslult = add(1,2);
+        console.log(reslult);
+
+
+        //2.与解构赋值结合
+        function connect({host="127.0.0.1",userNmae,password,port}){
+            console.log(host);
+            console.log(userNmae);
+            console.log(password);
+            console.log(port);
+        }
+        connect({
+            host:'localhost',
+            userNmae:'root',
+            password:'root',
+            port:3306
+        })
+
+
+
+
+    </script>
+</body>
+</html>

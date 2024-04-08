@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="43d7c04c-6556-44b0-81d3-475519fc5816" name="Default Changelist" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="2D9VRLRCgEOmRXtGxd4b0d0GSja" />
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="C:/Dell/mysql-connector-java-8.0.17.jar!/" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.jxd.bank.util" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Application.Test">
+    <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.jxd.bank.main.Test" />
+      <module name="javah_bank" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.jxd.bank.main.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.jxd.bank.main.Test1" />
+      <module name="javah_bank" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.jxd.bank.main.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Test" />
+        <item itemvalue="Application.Test1" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="43d7c04c-6556-44b0-81d3-475519fc5816" name="Default Changelist" comment="" />
+      <created>1660111277295</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1660111277295</updated>
+      <workItem from="1660111285105" duration="2118000" />
+      <workItem from="1660176086041" duration="5167000" />
+      <workItem from="1660196632160" duration="4610000" />
+      <workItem from="1660209076123" duration="2908000" />
+      <workItem from="1660264343429" duration="5074000" />
+      <workItem from="1660283330003" duration="3800000" />
+      <workItem from="1660298150230" duration="2942000" />
+      <workItem from="1660452761405" duration="12682000" />
+      <workItem from="1660465691666" duration="104000" />
+      <workItem from="1660490962133" duration="729000" />
+      <workItem from="1660522437115" duration="1952000" />
+      <workItem from="1660556734072" duration="53000" />
+      <workItem from="1661081240076" duration="981000" />
+      <workItem from="1661239950965" duration="330000" />
+      <workItem from="1661321161765" duration="180000" />
+      <workItem from="1661324552409" duration="62000" />
+      <workItem from="1661417411696" duration="934000" />
+      <workItem from="1661418562399" duration="610000" />
+      <workItem from="1661420828513" duration="9000" />
+      <workItem from="1661426885472" duration="294000" />
+      <workItem from="1661471853744" duration="778000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+</project>

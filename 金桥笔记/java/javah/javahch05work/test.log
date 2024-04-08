@@ -1,0 +1,48 @@
+
+2022-08-04 17:17:22 ch05prc03.Test.main(Test.java:32) Test.java ERROR 用户输入的内容不是整数
+2022-08-04 17:17:22 ch05prc03.Test.main(Test.java:33) Test.java ERROR 
+2022-08-04 17:17:31 ch05prc03.Test.main(Test.java:23) Test.java INFO 用户输入了被除数：3
+2022-08-04 17:17:34 ch05prc03.Test.main(Test.java:26) Test.java INFO 用户输入了除数：0
+2022-08-04 17:17:34 ch05prc03.Test.main(Test.java:37) Test.java WARN 用户输入了0作为除数
+2022-08-04 17:17:34 ch05prc03.Test.main(Test.java:38) Test.java WARN / by zero
+2022-08-04 17:17:41 ch05prc03.Test.main(Test.java:23) Test.java INFO 用户输入了被除数：33
+2022-08-04 17:17:42 ch05prc03.Test.main(Test.java:26) Test.java INFO 用户输入了除数：4
+2022-08-04 17:17:42 ch05prc03.Test.main(Test.java:28) Test.java INFO 用户执行了除法操作，结果是：8
+2022-08-04 18:01:54 ch04prc04.Test.main(Test.java:23) Test.java INFO 产生的随机数是0
+2022-08-04 18:01:54 ch04prc04.Test.main(Test.java:38) Test.java ERROR 调用了空对象的属性或方法
+2022-08-04 18:01:54 ch04prc04.Test.main(Test.java:39) Test.java ERROR 
+2022-08-04 18:02:22 ch04prc04.Test.main(Test.java:23) Test.java INFO 产生的随机数是4
+2022-08-04 18:02:22 ch04prc04.Test.main(Test.java:34) Test.java ERROR 超出数组长度
+2022-08-04 18:02:22 ch04prc04.Test.main(Test.java:35) Test.java ERROR 4
+2022-08-04 18:02:28 ch04prc04.Test.main(Test.java:23) Test.java INFO 产生的随机数是0
+2022-08-04 18:02:28 ch04prc04.Test.main(Test.java:38) Test.java ERROR 调用了空对象的属性或方法
+2022-08-04 18:02:28 ch04prc04.Test.main(Test.java:39) Test.java ERROR 
+2022-08-04 18:02:33 ch04prc04.Test.main(Test.java:23) Test.java INFO 产生的随机数是1
+2022-08-04 18:13:53 ch04prc04.Test.main(Test.java:23) Test.java INFO 产生的随机数是1
+2022-08-04 18:18:43 ch04prc04.Test.main(Test.java:23) Test.java INFO 产生的随机数是3
+2022-08-04 18:18:43 ch04prc04.Test.main(Test.java:35) Test.java ERROR 超出数组长度
+2022-08-04 18:18:43 ch04prc04.Test.main(Test.java:36) Test.java ERROR 3
+2022-08-04 18:18:48 ch04prc04.Test.main(Test.java:23) Test.java INFO 产生的随机数是2
+2022-08-04 18:18:48 ch04prc04.Test.main(Test.java:35) Test.java ERROR 超出数组长度
+2022-08-04 18:18:48 ch04prc04.Test.main(Test.java:36) Test.java ERROR 3
+2022-08-04 18:18:52 ch04prc04.Test.main(Test.java:23) Test.java INFO 产生的随机数是0
+2022-08-04 18:18:52 ch04prc04.Test.main(Test.java:39) Test.java ERROR 调用了空对象的属性或方法
+2022-08-04 18:18:52 ch04prc04.Test.main(Test.java:40) Test.java ERROR 
+2022-08-04 18:18:57 ch04prc04.Test.main(Test.java:23) Test.java INFO 产生的随机数是2
+2022-08-04 18:18:57 ch04prc04.Test.main(Test.java:35) Test.java ERROR 超出数组长度
+2022-08-04 18:18:57 ch04prc04.Test.main(Test.java:36) Test.java ERROR 3
+2022-08-04 18:19:01 ch04prc04.Test.main(Test.java:23) Test.java INFO 产生的随机数是2
+2022-08-04 18:19:01 ch04prc04.Test.main(Test.java:35) Test.java ERROR 超出数组长度
+2022-08-04 18:19:01 ch04prc04.Test.main(Test.java:36) Test.java ERROR 3
+2022-08-04 18:19:04 ch04prc04.Test.main(Test.java:23) Test.java INFO 产生的随机数是4
+2022-08-04 18:19:04 ch04prc04.Test.main(Test.java:35) Test.java ERROR 超出数组长度
+2022-08-04 18:19:04 ch04prc04.Test.main(Test.java:36) Test.java ERROR 4
+2022-08-04 18:19:07 ch04prc04.Test.main(Test.java:23) Test.java INFO 产生的随机数是2
+2022-08-04 18:19:07 ch04prc04.Test.main(Test.java:35) Test.java ERROR 超出数组长度
+2022-08-04 18:19:07 ch04prc04.Test.main(Test.java:36) Test.java ERROR 3
+2022-08-04 18:19:11 ch04prc04.Test.main(Test.java:23) Test.java INFO 产生的随机数是0
+2022-08-04 18:19:11 ch04prc04.Test.main(Test.java:39) Test.java ERROR 调用了空对象的属性或方法
+2022-08-04 18:19:11 ch04prc04.Test.main(Test.java:40) Test.java ERROR 
+2022-08-04 18:19:14 ch04prc04.Test.main(Test.java:23) Test.java INFO 产生的随机数是1
+2022-08-04 18:19:14 ch04prc04.Test.main(Test.java:43) Test.java ERROR 数据类型转换错误
+2022-08-04 18:19:14 ch04prc04.Test.main(Test.java:44) Test.java ERROR ch04prc04.Dog cannot be cast to ch04prc04.Cat

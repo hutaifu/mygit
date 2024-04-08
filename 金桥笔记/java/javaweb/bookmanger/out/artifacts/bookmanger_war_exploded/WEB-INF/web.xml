@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+         version="4.0">
+    <welcome-file-list>
+        <welcome-file>booklogin.jsp</welcome-file>
+    </welcome-file-list>
+    <context-param>
+        <!--        将数据存在上下文对象中-->
+        <param-name>unCheckURL</param-name>
+        <param-value>/booklogin.jsp,/LoginServlet,/adregister.jsp,/RegisterServlet</param-value>
+    </context-param>
+    <filter>
+        <filter-name>loginFilter</filter-name>
+        <filter-class>com.jxd.filter.LoginFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>loginFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>encodeFilter</filter-name>
+        <filter-class>com.jxd.filter.EncodeFilter</filter-class>
+        <init-param>
+            <param-name>encode</param-name>
+            <param-value>utf-8</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>encodeFilter</filter-name>
+        <!--        /*是所有的资源都被拦截，包括jsp和servlet-->
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+</web-app>

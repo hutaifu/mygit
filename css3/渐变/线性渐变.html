@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 300px;
+            height: 200px;
+            border: 1px solid black;
+            float: left;
+            margin-left: 50px;
+        }
+        .box1{
+            background-image: linear-gradient(red,yellow,green,blue,white);
+            /* 默认从上到下，数量可变 */
+        }
+        .box2{
+            background-image: linear-gradient(to right top,red,yellow,green);
+        }
+        .box3{
+            background-image: linear-gradient(20deg,red,yellow,green);
+            /* 通过角度改变方向 (默认上到下，加了角度，从下到上转了20)*/
+        }
+        /* 改变方向 */
+        .box4{
+            background-image: linear-gradient(red 50px,yellow 100px,green 150px);
+        }
+        .box5{
+            background-image: linear-gradient(20deg,red 50px,yellow 100px,green 150px);
+            font-size: 80px;
+            text-align: center;
+            color: transparent;
+            line-height: 200px;
+            font-weight: bold;
+            -webkit-background-clip: text;
+        }
+    </style>
+</head>
+<body>
+    <div class="box box1">默认情况从上到下</div>
+    <div class="box box2">2</div>
+    <div class="box box3">3</div>
+    <div class="box box4">4</div>
+    <div class="box box5">你好啊</div>
+</body>
+</html>

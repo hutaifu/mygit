@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+</body>
+    <script>
+        let data = {
+            name:"尚硅谷",
+            address:"北京"
+        }
+
+
+        ///监听构造函数
+        function Observe(obj){
+            const keys = Object.keys(obj);
+            keys.forEach(k =>{
+                Object.defineProperty(this,k,{
+                    get(){
+                        return obj[k]
+                    },
+                    set(value){
+                        console.log("我被改了")
+                        obj[k] = value;
+                    }
+                })
+            })
+        }
+
+        // Object.defineProperty(data,"name",{
+        //     get(){
+        //         return data.name
+        //     },
+        //     set(value){
+        //         data.name = value;
+        //     }
+        // })
+
+        //创建一个监视的实例对象，用于监视data中的属性变化
+        const obs = new Observe(data)
+        //准备一个vm实例对象
+        let vm = {};
+        vm._data = data = obs;//闭包
+
+        console.log(obs)
+        console.log(vm)
+
+        // data.name = "123"
+
+
+
+
+
+    </script>
+</html>

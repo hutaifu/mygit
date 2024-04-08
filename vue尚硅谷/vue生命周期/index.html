@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<!-- 
+    vue生命周期
+    new Vue()=>定义钩子函数和方法的执行规则和时机，数据还没有被代理
+    =》beforecreate=>初始化，数据检测，数据代理
+    =》created=》根据el或$mount开始调用才继续挂载绑定根节点
+    =》优先根据template配置项(如果有)或者挂载元素的outerHtml(包括根元素)作为模板解析，此时生成虚拟dom，但是真实dom没有生成
+    =》beforemount(页面呈现的是vue未编译的dom，对dom操作不起效)
+    =>将虚拟dom转为真实dom,虚拟dom生成$el,并且替换掉el绑定元素
+    =》mounted(页面呈现的是经过vue编译的dom,至此初始化过程结束，一般在此进行：开启定时器，发送网络，订阅消息，绑定自定义事件)
+    =》beforeupdate(模板需要更新重新编译之前，数据新的，但是页面是旧的)
+    =》根据新数据，生成新的虚拟dom，与旧的虚拟dom对比，最终完成页面的更新
+    =》updated，更新完毕
+    =>beforeDestroy,vue实例销毁前,关闭定时器，取消订阅消息，解绑自定义事件等收尾操作
+    =》实例销毁，
+    =》destroyed,vue实例销毁后
+ -->
+
+ <!-- vm.$el用于存储真实dom,用来对比复用。 -->
+    <div id="root">
+        <h1 :style={opacity:n,transition:"1s"}>测试透明度</h1>
+        <h1>当前的n值是:{{num}}</h1>
+        <button @click="num++">点击加一</button>
+        <button @click="stop">点我停止定时器</button>
+        <button @click="destroy">点我销毁实例</button>
+    </div>
+</body>
+<script src="../js/vue.js"></script>
+<script>
+    let vm = new Vue({
+        el:"#root",
+        data() {
+            return {
+                n:1,
+                num:1,
+            }
+        },
+        beforeCreate() {
+            console.log(this._data)//undefined
+        },
+        created() {
+            console.log(this.n)
+        },
+        methods: {
+            change(){
+                console.log('定时器')
+                this.timer = setInterval(()=>{
+                    this.n = this.n === 1?0:1
+                    console.log('定时器',this.n)
+                },1000)
+            },
+            stop(){
+                clearInterval(this.timer)
+            },
+            destroy(){
+                this.$destroy();
+            }
+        },
+        beforeMount() {
+            
+        },
+        //挂载完毕，vue第一次完成模板解析并将初始真实dom元素替换掉模板根元素放入页面后调用，
+        //只有第一次解析模板，后面解析模板叫做更新
+        mounted() {
+            this.change()
+        },
+        beforeDestroy() {
+            clearInterval(this.timer)
+        },
+    })
+</script>
+</html>

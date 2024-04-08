@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 300px;
+            height: 200px;
+            border: 1px solid black;
+            float: left;
+            margin-left: 50px;
+        }
+        .box1{
+            background-image: radial-gradient(red,yellow,green);
+        }
+        .box2{
+            background-image: radial-gradient(at left top,red,yellow,green);
+        }
+        .box3{
+            background-image: radial-gradient(at 100px 50px,red,yellow,green);
+        }
+        .box4{
+            background-image: radial-gradient(circle,red,yellow,green);
+        }
+        .box5{
+            background-image: radial-gradient(100px 100px,red,yellow,green);
+        }
+        /* 设置半径为200的正圆，注意这里的200设置的是最外面的圆的半径 */
+        .box6{
+            background-image: radial-gradient(red 50px,yellow 100px,green 150px);
+
+        }
+        /* 默认设置椭圆的横向长度，高度度按照比例， */
+
+
+    </style>
+</head>
+<body>
+    <div class="box box1">默认情况,中心向外扩散</div>
+    <div class="box box2">通过关键词调整圆心</div>
+    <div class="box box3">3</div>
+    <div class="box box4">通过关键字调整为正圆</div></div>
+    <div class="box box5">你好啊</div>
+    <div class="box box6">调整渐变的区域</div>
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .outer{
+            width: 200px;
+            height: 200px;
+            border: 2px solid black;
+            margin: 0 auto;
+            margin-top: 100px;
+        }
+        .inner{
+            width: 200px;
+            height: 200px;
+            background-color: deepskyblue;
+            transform: translateX(50px) translateY(50px);
+            /* 本身的百分之50,可以配合绝对定位实现居中效果，位移对行盒无效，块盒及行块盒有效  */
+        }
+        .box{
+            width: 200px;
+            height: 200px;
+            border: 1px solid;
+            background-color: orange;
+            margin: 0 auto;
+            margin-top: -50px;
+        }
+        /* 进行了矩阵变换的块盒元素不设置定位及z-index好像是默认排在最上面。 */
+    </style>
+</head>
+<body>
+    <div class="outer">
+        <div class="inner">你好啊</div>
+    </div>
+    <div class="box"></div>
+</body>
+</html>

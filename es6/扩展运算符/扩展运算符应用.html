@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //1.数组的合并，
+        const kuaizi = ['王太利','小样'];
+        const fenghuang = ['增益','零花']
+
+        // const zuixuanxiaopingguo = kuaizi.concat(fenghuang);
+        const zuixuanxiaopingguo = [...kuaizi,...fenghuang];
+        console.log(zuixuanxiaopingguo);
+
+        //2.数组的克隆
+        const sanzhihua = ['E','G','M'];
+        const sanyecao = [...sanzhihua];//浅复制
+
+        //3.将类数组转换为真的数组
+        const divs = document.querySelectorAll('div')
+        cosnt = divArr = [...divs];
+        console.log(divArr)
+    </script>
+</body>
+</html>

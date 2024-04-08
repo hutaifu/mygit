@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        1.school组件本质是一个名为VueComponent的构造函数，由Vue.extend生成的
+        2.我们只需要写《school></shcoll>，vue解析就会自动调用new VueComponent
+        3.特别注意，每次调用Vue.extend时，返回的都是一个全新的VueComponent方法，闭包返回
+        的一个函数，只是函数的名称都是VueComponent,但是地址不同，
+        4.关于this指向：组件中的this指向组件实例对象
+
+
+
+
+     -->
+    <div id="root">
+    </div>
+</body>
+    <script src="../../js/vue.js"></script>
+    <script>
+        Vue.config.productionTip = false;
+        const school = Vue.extend({
+            //组件不写el配置项，所有组件都应该应用在一个 vue实例上面
+            //组件可以复用，所以组件每次复用时data地址不能相同。
+            data(){
+                return{
+                    schoolname:"学校",
+                    address:"地址",
+                }
+            },
+            template:`<div><h2>学校名称：{{schoolname}}</h2>
+        <h2>学校地址；{{address}}</h2>
+        </div>`
+
+        })
+        const hello = Vue.extend({
+            //组件不写el配置项，所有组件都应该应用在一个 vue实例上面
+            //组件可以复用，所以组件每次复用时data地址不能相同。
+            data(){
+                return{
+                    msg:"hello"
+                }
+            },
+            template:`<div><h2>信息:{{msg}}</h2>
+        </div>`
+
+        })
+        new Vue({
+            el:'#root',
+            components:{
+                school,hello
+            },
+            template:`<div><school></school><hello></hello></div>`
+        })
+        console.log(school)
+        console.log(hello)
+        //VueComponent(){},构造函数
+    </script>
+</html>

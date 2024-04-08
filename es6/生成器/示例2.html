@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //模拟获取，用户数据，订单数据，商品数据
+        function getUsers(){
+            setTimeout(()=>{
+                let data = "用户数据"
+                //调用next方法，并且传入数据
+                iterator.next(data)
+            },1000);
+        }
+
+        function getOrders(){
+            setTimeout(()=>{
+                let data = "订单数据"
+                iterator.next(data)
+            })
+        }
+
+        function getGoods(){
+            setTimeout(()=>{
+                let data = "商品数据"
+                iterator.next(data)
+            },1000)
+        }
+
+        function * gen(){
+            let users = yield getUsers();
+            console.log(users)
+            let orders = yield getOrders();
+            let goods = yield getGoods();
+        }
+        //调用生成器函数
+        let iterator = gen();
+        iterator.next();
+
+
+        //yield可以出现再函数体任意位置，后面能够一个值，或者跟表达式，或者跟函数调用
+        function* generateSequence() {
+  const result = yield (() => {
+    // 使用箭头函数包裹立即执行函数
+    const value = 10;
+    return value * 2;
+  })();
+  
+  yield result + 5;
+  yield "End";
+}
+
+const generator = generateSequence();
+console.log(generator.next()); // { value: 20, done: false }
+console.log(generator.next(15)); // { value: 20 + 5 = 25, done: false }
+console.log(generator.next()); // { value: "End", done: true }
+
+
+
+function* generateSequence() {
+  const result = yield (function() {
+    // 在立即执行函数中执行一些逻辑
+    const value = 10;
+    return value * 2;
+  })();
+  
+  yield result + 5;
+  yield "End";
+}
+
+const generator1 = generateSequence();
+console.log(generator1.ne</script>xt()); // { value: 20, done: false }
+console.log(generator1.next(15)); // { value: 20 + 5 = 25, done: false }
+console.log(generator1.next()); // { value: "End", done: true }
+    </script>
+</body>
+</html>

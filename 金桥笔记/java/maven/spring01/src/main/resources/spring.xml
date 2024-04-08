@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<!--
+  注册bean，就是将这个类的创建交给Spring
+  id，自定义的对象名，唯一值，Spring通过id值找到对象
+  class,类的全限定名称，表示创建哪个类的对象
+  整个bean的标签相当于Hello hello = new Hello();
+   -->
+    <bean id="hello" class="com.jxd.emp.model.Hello"></bean>
+    <bean id="date" class="java.util.Date"></bean>
+    <bean id="dept" class="com.jxd.emp.model.Dept">
+<!--        <property>能给对象的属性赋值，name，属性名，value属性值
+通过value给简单类型属性赋值，值是死的
+-->
+        <property name="deptno" value="1"></property>
+        <property name="dname" value="行政部"></property>
+    </bean>
+    <bean id="emp" class="com.jxd.emp.model.Emp">
+        <property name="empno" value="1"></property>
+        <property name="ename" value="小时"></property>
+        <property name="job" value="保安"></property>
+        <property name="hiredate" value="2021-10-09"></property>
+<!--        emp的属性dept不是简单类型，不能之间赋值，emp依赖于dept，需要进行依赖注入，
+也就是Spring容器将要创建的dept对象交给emp使用，给emp的属性dept赋值
+ref 依赖注入所使用的属性，用于给引用数据类型的属性赋值，指向一个装配好的bean
+其值为这个bean的id
+-->
+        <property name="dept" ref="dept"></property>
+    </bean>
+<!--    可以给一个类创建多个bean，但是在正真项目中不会这样做-->
+<!--    使用构造方法给属性赋值，index表示构造方法中形参的下标，从零开始
+        name，构造方法中的形参名
+        value，简单类型赋值
+        ref，引用类型赋值，另一个bean的id
+-->
+    <bean id="emp2" class="com.jxd.emp.model.Emp">
+        <constructor-arg name="empno" value="2"></constructor-arg>
+        <constructor-arg name="ename" value="小霞"></constructor-arg>
+        <constructor-arg name="job" value="文员"></constructor-arg>
+        <constructor-arg name="hiredate" value="2010-9-9"></constructor-arg>
+        <constructor-arg name="dept" ref="dept"></constructor-arg>
+    </bean>
+    <bean id="empDao" class="com.jxd.emp.dao.impl.EmpDaoImpl">
+
+    </bean>
+    <bean id="empService" class="com.jxd.emp.service.impl.EmpServiceImpl">
+        <property name="empDao" ref="empDao"></property>
+
+    </bean>
+</beans>

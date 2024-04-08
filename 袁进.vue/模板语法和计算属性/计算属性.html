@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- 界面模板 -->
+        <!-- mustache语法 -->
+       <p>
+        姓：{{firstName}}
+       </p>
+       <p>
+        名：{{lastName}}
+       </p>
+       <p>
+        计算属性全名：{{fullName}}
+       </p>
+       <p>
+        方法获得全名：{{getFullName()}}
+       </p>
+       <h1>{{count}}</h1>
+       <button @click="count++">+1</button>
+       <input type="text" v-model="fullNameTow">
+    </div>
+    <script src="../体验/vue.js"></script>
+    <script>
+        //vm:vue示例
+        let vm = new Vue({//配置
+            el:"#app", //css选择器
+            data:{//和界面相关的数据
+                titile:"库存管理系统",
+                firstName:"鸡",
+                lastName:"成",
+                count:0,            },
+            computed:{
+                // fullName(){
+                //     console.log("执行了计算属性")
+                //     return this.firstName + this.lastName
+                // }
+                fullNameTow:{
+                    get(){
+                         console.log("执行了计算属性")
+                        return this.firstName + this.lastName
+                    },
+                    set(val){
+                        console.log(val)
+                        this.firstName = val[0];
+                        this.lastName = val
+                    }
+                }
+            },
+            methods:{
+                getFullName(){
+                    console.log("执行了获取全名函数")
+                    return this.firstName + this.lastName
+                }
+            }
+        })
+    </script>
+</body>
+</html>

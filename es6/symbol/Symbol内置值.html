@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Person{
+            static [Symbol.hasInstance](param){
+                console.log(param)
+                console.log("我被用来检测类型了");
+                return false;
+                //自己来控制类型检测，其实就是重写类型检测方法
+                //其实就是es6中把class的类型判断方法放到这个属性里面了
+            }
+        }
+        let o = {};
+        console.log(o instanceof Person);
+
+        const arr = [1,2,3];
+        const arr2 = [4,5,6];
+        arr2[Symbol.isConcatSpreadable] = false;//设置数组不展开
+        console.log(arr.concat(arr2));
+
+
+        //Symbol内置对象，控制对象在特定场景的表现，
+    </script>
+</body>
+</html>

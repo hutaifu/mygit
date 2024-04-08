@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <div v-if="loginType === 'mobile'">
+            <label>手机号</label><input type="text" key="2">
+        </div>
+        <div v-else><label> 邮箱</label><input type="text" key="1"></div>
+        <div><button @click="loginType = loginType==='mobile'?'email':'mobile'">切换登录方式</button></div>
+        </div>
+    </div>
+    <script src="../体验/vue.js"></script>
+    <script>
+        //vm:vue示例
+        let vm = new Vue({//配置
+            el:"#app", //css选择器
+            data:{//和界面相关的数据
+                html:`<p style="color:red">Lorem</p>`,
+                text:"abc",
+                loginType:"mobile",
+            },
+            methods:{
+                test(e){
+                    console.log(e)
+                    console.log("hello")
+                },
+                test2(e){
+                    console.log("button:click")
+                    console.log(e)//v-on:click.stop="test2"这样的写法才能拿到事件参数
+                },
+                test3(){
+                    console.log("div:click")
+                }
+            }
+
+        })
+        //diff算法认为input没有变化 
+    </script>
+</body>
+</html>

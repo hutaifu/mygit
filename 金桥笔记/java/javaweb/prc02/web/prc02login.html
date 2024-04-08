@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form>
+        请输入学号：<input type="text" name="stuno"><span style="display: none">学号必须为10到16位的数字</span><br>
+        请输入密码：<input type="password" name="pwd"><br>
+        <input type="submit" value="登录">
+    </form>
+
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script>
+        var reg1 = /^[0-9]{10,16}$/
+        $(function () {
+            $("[name = stuno]").blur(function () {
+                if (!reg1.test(this.value)){
+                $("span").css("display","inline")
+                }else {
+                    $("span").css("display","none")
+                }
+            })
+        })
+
+
+
+    </script>
+</body>
+</html>

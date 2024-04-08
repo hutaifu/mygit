@@ -1,0 +1,247 @@
+1.面向对象的基本特征
+	》封装
+		》属性的封装
+			》属性私有化  private，只能在类内部访问
+			》set/get方法
+			》在set或者get方法中添加合理性判断
+		》构造方法：构造对象、给属性赋初值
+			》方法名和类名完全相同
+			》没有返回值，也没有void  public Dog(){}
+			》通过new关键字调用，每调用一次都是在创建一个对象
+			》一个类中可以有多个构造方法
+			》不同构造方法通过参数列表区分，参数的类型、个数、顺序
+			》类都有默认的无参的构造方法
+			》一旦我们定义了显式的构造方法后，虚拟机不再提供
+			》类一定有构造方法	
+	》继承
+		》子类继承父类，并且一个子类只能继承一个父类，单继承
+		》子类 extends 父类
+		》超类，派生类
+		》无法继承
+			》父类的构造方法
+			》父类中私有的成员（继承到了，但是无法直接访问）
+			》父类中默认访问属性的成员，不同包下的子类无法访问
+		》使用继承：必须存在属于关系，is-a
+		》创建子类对象，构造方法的执行
+			》创建对象，一定会调用构造方法
+			》子类对象创建时，首先会去调用父类的构造方法，默认调用的是父类的无参构造方法
+			》可以通过在子类构造方法第一句上添加super(参数)，去指定调用父类的某个构造方法
+			》super()是被默认添加的
+			》只能调用父类中存在的构造方法
+	》多态
+		》实现多态
+			》子类继承父类或者实现类实现接口
+			》重写方法
+			》声明父类或者接口类型，创建子类或者实现类类型
+				Pet pet = new Dog();
+		》我们声明了什么类型，就能调用到什么类型中的方法
+		》创建了什么类型，就回去执行什么类型中的方法
+		》同一个引用数据类型的对象，因为真正创建的实例不同，导致调用同一个方法时结果不同
+		》多态最直接的体现
+			》方法重载和方法重写
+			
+			
+		》Pet pet = new Dog();
+		  Dog dog = （Dog）pet;
+		
+		》判断变量是否属于某种类型
+			if(pet instanceof Dog){}
+			if("" instanceof Object){}
+			
+	》方法重载
+		》发生在同一个类中
+		》方法名相同
+		》参数列表不同
+		》和返回值类型以及访问修饰符无关
+		》构造方法和普通方法都可以重载
+	》方法重写
+		》发生在继承父类或者实现接口的场景中
+		》子类重写父类方法或者实现类实现接口中的方法
+		》方法名、参数列表、返回值类型必须相同
+		》访问修饰符不能比父类更严格
+		
+	》this和super
+		》this出现在类的构造方法和普通方法中
+		》this.属性或者this.方法()    访问当前类中的属性和方法
+			》this代表的是这个对象，正在创建或者正在调用方法对象
+		》this()  出现在构造方法的第一句上
+			》用于调用当前类的其他构造方法
+		
+		》super	出现在子类的构造方法或者普通方法
+		》super.属性或者super.方法()   访问父类中的属性和方法
+			》super指代的是父类对象的一个引用
+		》super()   出现在子类构造的第一句上
+			》用于调用父类的构造方法
+			
+	》static  静态的
+		》修饰类的成员
+		》被static修饰后，这些成员称为类级别的成员
+		》随着类的加载而加载，程序一旦启动直接加载
+		》优于对象存在的，在内存中只有一份
+		》通过类名.静态成员或者对象.静态成员都可以访问，访问的是同一个变量
+		》普通的成员随着对象的创建而加载
+		》静态方法中只能访问静态的成员
+		》普通方法可以访问静态成员
+	
+	》final  最终的
+		》修饰变量，成员变量或者局部变量
+			》基本数据类型  final int  num = 10;  值不可更改
+			》引用数据类型  final  Dog dog = new Dog();
+				》地址不可更改，不可以重新new
+				》dog.setName();  属性可以更改
+		》修饰方法：方法不可以被重写
+		》修饰类：类不可以被继承
+		》常量的定义
+			public final  static  double MAX_VALUE = 100;
+	
+	》抽象类和抽象方法
+		》被abstract修饰的类
+		》可以有普通的成员，可以有抽象的方法
+		》有构造法方法
+		》不能创建对象
+		
+		》没有方法体的方法是抽象方法
+		》抽象方法只能出现在抽象类和接口中
+		》需要在子类或者实现类中重写
+		
+	》接口 interface	
+		》只能声明抽象方法和常量
+		》没有构造方法，不能创建对象
+		》访问修饰符是public或者默认
+		》implments
+		》一个类可以实现多个接口
+		
+02-异常
+	》try{
+		//可能会异常的代码
+	  } catch(Exception e){ //捕获异常对象
+	    处理异常
+	  } finally {
+		//始终被执行的代码
+		提前退出虚拟机了
+		//会在return之前执行
+	  }
+	》throws 声明异常
+		public void show() throws Exception{}
+	》throw
+		抛出一个自定义的异常对象
+		throw  new Exception();
+	》日志
+		》用于记录程序的运行结果
+	》常见的异常类型
+		》数组下标越界
+		》空指针异常
+		》类型转换异常
+		》类找不到异常
+	
+03-集合框架
+	》Collection：存储一组无序的 不唯一的数据
+		》List ：存储一组有序的、不唯一的数据
+			》add()  remove()   get(index)
+			》ArrayList ：内存连续，遍历效率更高
+			》LinkedList：内存不连续，插入和删除效率更高
+				》addFirst()  addLast()
+		》Set：存储一组无序的、唯一的数据
+			》HashSet
+			》TreeSet
+	》Collections 工具类
+		
+	》Map集合：用于存储一组键值对，key值唯一，value不唯一
+		》HashMap   线程不安全
+		》HashTable  线程安全
+		》Map<String,String> map = new HashMap<>();
+		》put(key,value)
+		》如果key值重复了，后一个会覆盖前一个的value值
+		》get(key)
+	
+	》泛型
+		》指定集合中可以存储的数据类型
+		》List<Dog>    Map<String,String>
+		》获取数据时不需要强转
+	》有序集合的遍历方式
+		for(int i=0; i<list.size(); i++){
+			list.get(i)
+		}
+		
+		for(Dog dog : list){
+			dog.getName()
+		}
+		
+		Iterator it = list.iterator();
+		while(it.hasNext()){
+			it.next();
+		}
+04-JDBC
+	》java制定的连接数据库的标准
+	》引入jar包  数据库提供
+	》加载驱动 Class.forName("");  类找不到
+	》获取连接
+		Connection conn = DriverManager.getConnection(url,user,pwd);
+		url：  jdbc:mysql://127.0.0.1:3306/mydb?
+	》执行sql  preparedStatement
+		》String sql = "select ename from emp where empno = ?";
+		  pst = conn.prepareStatement(sql);
+          pst.setInt(1,empno);
+		》executeQuery()、executeUpdate()
+		》resultSet
+			while(rs.next()){
+				rs.getString("ename")
+			}
+	》关闭资源 finally	
+		
+05-项目分层
+	》表示层
+	》业务逻辑层
+	》数据访问层  Dao层
+	》数据库
+	
+06-输入输出流
+	》字节流：占8位                InputStream  OutputStream
+	》字符流：一个字符占2个字节    Reader  Writer
+	》输入操作，读到内存  read()   返回-1代表读取完成   
+	》输出操作，写到外存  write()
+	》File文件
+		》mkdir()
+		》createNewFile()
+		》exists()
+		》isFile()    是否是文件
+		》isDirectory() 是否是目录
+		》delete()
+		》listFile()   遍历某个目录下的所有文件，带路径
+ 07-多线程
+	》继承Thread父类，重写run方法
+		》MyThread mt = new MyThread()
+		  mt.start();
+	》实现runnable接口 重写run方法
+		》MyThread mt = new MyThread();
+			Thread t = new Thread(mt);
+			t.start();
+	》生命周期
+		》新建状态
+		》就绪状态
+		》运行状态
+		》挂起状态
+		》死亡状态
+	》sleep(3000)   睡眠3s  运行-挂起
+	》yield()   让出cpu  运行-就绪
+	》join()  控制线程的执行顺序  顺序执行
+	》线程优先级   
+	》多个线程同时操作一个对象时
+		对象的同步锁
+		所有的对象都有这样一个锁
+08-Socket
+	》基于 TCP协议，每台设备都持有一个socket对象
+	》服务器  ServerSocket  负责接收客户端消息并发给其他客户端
+	》客户端  Socket  向服务器发送数据，接收服务端的数据
+	》多人聊天
+		》所有的客户端都和服务端关联，服务端会有很多socket
+		》客户端之间不会直接传输数据
+		
+		
+		
+		
+		
+		
+		
+		
+		

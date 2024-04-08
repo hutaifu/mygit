@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //es6引入rest参数，用于获取函数的实参，代替arguments
+        //es6获取实参方式(注意，获取的是实参，不是形参)
+        function data(sk,skdj,skdj,sljkd){
+            console.log(arguments);
+            //得到一个类数组，对象，如果不使用Array.prototype，不能使用数组的方法
+        }
+        data('柏芝','阿娇','私会');
+
+        //rest参数
+        function data(...args){
+            console.log(args);
+            //得到一个数组，不是对象的类数组，可以使用数组的一些filter,some,every,map方法
+        }
+   
+        //rest 参数必须放到参数的最后，
+        function fn(a,b,c,...args){
+            console.log(args)
+            console.log(a)
+            console.log(b)
+        }
+        fn(1,2,3,4,5,6);
+    </script>
+</body>
+</html>

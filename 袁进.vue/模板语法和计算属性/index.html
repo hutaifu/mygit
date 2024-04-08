@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- 界面模板 -->
+        <!-- mustache语法 -->
+        <a href="http://www.baidu.com" @click.prevent="test">点击我</a>
+        <button v-on:click="test($event)">点击我</button>
+        <div @click="test3">
+            <button v-on:click.stop="test2">点击我</button>
+            {{text}}
+            <input type="text" :value="text" @input="text=$event.target.value">
+            <input type="text" v-model="text">
+        </div>
+    </div>
+    <script src="../体验/vue.js"></script>
+    <script>
+        //vm:vue示例
+        let vm = new Vue({//配置
+            el:"#app", //css选择器
+            data:{//和界面相关的数据
+                html:`<p style="color:red">Lorem</p>`,
+                text:"abc"
+            },
+            methods:{
+                test(e){
+                    console.log(e)
+                    console.log("hello")
+                },
+                test2(e){
+                    console.log("button:click")
+                    console.log(e)//v-on:click.stop="test2"这样的写法才能拿到事件参数
+                },
+                test3(){
+                    console.log("div:click")
+                }
+            }
+
+        })
+    </script>
+</body>
+</html>

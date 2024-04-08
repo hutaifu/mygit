@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .outer{
+            width: 200px;
+            height: 200px;
+            border: 2px solid black;
+            margin: 0 auto;
+            margin-top: 100px;
+        }
+        .inner{
+            width: 200px;
+            height: 200px;
+            background-color: deepskyblue;
+            transform: translate(100px,100px) scale(0.5);
+            transform: scale(0.5) translate(50px,50px);
+            /* 缩放位移互换顺序，效果会改变，矩阵变换，缩放后位移，位移的距离也被缩放，缩放后，坐标系也会改变 */
+            /* 旋转后，坐标系也会旋转 */
+        }
+    </style>
+</head>
+<body>
+    <div class="outer">
+        <div class="inner">你好啊</div>
+    </div>
+    <div class="box"></div>
+</body>
+</html>

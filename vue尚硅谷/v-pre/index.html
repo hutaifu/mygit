@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- v-pre指令，让vue跳过编译的过程，没有使用插值语法的节点使用，可以加快编译 -->
+    <!-- 准备好一个容器 -->
+    <div id ="root">
+      <h2 v-pre>
+        {{name}}
+      </h2>
+    </div>
+</body>
+
+
+
+    <script src="../js/vue.js"></script>
+    <script>
+        Vue.config.productionTip = false;
+        new Vue({
+            el:'#root',
+            data:{
+                name:'jack',
+            }
+        })
+    </script>
+</html>

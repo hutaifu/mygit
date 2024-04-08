@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="root">
+        <!-- <h2>学校名称：{{schoolname}}</h2>
+        <h2>学校地址；{{address}}</h2>
+        <h2>学生姓名：{{name}}</h2>
+        <h2>学生年龄：{{age}}</h2> -->
+        <school v-on:my-scholl-event="myEvents"></school>
+        <student @myStudentEvent="myEvents"></student>
+        <div id="school"></div>
+    </div>
+</body>
+    <script src="../../js/vue.js"></script>
+    <script>
+        Vue.config.productionTip = false;
+
+        //创建一个scholl组件
+        const school = Vue.extend({
+            //组件不写el配置项，所有组件都应该应用在一个 vue实例上面
+            //组件可以复用，所以组件每次复用时data地址不能相同。
+            data(){
+                return{
+                    schoolname:"学校",
+                    address:"地址",
+                }
+            },
+            template:`<div @click="$emit('my-scholl-event')"></h2><h2>学校名称：{{schoolname}}</h2>
+        <h2>学校地址；{{address}}</h2>
+        </div>`
+
+        })
+                //创建一个scholl组件
+                const student = Vue.extend({
+            //组件不写el配置项，所有组件都应该应用在一个 vue实例上面
+            //组件可以复用，所以组件每次复用时data地址不能相同。
+            data(){
+                return{
+                    name:"学校",
+                    age:"年龄",
+                }
+            },
+            //注意，组件的模板有且只有=一个根元素
+            template:` 
+            <div>
+            <h2>学生姓名：{{name}}</h2>
+        <h2>学生年龄：{{age}}</h2>
+    </div>`
+
+        })
+
+        let rootVue = new Vue({
+            el:'#root',
+            components:{
+                school,student
+            },
+            data(){
+                return{
+                    msg:"测试"
+                }
+            },
+            methods: {
+                myEvents(){
+                    console.log("测试")
+                }
+            },
+        })
+
+    let sch2 = new school({
+      el:"#school",
+      parent:rootVue,
+      render(h) {
+        return h(
+            school,{
+            },[h("h1",{},"紫芜丘陵未有雪")]
+        )
+      },
+      
+    })
+
+        //全局注册
+        // Vue.component('scholl',school)
+
+        let AcCom = Vue.extend({
+            render(h){
+                return h("h" + this.level,this.$slots.default//默认插槽数组
+                )
+            },
+            props:{
+                level:{
+                    type:Number,
+                    required:true,
+                }
+            }
+        })
+        
+
+
+
+    </script>
+</html>

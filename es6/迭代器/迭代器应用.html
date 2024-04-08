@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //声明一个对象
+        const banji = {
+            name:'终极一班',
+            stus:[
+                '小明',
+                '小红',
+                '小天',
+                '校址'
+            ]
+        }
+        banji[Symbol.iterator] = function(){
+            let index = -1;
+            return {
+                next:()=>{
+                    index ++;
+                    if(index < this.stus.length){
+                        return{
+                        done:false,
+                        value:this.stus[index]
+
+                    }
+                    }else{
+                        return{
+                            done:true,
+                            value:undefined
+                        }
+                    }
+             
+                },
+            }
+        }
+        for(let v of banji){
+            console.log(v)
+        }
+    </script>
+</body>
+</html>

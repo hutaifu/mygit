@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--
+        一个重要的内置关系，VueComponent.prototype.__proto__ = Vue.prototype;
+        组件的原型对象的原型对象是Vue的原型对象
+        =》组件圣杯模式继承Vue,
+        
+
+
+     -->
+    <div id="root"></div>
+</body>
+<script src="../../js/vue.js"></script>
+<script>
+    let school = Vue.extend({
+        data(){
+            return{
+
+            }
+        }
+    })
+
+
+
+
+
+    new Vue({
+        el:'#root',
+        data() {
+            return {
+                
+            }
+        },
+    })
+    console.log(school.prototype)
+</script>
+</html>

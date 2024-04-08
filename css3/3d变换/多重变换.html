@@ -1,0 +1,41 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .outer{
+            width: 200px;
+            height: 200px;
+            border: 2px solid black;
+            margin: 0 auto;
+            margin-top: 100px;
+            /* 开启3d空间 */
+            transform-style: preserve-3d;
+            /* 设置景深 (有了透视效果，近大远小)*/
+            /* 设置屏幕到元素的z轴距离，默认值为none */
+            perspective: 500px;
+            /* 景深值先设置为元素高或者宽度的一半，然后慢慢增加 */
+            /* 设置透视点位置，默认在父元素正中央 */
+            perspective-origin: 102px 102px;
+            /* 景深盒透视点确定屏幕相机在3d空间的位置 */
+        }
+        .inner{
+            width: 200px;
+            height: 200px;
+            background-color: rgba(0, 191, 255, 0.726);
+            /* transform-origin: left; */
+            /* transform-origin: 202px 0px; */
+            /* transform: rotateY(45deg); */
+            transform: translateZ(100px) scaleZ(3) rotateY(45deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="outer">
+        <div class="inner">你好啊</div>
+    </div>
+</body>
+</html>

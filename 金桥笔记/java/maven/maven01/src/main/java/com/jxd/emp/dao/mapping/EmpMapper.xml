@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace 目前可以自定义要唯一，将来面向接口编程时对应dao接口，一 接口，一
+个 个mapper 相当于一个dao 接口的实现类 -->
+<!--namespace翻译过来叫命名空间，拥有唯一的值，值是dao接口的全限定名称（包名加类名）-->
+<!--mapper根标签，-->
+<mapper namespace="com.jxd.emp.dao.IEmpDao">
+<!--    select表示查询操作
+          id属性：要执行sql语句的唯一标识，要求使用接口定义的抽象方法的名称-->
+<!--
+List<Emp> getAllEmp();
+-->
+<!--    resultType 返回类型；或者返回值为集合时，是集合的泛型类型，查询必须要写resulType-->
+    <select id="getAllEmp" resultType="emp">
+        select empno,ename,job,hiredate from emp
+    </select>
+<!--    当实体类属性不能和表中自段完全对应时，可以使用resultMap配置映射关系
+<resultMap>的id可以被<select>的resultMap属性所引用，查询结果会封装按照配置的映射关系封装，type属性，实体类，查询结果封装到这个类中-->
+   <!-- <select id="getAllEmp2" resultMap="empMap">
+        select empno,ename,job,hiredate from emp
+    </select>
+    主键列用id标签来配置，非主键用result标签来配置
+    colunm属性 数据库字段名
+    property属性：实体类属性名
+    <resultMap id="empMap" type="emp2">
+        <id column="empno" property="eno"></id>
+        <result column="ename" property="ename"></result>
+        <result column="job" property="job"></result>
+        <result column="hiredate" property="hiredate"></result>
+    </resultMap>-->
+<!--    int addEmp(Emp emp)-->
+<!--    因为增删改返回值类型比较简单，可以自动处理，不用写resultType-->
+    <insert id="addEmp">
+        insert into emp (ename,job,hiredate)
+        values (#{ename},#{job},#{hiredate})
+    </insert>
+<!--    boolean updateEmp(Emp emp);-->
+    <update id="updateEmp">
+        update emp set ename = #{ename},job = #{job},hiredate = #{hiredate}
+        where empno = #{empno}
+    </update>
+<!--    int deleteEmp(Integer empno);-->
+    <delete id="deleteEmp">
+        delete from emp where empno = #{empno}
+    </delete>
+    <sql id="basesql">
+        empno,ename,job,hiredate
+    </sql>
+    <select id="getEmpByNo">
+        select <include refid="basesql"></include>
+        from emp
+        where empno = #{empno}
+    </select>
+<!--     Emp getEmpByNameAndJob(String ename,String job);-->
+<!--    传入一个简单类型的参数时，获取参数可以写完#{任意字符}-->
+<!--    传入多个简单类型的参数时，mybatis会将这些参数封装起来
+key:arg0 arg1 arg2 ···
+key:param1 param2 param3 ···
+value 会按照书写顺序写入这些map元素中-->
+<!--    if标签如果test的值为真，则拼接if中的sql，为假则不拼接-->
+<!--    where标签：where后面的条件至少有一条成立时才会拼接where关键字，条件都不成立时，不拼接where关键字
+会将多余的and和or去掉-->
+    <select id="getEmpByNameAndJob" resultType="emp">
+        select empno,ename,job,hiredate from emp
+        <where>
+        <if test="ename != '' and ename != null"> ename like '%' #{ename} '%' </if>
+         <if test="job != ''and job != null">
+         and job like '%' #{job} '%'
+         </if>
+        </where>
+    </select>
+
+    <select id="getEmpByNameAndJob2" resultType="emp">
+        select empno,ename,job,hiredate from emp where ename = #{ename} and job = #{job}
+    </select>
+
+<!--    String getJobByEname(String ename);
+-->
+<!--    % 和#{}之间留空格-->
+    <select id="getJobByEname" resultType="string">
+        select job from emp
+        where ename like concat('%',#{ename},'%')
+    </select>
+
+<!--       List<Emp> getEmpByPage(@Param("count") int count,@Param("pageSize") int pageSize);-->
+    <select id="getEmpByPage" resultType="emp">
+        select <include refid="basesql"></include>
+        from emp
+        limit #{count},#{pageSize}
+    </select>
+<!--     boolean deleteBatch(int[] empnos);-->
+    <delete id="deleteBatch">
+        delete from emp where empno in <foreach collection="empnos" separator="," item="empno" open="(" close=")">
+        #{empno}
+    </foreach>
+    </delete>
+<!--     List<Map<String,Object>> getEmpAndDept();-->
+<!--    封装成map时，key为查询的字段名，值为查询的数据-->
+    <select id="getEmpAndDept" resultType="map">
+        select e.empno, e.ename, e.job,e.deptno,d.dname,hiredate from emp e join dept d on e.deptno = d.deptno
+    </select>
+<!--     boolean addBatchEmp(List<Emp> emps);-->
+    <insert id="addBatchEmp">
+        insert into emp (ename,job,hiredate,deptno)
+        values <foreach collection="list" item="emp" separator=",">
+        (#{emp.ename},#{emp.job},#{emp.hiredate},#{emp.deptno})
+    </foreach>
+    </insert>
+<!--    boolean updateBatchEmp(List<Emp> emps);-->
+    <update id="updateBatchEmp">
+<foreach collection="list" item="emp" separator=";">
+        update emp set ename = #{emp.ename},job= #{emp.job},hiredate = #{emp.hiredate},deptno = #{emp.deptno} where
+        empno = #{emp.empno}
+</foreach>
+    </update>
+</mapper>

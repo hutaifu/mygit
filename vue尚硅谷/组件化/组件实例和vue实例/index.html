@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        组件是可复用的vue实例，但是vue组件可以使用el或$mount绑定元素，
+     -->
+    <div id="root">
+    </div>
+</body>
+    <script src="../../js/vue.js"></script>
+    <script>
+        Vue.config.productionTip = false;
+        const school = Vue.extend({
+            data(){
+                return{
+                    schoolname:"学校",
+                    address:"地址",
+                }
+            },
+            template:`<div><h2>学校名称：{{schoolname}}</h2>
+        <h2>学校地址；{{address}}</h2>
+        </div>`
+
+        })
+        const hello = Vue.extend({
+            data(){
+                return{
+                    msg:"hello"
+                }
+            },
+            template:`<div><h2>信息:{{msg}}</h2>
+        </div>`
+
+        })
+        new Vue({
+            el:'#root',
+            components:{
+                school,hello
+            },
+            template:`<div><school></school><hello></hello></div>`
+        })
+        console.log(school)
+        console.log(hello)
+        //VueComponent(){},构造函数
+    </script>
+</html>

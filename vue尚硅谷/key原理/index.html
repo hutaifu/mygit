@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        虚拟dom对比
+        先在同一层级找到相同的key找到对比的两个节点(v-for不写key，默认按照索引作为key)
+        节点不断的分层递归对比，注意vue虚拟节点有文本节点，元素节点，组件节点，函数节点，注释节点，
+        对比到最小不可分层级的节点，如果让真实对应的节点替换
+        用户输入input框不会改变input对应的虚拟dom
+     -->
+    <!-- 准备好一个容器 -->
+    <div id ="root">
+        <li v-for="(p,index) of persons" :key="index">
+            {{p.name + "----" + p.age + "key" + index}}
+            <input type="text">
+        </li>
+        <button @click="add">添加一个人</button>
+    </div>
+</body>
+
+
+
+    <script src="../js/vue.js"></script>
+    <script>
+        Vue.config.productionTip = false;
+        new Vue({
+            el:'#root',
+            data:{
+                persons:[
+                    {id:1,name:"张三",age:18},
+                    {id:2,name:"李四",age:19},
+                    {id:3,name:"王五",age:20},
+                ]
+            },
+            methods: {
+                add(){
+                    this.persons.unshift({id:4,name:'测试',age:20})
+                }
+            },
+        })
+    </script>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        async function fn(){
+            //返回一个字符串，只要返回的不是一个promise对象，就会返回一个成功的promise对象
+            // return "尚硅谷";
+            // return;
+            //抛出错误，返回的结果是一个失败的 Promise
+            // throw new Error("出错了");
+            //返回的结果是一个promise对象
+            return new Promise((resolve,reject)=>{
+                // resolve("成功的数据");
+                reject("失败的错误")
+            })
+
+        }
+        let result = fn()
+        console.log(result)
+
+        //调用then方法
+        result.then((value =>{console.log(value)}),(reason)=>{console.warn(reason)})
+    </script>
+</body>
+</html>

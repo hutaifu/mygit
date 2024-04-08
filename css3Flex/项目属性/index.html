@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 800px;
+            height: 500px;
+            background-color: yellow;
+            display: flex;
+            align-items: center;
+        }
+        .box div{
+            width: 100px;
+            height: 80px;
+            background-color: red;
+            margin: 0 5px;
+            flex: 0 1 20%;
+        }
+        .item2{
+            align-self: flex-end;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="item1">1</div>
+        <div class="item2">2</div>
+        <div class="item3">3</div>
+        <div class="item4">4</div>
+        <div class="item5">5</div>
+    </div>
+</body>
+</html>

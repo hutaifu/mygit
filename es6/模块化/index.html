@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script type="module">
+        //引入js模块内容
+        //1.通用方式
+        import * as m1 from "./m1.js"
+        console.log(m1)
+        //2.结构赋值形式
+        import {school,teach} from "./m1.js"
+        console.log(school)
+        console.log(teach)
+        //3.重名使用别名
+        import {school as guigu,findJob} from "./m2.js"
+        console.log(guigu)
+        console.log(findJob)
+        //解构赋值导入默认暴露模块,必须as
+        // import {default as m3} from './m3.js'
+        // console.log(m3)
+        //4，简便形式，只针对默认暴露,只会暴露default关键字
+        import m3 from "./m3.js"
+        console.log(m3)
+    </script>
+</body>
+</html>

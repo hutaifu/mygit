@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    span{
+        display: none;
+    }
+
+</style>
+<body>
+    <h3>学生信息增加页面</h3>
+    <form action="AddServlet" onsubmit="return chkAll()" >
+        请输入姓名：<input type="text" name="stuname"><span>姓名不能为空</span><br>
+<!--        请输入学号：<input type="text" name="stuno"><span>学号必须为数字</span><br>-->
+        请输入性别：<input type="text" name="sex"><span>请输入男或女</span><br>
+        请输入年龄：<input type="number" name="age"><span>年龄12到20</span><br>
+        请输入籍贯：<input type="text" name="address"><span>籍贯不能为空不为数字和字母</span><br>
+<!--        请输入密码：<input type="password" name="pwd"><span>密码至少六位</span>-->
+        <button type="submit">提交</button>
+    </form>
+<script src="js/jquery-3.1.1.min.js"></script>
+<script>
+    var arr = []
+    arr[0] = /^.+$/
+    arr[1] = /^(男|女){1}$/
+    arr[2] = /^(1|2)([2-9]|0)$/
+    arr[3] = /^\W+$/
+
+    var isture = new Array(4)
+    for (var i = 0; i < isture.length; i++) {
+        isture[i] = false;
+    }
+
+    $(function () {
+        $("input").blur(function () {
+            var num = $("input").index(this)
+            if(!arr[num].test(this.value)){
+                $(this).next().css("display","inline")
+                isture[num] = false
+            }else {
+                $(this).next().css("display","none")
+                isture[num] = true
+            }
+        })
+    })
+    function chkAll() {
+        var isAll = true;
+        for (var i = 0; i < isture.length; i++) {
+            if (isture[i] == false){
+                isAll = false
+            }
+        }
+        return isAll;
+    }
+
+
+
+
+</script>
+</body>
+</html>
