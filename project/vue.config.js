@@ -1,9 +1,9 @@
-// const { defineConfig } = require("@vue/cli-service");
+// const { defineConfig } = require("@addVueCom/cli-service");
 // module.exports = defineConfig({
 //   transpileDependencies: true,
 // });
 
-// vue-cli配置文件，90%是webpack配置
+// addVueCom-cli配置文件，90%是webpack配置
 module.exports = {
   devServer: {
     proxy: {

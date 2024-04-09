@@ -13,7 +13,7 @@
 <script>
 import HelloWorld from './components/HelloWorld.vue'
 import Vue from "vue/dist/vue"
-// import { CreateElement } from 'vue';
+// import { CreateElement } from 'addVueCom';
 import { addComponent } from './js/addCompoent.js';
 
 export default {

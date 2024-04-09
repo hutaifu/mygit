@@ -38,9 +38,9 @@ const router = new VueRouter({
 })
 //全局前置路由守卫———每次路由切换和初始化被调用
 router.beforeEach((to,from,next)=>{
-    if (!to.meta.isAuto){
+ /*   if (!to.meta.isAuto){
         return;
-    }
+    }*/
     next();
 })
 

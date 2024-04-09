@@ -299,9 +299,9 @@
 
   <script>
   // @ is an alias to /src
-  import HelloWorld from '@/components/HelloWorld.vue'
-  import Login from '@/components/Login.vue'
-  import rejster from '@/components/rejster.vue'
+  import HelloWorld from addVueCom
+  import Login from addVueCom
+  import rejster from addVueCom
 
   export default {
     name: 'HomeView',

@@ -5,13 +5,26 @@ import Com from "./router/TestCom"
 import VueRouter from "vue-router"
 import router from "./router/index"
 // js.getChannels();
-//引入Element-UI
-import ElementUI from "element-ui"
+//引入Element-UI//完整引入
+
+/*import ElementUI from "element-ui"
 //引入Element-UI的全部样式
 import 'element-ui/lib/theme-chalk/index.css'
-Vue.config.productionTip = false
 //引用ElementUI
-Vue.use(ElementUI);
+Vue.use(ElementUI);*/
+
+//按需引入
+import { Button, Select } from 'element-ui';
+Vue.component(Button.name, Button);
+Vue.component(Select.name, Select);
+/* 或写为
+ * Vue.use(Button)
+ * Vue.use(Select)
+ */
+
+
+
+Vue.config.productionTip = false
 
 //应用插件
 Vue.use(VueRouter);

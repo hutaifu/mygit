@@ -1,6 +1,6 @@
 import Vue from 'vue'
 //引入App组件，是所有组件的父组件
-import App from './App.vue'
+import App from './App.addVueCom'
 
 // import Vuex from 'vuex'
 //关闭vue的生产提示

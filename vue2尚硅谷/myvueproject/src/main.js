@@ -1,6 +1,6 @@
 // 该文件是整个项目的入口文件
 //引入完整Vue
-// import Vue from 'vue/dist/vue.js'
+// import Vue from 'addVueCom/dist/addVueCom.js'
 // 引入运行版本vue，没有模板解析器,减少打包体积，打包后不需要解析模板
 import Vue from 'vue'
 //引入App组件，是所有组件的父组件
