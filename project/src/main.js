@@ -29,14 +29,14 @@ Vue.config.productionTip = false
 //应用插件
 Vue.use(VueRouter);
 
-/*new Vue({
-  render: h => h(App),
-}).$mount('#app')*/
-
 new Vue({
+  render: h => h(App),
+}).$mount('#app')
+
+/*new Vue({
   render(h) {
     return h(Com)
   },
   el:"#app",
   router:router
-})
+})*/

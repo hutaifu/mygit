@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //源数据
+        let person = {
+            name:"张三",
+            age:18
+        }
+
+        //模拟vue2中实现响应式
+        // let p = {};
+        // Object.defineProperty(p,'name',{
+        //     configurable:true,//是否可配置，能否删除
+        //     get(){
+        //         return person.name;
+        //     },
+        //     set(value){
+        //         console.log("有人修改了name属性，我要去更新页面")
+        //         person.name = value;
+        //     }
+        // })
+        
+
+        // Object.defineProperty(p,'age',{
+        //     get(){
+        //         return person.name;
+        //     },
+        //     set(value){
+        //         console.log("有人修改了age属性，我要去更新页面")
+        //         person.name = value;
+        //     }
+        // })
+        
+        
+        
+
+
+        //不能监听删除，添加属性，
+        //实现vue3中的响应式
+        //#region 
+
+        //模板vue3中实现响应式,实现代理
+        const p = new Proxy(person,{
+            //有人读取p的某个属性时调用
+            get(target,propName){
+                //target,源对象
+                console.log(`有人读取了p身上的${propName}属性`)
+                // return target[propName]
+                Reflect.get(target,propName)
+            },
+            //有人修改某个属性或者给p追加某个属性调用
+            set(target,propName,value){
+                console.log(`设置p的属性${propName}值为${value}`)
+                // target[propName] = value;
+                Reflect.set(target,propName,value)
+            },
+            //有人删除p的某个属性
+            deleteProperty(target,propName){
+                console.log(`有人删除了p身上的${propName}属性`);
+                // return delete target[propName]
+                Reflect.defineProperty(target,propName)
+            },
+        });
+
+        //如果配置了get,set修改p会触发get,set
+        //p和person双向绑定，
+
+        //Reflact
+        let obj = {a:1,b:2};
+        Reflect.get(obj,'a');
+        Reflect.set(obj,'a',666)
+        Reflect.deleteProperty(obj,'a')
+        let x1 = Reflect.deleteProperty(obj,'c',{get(){
+            return 3;
+        }})
+        let x2 = Reflect.deleteProperty(obj,'c',{get(){
+            return 4;
+        }})
+        //Reflect通过返回值判断是否成功，Object直接抛出异常
+        //Vue3核心原理，代理，反射，
+
+
+
+
+
+
+        
+
+
+    </script>
+</body>
+</html>

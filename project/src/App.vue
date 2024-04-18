@@ -14,7 +14,7 @@
 import HelloWorld from './components/HelloWorld.vue'
 import Vue from "vue/dist/vue"
 // import { CreateElement } from 'addVueCom';
-import { addComponent } from './js/addCompoent.js';
+import {addComponent} from './js/addCompoent'
 
 export default {
   name: 'App',
@@ -31,6 +31,7 @@ export default {
   methods:{
     myClick(){
       console.log("触发了我的点击事件")
+      alert("触发了app传递给hello的点击事件")
     }
   },
   beforeCreate(){
@@ -42,11 +43,11 @@ export default {
   beforeMount(){
   },
   mounted(){
-/*    addComponent(this,HelloWorld,"#hello",`  <HelloWorld :msg="msg" ref="myRef" @click="myClick" :key="new Date().getTime().toString()" v-model:sk="myModel" :class="myClass" id="myId" v-on="muClick">
+    addComponent(this,HelloWorld,"#hello",`  <HelloWorld :msg="msg" ref="myRef" @click="myClick" :key="new Date().getTime().toString()" v-model:sk="myModel" :class="myClass" id="myId" v-on="muClick">
         <p>123</p>
         '紫芜丘陵未有雪，我未执枪已十三年'
            <template v-slot:myslot="scope">测试作用域插槽{{scope.myslotProp}}</template>
-    </HelloWorld>`)*/
+    </HelloWorld>`)
   }
 }
 </script>

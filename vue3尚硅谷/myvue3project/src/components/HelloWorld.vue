@@ -26,6 +26,7 @@
       <li><a href="https://github.com/vuejs/vue-devtools#vue-devtools" target="_blank" rel="noopener">vue-devtools</a></li>
       <li><a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener">vue-loader</a></li>
       <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
+      <button @click="hello">测试触发父组件hello事件</button>
     </ul>
   </div>
 </template>
@@ -35,6 +36,18 @@ export default {
   name: 'HelloWorld',
   props: {
     msg: String
+  },
+  emits:['myClick'],
+  setup(props,context){
+    console.log(props,context)
+    // context.emit("click")
+    function hello() {
+       context.emit("myClick")
+    }
+    return{
+      hello,
+    }
+
   }
 }
 </script>

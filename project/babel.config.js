@@ -1,7 +1,7 @@
 module.exports = {
   //预设包，
   presets: [
-    '@addVueCom/cli-plugin-babel/preset',
+    // '@addVueCom/cli-plugin-babel/preset',
       //elementUI按需引入
     ["@babel/preset-env", { "modules": false }]
   ],

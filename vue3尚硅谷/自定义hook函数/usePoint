@@ -1,0 +1,9 @@
+export default function (){
+    //实现鼠标'打点'相关的数据
+    let point = reactive({
+
+    })
+
+    return point;
+
+}

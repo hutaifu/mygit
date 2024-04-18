@@ -50,6 +50,57 @@ export function addComponent(vue, compoenent, elString, templateString) {
             // 匹配以 @ 或 v-on: 开头的事件绑定
             getEventBindings(/(?:@|v-on:)([a-zA-Z]+)(?:\.([\w.]+))*(?![\w.-]*\.native(?:$|\B))/);
 
+            // 匹配事件绑定
+            function getEventBindings(regex) {
+                let matchedKeys = keys.filter(item => regex.test(item));
+                matchedKeys.forEach(item => {
+                    // 匹配事件名和修饰符
+                    let match = item.match(regex);
+                    if (match) {
+                        let eventName = match[1]; // 获取事件名
+                        let modifiers = match[2]; // 获取修饰符
+                        // 检查事件名是否存在于组件定义中，如果存在则说明是组件事件，否则是原生事件
+                        let fn = vue[obj.attributes[item]];
+                        //是否为插槽
+                        /*       if(slotScope && !fn){
+
+                               }*/
+                        if (match[2] !== 'native') {
+                            on[eventName] = fn?.bind(vue);
+                        } else {
+                            nativeOn[eventName] = fn?.bind(vue);
+                        }
+                    }
+                });
+            }
+            // 获取属性并处理类型
+            function getProp(optionsPropertyObj, rel) {
+
+                let afterKeys = keys.filter(item => rel.test(item) && !/(ref|class|key|style)$/.test(item));
+                afterKeys.forEach(item => {
+                    let afterItem = item.replace(rel, "");
+                    let value = obj.attributes[item];
+                    // 处理布尔类型
+                    if (value === "false") {
+                        optionsPropertyObj[item] = false;
+                    } else if (value === "true") {
+                        optionsPropertyObj[item] = true;
+                    } else if (!isNaN(Number(value))) { // 检查是否为数字
+                        optionsPropertyObj[item] = Number(value); // 转换为数字
+                    } else { // 其他情况，假设是绑定的属性
+                        if (vue[value]) {
+                            optionsPropertyObj[afterItem] = vue[value]; // 绑定属性
+                            vue.$watch(value, {
+                                handler(n, o) {
+                                    myComp[afterItem] = vue[value];
+                                    myComp.$forceUpdate();
+                                }, deep: true,
+                            })
+                        }
+                    }
+                });
+            }
+
 // 匹配以 : 或 v-bind 开头的属性绑定，但排除掉 ref、class、key、style
             getProp(props, /^(:|v-bind:)/);
             // 单独处理 ref, class, key, style 属性
@@ -204,54 +255,5 @@ function convertToTemplateString(fixedString, dynamicIdentifier) {
     return stringWithIdentifier;
 }
 
-// 获取属性并处理类型
-function getProp(optionsPropertyObj, rel) {
 
-    let afterKeys = keys.filter(item => rel.test(item) && !/(ref|class|key|style)$/.test(item));
-    afterKeys.forEach(item => {
-        let afterItem = item.replace(rel, "");
-        let value = obj.attributes[item];
-        // 处理布尔类型
-        if (value === "false") {
-            optionsPropertyObj[item] = false;
-        } else if (value === "true") {
-            optionsPropertyObj[item] = true;
-        } else if (!isNaN(Number(value))) { // 检查是否为数字
-            optionsPropertyObj[item] = Number(value); // 转换为数字
-        } else { // 其他情况，假设是绑定的属性
-            if (vue[value]) {
-                optionsPropertyObj[afterItem] = vue[value]; // 绑定属性
-                vue.$watch(value, {
-                    handler(n, o) {
-                        myComp[afterItem] = vue[value];
-                        myComp.$forceUpdate();
-                    }, deep: true,
-                })
-            }
-        }
-    });
-}
 
-// 匹配事件绑定
-function getEventBindings(regex) {
-    let matchedKeys = keys.filter(item => regex.test(item));
-    matchedKeys.forEach(item => {
-        // 匹配事件名和修饰符
-        let match = item.match(regex);
-        if (match) {
-            let eventName = match[1]; // 获取事件名
-            let modifiers = match[2]; // 获取修饰符
-            // 检查事件名是否存在于组件定义中，如果存在则说明是组件事件，否则是原生事件
-            let fn = vue[obj.attributes[item]];
-            //是否为插槽
-            /*       if(slotScope && !fn){
-
-                   }*/
-            if (match[2] !== 'native') {
-                on[eventName] = fn?.bind(vue);
-            } else {
-                nativeOn[eventName] = fn?.bind(vue);
-            }
-        }
-    });
-}

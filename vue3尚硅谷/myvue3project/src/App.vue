@@ -1,7 +1,12 @@
 <template>
     <!--  vue3组件中的模板结构可以没有跟标签，因为增加了虚拟根节点-->
-    <!--  <img alt="Vue logo" src="./assets/logo.png">
-      <HelloWorld msg="Welcome to Your Vue.js App"/>-->
+      <img alt="Vue logo" src="./assets/logo.png">
+    <HelloWorld msg="Welcome to Your Vue.js App" sklsf="skldfjl" @myClick="showHello"><p>slkdjklsjfd</p>
+    <template #akdf>
+        sjdlsjf
+    </template>
+
+    </HelloWorld>
     <h1>一个人的信息</h1>
     <h2>姓名：{{name}}</h2>
     <h2>年龄：{{age}}</h2>
@@ -83,6 +88,9 @@
                 // job.type = "被修改了"
                 job.salary = "slkdfj";
             }
+            function showHello() {
+                alert("你好啊，触发了父组件的事件哦")
+            }
 
             //返回一个对象，可以再实例上面访问
             return {
@@ -92,6 +100,7 @@
                 chnageInfo,
                 job,
                 person,
+                showHello
             }
 
             //返回一个函数，函数返回值是虚拟节点
