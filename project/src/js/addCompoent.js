@@ -163,7 +163,6 @@ export function addComponent(vue, compoenent, elString, templateString) {
                 childrenVnod.push(concatVNodes(child, false));
                 if(Object.keys(scopedSlots)?.includes(node.slotKey?.replace(/^v-slot:/,""))){
                     scopedSlots[node.slotKey.replace(/^v-slot:/,"")] =(props)=> {
-                        debugger
                         let str = JSON.stringify(childrenVnod[childrenVnod.length - 1]).replace("[[","${").replace("]]","}");
                         return JSON.parse(eval(`\`${str}\``));}
                 }
