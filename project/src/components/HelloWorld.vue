@@ -2,6 +2,7 @@
   <div class="hello">
     <slot></slot>
     <slot name="myslot" :myslotProp="msg" ></slot>
+    <slot name="myslot1" :myslotProp="msg" ></slot>
     <h1 @click="$emit('click')">{{ msg }}</h1>
     <p>
       For a guide and recipes on how to configure / customize this project,<br>

@@ -25,8 +25,8 @@ export function addComponent(vue, compoenent, elString, templateString) {
         if (obj.tagName === "template"){
             //插槽
             //是否有v-slot属性
-            let sltoKey =  Object.keys(obj.attributes).filter(item =>/^v-slot:/.test(item))[0];
-            let afterSltoKey = sltoKey.replace(/^v-slot:/,"");
+            let sltoKey =  Object.keys(obj.attributes).filter(item =>/^(v-slot:)|#/.test(item))[0];
+            let afterSltoKey = sltoKey.replace(/^(v-slot:)|#/,"");
             if (afterSltoKey && afterSltoKey !== 'default'){
                 //是否有参数
                 if (obj.attributes[sltoKey]){
@@ -161,8 +161,8 @@ export function addComponent(vue, compoenent, elString, templateString) {
             let childrenVnod = [];
             node.children.forEach(child => {
                 childrenVnod.push(concatVNodes(child, false));
-                if(Object.keys(scopedSlots)?.includes(node.slotKey?.replace(/^v-slot:/,""))){
-                    scopedSlots[node.slotKey.replace(/^v-slot:/,"")] =(props)=> {
+                if(Object.keys(scopedSlots)?.includes(node.slotKey?.replace(/^(v-slot:)|#/,""))){
+                    scopedSlots[node.slotKey.replace(/^(v-slot:)|#/,"")] =(props)=> {
                         let str = JSON.stringify(childrenVnod[childrenVnod.length - 1]).replace("[[","${").replace("]]","}");
                         return JSON.parse(eval(`\`${str}\``));}
                 }
