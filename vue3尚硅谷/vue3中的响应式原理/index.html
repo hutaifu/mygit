@@ -10,7 +10,10 @@
         //源数据
         let person = {
             name:"张三",
-            age:18
+            age:18,
+            job:{
+                slalary:12,
+            }
         }
 
         //模拟vue2中实现响应式
@@ -52,7 +55,7 @@
                 //target,源对象
                 console.log(`有人读取了p身上的${propName}属性`)
                 // return target[propName]
-                Reflect.get(target,propName)
+                return Reflect.get(target,propName)
             },
             //有人修改某个属性或者给p追加某个属性调用
             set(target,propName,value){

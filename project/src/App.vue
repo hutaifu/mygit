@@ -6,15 +6,15 @@
         <p>123</p>
       <template v-slot:myslot="scope">测试具名插槽{{scope}}</template>
     </HelloWorld>-->
-    <button @click="msg = '123' ">测试响应式</button> 
+    <button @click="msg = '123' ">测试响应式</button>
   </div>
 </template>
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
-import Vue from "vue/dist/vue"
-// import { CreateElement } from 'addVueCom';
 import {addComponent} from './js/addCompoent'
+import vue from 'vue'
+
 
 export default {
   name: 'App',
@@ -35,15 +35,21 @@ export default {
     }
   },
   beforeCreate(){
-  
+
   },
   created(){
-  
+
   },
   beforeMount(){
   },
+  provide(){
+    return{
+      msg:this.msg
+    }
+  },
   mounted(){
-    addComponent(this,HelloWorld,"#hello",`  <HelloWorld :msg="msg" ref="myRef" @click="myClick" :key="new Date().getTime().toString()" v-model:sk="myModel" :class="myClass" id="myId" v-on="muClick">
+    //使用extend
+    addComponent(this,HelloWorld,"#hello",`  <HelloWorld :msg="msg" ref="myRef" @click="myClick" :key="new Date().getTime().toString()" v-model:sk="myModel" :class="myClass" id="myId">
         <p>123</p>
         '紫芜丘陵未有雪，我未执枪已十三年'
            <template v-slot:myslot="scope">测试作用域插槽{{scope.myslotProp}}</template>
@@ -54,12 +60,12 @@ export default {
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+    #app {
+        font-family: Avenir, Helvetica, Arial, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-align: center;
+        color: #2c3e50;
+        margin-top: 60px;
+    }
 </style>
