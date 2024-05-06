@@ -1,5 +1,13 @@
 import Vue from "vue";
 
+/**
+ * @name js动态添加组件
+ * @param vue 父组件vue
+ * @param compoenent 要添加的组件
+ * @param elString 挂载元素的选择器
+ * @param templateString 模板字符串
+ * @returns {*} 返回父组件的代理对象
+ */
 export function addComponent(vue, compoenent, elString, templateString) {
 //原生事件不要加，
     //js表达式相关逻辑处理没有
@@ -75,10 +83,13 @@ export function addComponent(vue, compoenent, elString, templateString) {
                         } else {
                             //实现响应式
                             let key = obj.attributes[item];
-                            handleReactive(key, () => {
-                                //更新数据
-                                myComp[eventName] = vue[key]
-                            }, collector)
+                            (function (eventName) {
+                                handleReactive(key, () => {
+                                    //更新数据
+                                    myComp.$off(eventName);
+                                    myComp.$on(eventName,vue[key])
+                                }, collector)
+                            })(eventName)
                         }
                         //是否为插槽
                         if (match[2] !== 'native') {
@@ -110,10 +121,12 @@ export function addComponent(vue, compoenent, elString, templateString) {
                             optionsPropertyObj[afterItem] = vue[value]; // 绑定属性
                             //实现响应式
                             let key = value;
-                            handleReactive(key, () => {
-                                //更新数据
-                                myComp[afterItem] = vue[key]
-                            }, collector)
+                            (function (afterItem) {
+                                handleReactive(key, () => {
+                                    //更新数据
+                                    myComp[afterItem] = vue[key]
+                                }, collector)
+                            })(afterItem)
 
                         } else {
                             setJsFn.bind(vue)(value, optionsPropertyObj, afterItem)
@@ -130,10 +143,13 @@ export function addComponent(vue, compoenent, elString, templateString) {
                 if (vue[obj.attributes[refValue]]) {
                     //实现响应式
                     let key = obj.attributes[refValue];
-                    handleReactive(key, () => {
-                        //更新数据
-                        myComp["ref"] = vue[key]
-                    }, collector)
+
+                    (function () {
+                        handleReactive(key, () => {
+                            //更新数据
+                            myComp["ref"] = vue[key]
+                        }, collector)
+                    })()
                     ref = vue[obj.attributes[refValue]];
                 } else {
                     let jsFn = isExpression.bind(vue)(obj.attributes[refValue],collector)
@@ -150,9 +166,13 @@ export function addComponent(vue, compoenent, elString, templateString) {
             if (keyValue) {
                 if (vue[obj.attributes[keyValue]]) {
                     let key = obj.attributes[keyValue];
-                    handleReactive(key, () => {
-                        myComp['key'] = vue[key]
-                    }, collector)
+
+                    (function(){
+                        handleReactive(key, () => {
+                            myComp['key'] = vue[key]
+                        }, collector)
+                    })();
+
                     key = vue[obj.attributes[keyValue]];
                 } else {
                     let jsFn = isExpression.bind(vue)(obj.attributes[keyValue],collector)
@@ -207,6 +227,8 @@ export function addComponent(vue, compoenent, elString, templateString) {
     }).$mount(elString);
 
     addWatch(parentVue,collector)
+
+    return [myComp,vue];
 
 
     function concatVNodes(node, isOneLevel = true) {
@@ -363,28 +385,30 @@ function impleReactive(obj, collector) {
         get(target, p, receiver) {
             //进行依赖收集  ,不会弄
             if (collector._fn && typeof collector._fn === "function"){
-             handleReactive(p,collector._fn,collector);
+                handleReactive(p,collector._fn,collector);
             }
             return Reflect.get(target, p)
         },
         set(target, p, value, receiver) {
+            Reflect.set(target, p, value)
             //触发组件更新
             if (collector[p] && Array.isArray(collector[p])) {
                 collector[p].forEach(item =>{
                     item.bind(obj)()
                 })
             }
-            Reflect.set(target, p, value)
+            return true;
         },
         deleteProperty(target, p) {
             //触发组件更新
 
-            Reflect.deleteProperty(target, p)
+            return Reflect.deleteProperty(target, p)
 
         }
     });
     return proxy;
 }
+
 
 /**
  * @name 手动收集依赖
@@ -409,13 +433,13 @@ function handleReactive(key, callback, collector) {
  */
 function dealFn(fn,collector) {
     if (fn && typeof fn === "function"){
-       let fnClone = function () {
+        let fnClone = function () {
             //记录原本函数
-           collector._fn = fn;
-           //执行原本函数
+            collector._fn = fn;
+            //执行原本函数
             fn();
             //去掉记录函数
-           delete collector._fn;
+            delete collector._fn;
         }.bind(this)
         return fnClone;
 

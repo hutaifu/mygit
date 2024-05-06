@@ -49,12 +49,19 @@ export default {
   },
   mounted(){
     //使用extend
-    addComponent(this,HelloWorld,"#hello",`  <HelloWorld :msg="msg" ref="myRef" @click="myClick" :key="new Date().getTime().toString()" v-model:sk="myModel" :class="myClass" id="myId">
+    let [mycom,proxyVue] = addComponent(this,HelloWorld,"#hello",`  <HelloWorld :msg="msg" ref="myRef" @click="myClick" :key="new Date().getTime().toString()" v-model:sk="myModel" :class="myClass" id="myId">
         <p>123</p>
         '紫芜丘陵未有雪，我未执枪已十三年'
            <template v-slot:myslot="scope">测试作用域插槽{{scope.myslotProp}}</template>
                   <template #myslot1="scope">测试作用域插槽{{scope.myslotProp}}</template>
-    </HelloWorld>`)
+    </HelloWorld>`);
+
+    console.log(proxyVue);
+    proxyVue.msg = '测试代理对象'
+    proxyVue.myClick = ()=>{
+      console.log(123)
+    }
+
   }
 }
 </script>
