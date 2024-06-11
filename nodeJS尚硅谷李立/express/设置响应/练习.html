@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <table onclick="clickTable(event)">
+        <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+        </tr>   <tr>
+            <td>5</td>
+            <td>6</td>
+            <td>7</td>
+            <td>8</td>
+        </tr>   <tr>
+            <td>9</td>
+            <td>10</td>
+            <td>11</td>
+            <td>12</td>
+        </tr>   <tr>
+            <td>13</td>
+            <td>14</td>
+            <td>15</td>
+            <td>16</td>
+        </tr>
+    </table>
+
+
+</body>
+<script>
+    function clickTable(event) {
+        if (event.target.localName === 'td'){
+         event.target.style.border = 'solid green'
+        }
+    }
+
+</script>
+</html>
+<style>
+    table tr:nth-child(2n + 1){
+        background-color: red;
+    }
+    table tr:nth-child(2n){
+        background-color: orange;
+    }
+    tr{
+        height: 50px;
+    }
+    td{
+        width: 40px;
+    }
+
+
+
+</style>

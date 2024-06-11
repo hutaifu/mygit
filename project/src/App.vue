@@ -1,7 +1,8 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
-    <div id="hello"></div>
+<!--    <div id="hello"></div>-->
+    <Echart></Echart>
 <!--    <HelloWorld :msg="msg" ref="myRef" @click="myClick" :key="new Date().getTime().toString()" v-model="myModel" :class="myClass" id="myId">
         <p>123</p>
       <template v-slot:myslot="scope">测试具名插槽{{scope}}</template>
@@ -14,12 +15,14 @@
 import HelloWorld from './components/HelloWorld.vue'
 import {addComponent} from './js/addCompoent'
 import vue from 'vue'
+import Echart from './components/Echart'
+
 
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    HelloWorld,Echart
   },
   data(){
     return {
@@ -49,7 +52,66 @@ export default {
   },
   mounted(){
     //使用extend
-    let [mycom,proxyVue] = addComponent(this,HelloWorld,"#hello",`  <HelloWorld :msg="msg" ref="myRef" @click="myClick" :key="new Date().getTime().toString()" v-model:sk="myModel" :class="myClass" id="myId">
+      let Cons = Vue.extend(HelloWorld);
+      console.log(HelloWorld)
+      let comVm = new Cons({
+        _isComponent:true,
+        parent:this,
+        _parentVnode:this.$createElement('HelloWorld',{
+          scopedSlots:{
+            myslot:props => {return this.$createElement('h1',`测试作用域插槽${props.myslotProp}`)},
+          },on:{
+          click:function(){
+            console.log("js增加的点击事件")
+          },},
+          class: {
+      foo: true,
+      bar: false
+    },
+    key: 'myKey',
+    ref: 'myRef',
+    nativeOn: {
+      // click: this.nativeClickHandler
+    },//原生的事件会绑定在组件跟元素上，不是组件内部定义并且使用$emit触发的事件
+     attrs: {
+      id: 'foo'
+    }, // 普通的 HTML attribute
+    props:{
+      msg:this.msg
+    }
+        },['紫芜丘陵未有雪，我未执枪已十三年',/*this.$createElement('template',{
+          slot:"myslot"
+        },['测试具名插槽'])*/])
+
+      });
+      comVm.$mount("#hello"); // 手动挂载
+      console.log(Cons);
+      this.$watch('msg',{
+        handler(n,o){
+          comVm.msg = this.msg;
+          comVm.$forceUpdate();
+        },deep:false
+      });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*    let [mycom,proxyVue] = addComponent(this,HelloWorld,"#hello",`  <HelloWorld :msg="msg" ref="myRef" @click="myClick" :key="new Date().getTime().toString()" v-model:sk="myModel" :class="myClass" id="myId">
         <p>123</p>
         紫芜丘陵未有雪，我未执枪已十三年
            <template v-slot:myslot="scope">测试作用域插槽{{scope.myslotProp}}</template>
@@ -60,7 +122,7 @@ export default {
     proxyVue.msg = '测试代理对象'
     proxyVue.myClick = ()=>{
       console.log(123)
-    }
+    }*/
 
   }
 }
