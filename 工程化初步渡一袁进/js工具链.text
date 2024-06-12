@@ -1,0 +1,32 @@
+# 项目除了业务代码之外的问题
++   语言问题：
+        兼容性：
+        语言缺陷：语言增强
+
+
+
+            htm,haml,
+            由于使用vue或者react单文件组件,都是使用js生成元素，所以html问题不太重要
+
+            css:，sass/less/stylus postcss tailwind css-in-js styled-component
+
+            js:
+                兼容性：
+                    api兼容性，polyfill:垫片（填充物）core-js,浏览器原生的能力不好实现
+
+                    语法增强(兼容)：没有大而全的工具，一种工具对应一种语法 async 对应regenerator
+                    jsx, 转换工具，ts,(tsc),核心都是在进行代码转换
+
+                        代码集成转换工具：babel,npm - D @babel/core @babel/cli
+                        babel,原始代码=》抽象语法树，树结构容易解析=》  回到代码（这个过程可以配置插件，处理不同的代码）
+                        处理可选链的插件 npm i -D @babel/plugin-transform-optional-chaining
+                        配置babel.config.js
+                        babel 预设 (一堆插件)，ts预设，jsx预设，基础预设@babel/preset-env
+
+                        swc 对比babel,rust语言编写
+
+
+    工程问题：
+
+    流程问题：运维问题
+

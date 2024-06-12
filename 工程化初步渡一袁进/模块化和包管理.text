@@ -1,0 +1,42 @@
+# 模块化和包管理
+问题，标准，实现
+
++   模块化
+        分解和聚合
+        认识世界=》分解，=》使用知识，聚合
+        分解契合的是主观规律
+        聚合契合的是客观规律
+
+        js,函数也是在做分解和聚合，写代码就是在做分解和聚合，处理问题就是在分解聚合，开发就是在提重
+        文件的分解和聚合，传统js在文件的分解和聚合出现问题
+            1.全局污染，分解，没有隐藏内部实现
+            2.依赖混乱，文件之间相互依赖，文件的引入顺序难以判断，丢失依赖关系，聚合时候的问题
+
+        模块化，解决文件分解聚合问题，模块化标准，CommonJs,(AMD,CMD,UMD,)ESM,
+        CJS,模块化是运行时，只有运行到表达式，才能确定依赖关系
+        ESM,非动态引入写法是编译时，只能在模块顶层使用，编译时自动提前，不用运行代码就能确定依赖关系，
+        容易优化
+        标准实现=》浏览器（ESM），node(CJS,ESM可以切换),构建工具(vue-cli,等，CJS,ESM)，
+
+        包管理：package,一系列模块的集合
+            下载，升级，卸载，发布，
+            npm(包的属性，resjistry,cli),pnpm,yarn,cnpm,bower(浏览器),
+            cli:command-line interface
+
+
+
++      前端
+            语言
+                协议：http,websocket,oauth2
+                环境 浏览器，web,api，node,小程序，app
+                框架/库 vue react axios,egg
+                服务器 node,express,koa,mysql,redis,
+                工程化 ts sass less stylus...
+
+
+
+
+
+
+
+

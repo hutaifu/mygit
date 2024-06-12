@@ -1,0 +1,24 @@
+# css语言
+    1.语法缺失（循环，判断，拼接），现在可以变量定义，自定义css属性
+    2.功能缺失，支持一些函数，url,calc,linear-gr,颜色函数，数学函数，自定义函数
+    原生css已经支持嵌套书写，但是兼容性是大问题
+
+
+    新语言-》编译器-》css语言=>厂商前缀（autoprefixer），代码压缩(cssnano)，代码剪枝(purgecss),运行冲突(css module)
+    统称为后处理器
+
+    sass/less/stylus
+
+    sass:全局安装 npm i -g sass
+    运行命令 sass a.scss a.css --no-source-map
+
+    共同逻辑都是在做代码转换，这个共同逻辑可以抽离出来，层级可以不断分离，抽象层级越高，适用范围越广，能力越大，可以处理抽象的层级越大
+
+    抽象出来的代码转换工具 postcss  ，css =>css代码 ，类似babel,postcss可以配置不同的插件，也是
+    代码 =>抽象语法树=》css  但是postcss可以自定义解析器，不仅仅是一个css后处理器
+
+
+    安装依赖 postcss npm i -D postcss postcss-cli postcss-modules post-preset-env tailwindcss
+
+
+
