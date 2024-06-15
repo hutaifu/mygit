@@ -2,7 +2,6 @@
 // module.exports = defineConfig({
 //   transpileDependencies: true,
 // });
-import inspect from "inspect"
 
 
 // addVueCom-cli配置文件，90%是webpack配置

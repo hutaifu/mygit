@@ -1,12 +1,11 @@
 <template>
-  <div id="app">
+  <div id="app" style="text-align:center">
     <img alt="Vue logo" src="./assets/logo.png">
-<!--    <div id="hello"></div>-->
-    <Echart></Echart>
-<!--    <HelloWorld :msg="msg" ref="myRef" @click="myClick" :key="new Date().getTime().toString()" v-model="myModel" :class="myClass" id="myId">
+    <div id="hello"></div>
+    <HelloWorld :msg="msg" ref="myRef" @click="myClick" :key="new Date().getTime().toString()" v-model="myModel" :class="myClass" id="myId">
         <p>123</p>
       <template v-slot:myslot="scope">测试具名插槽{{scope}}</template>
-    </HelloWorld>-->
+    </HelloWorld>
     <button @click="msg = '123' ">测试响应式</button>
   </div>
 </template>
@@ -14,15 +13,12 @@
 <script>
 import HelloWorld from './components/HelloWorld.vue'
 import {addComponent} from './js/addCompoent'
-import vue from 'vue'
-import Echart from './components/Echart'
-
-
+import Vue from 'vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld,Echart
+    HelloWorld,
   },
   data(){
     return {
@@ -52,7 +48,7 @@ export default {
   },
   mounted(){
     //使用extend
-      let Cons = Vue.extend(HelloWorld);
+/*      let Cons = Vue.extend(HelloWorld);
       console.log(HelloWorld)
       let comVm = new Cons({
         _isComponent:true,
@@ -79,9 +75,9 @@ export default {
     props:{
       msg:this.msg
     }
-        },['紫芜丘陵未有雪，我未执枪已十三年',/*this.$createElement('template',{
+        },['紫芜丘陵未有雪，我未执枪已十三年',/!*this.$createElement('template',{
           slot:"myslot"
-        },['测试具名插槽'])*/])
+        },['测试具名插槽'])*!/])
 
       });
       comVm.$mount("#hello"); // 手动挂载
@@ -91,24 +87,7 @@ export default {
           comVm.msg = this.msg;
           comVm.$forceUpdate();
         },deep:false
-      });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+      });*/
 
 
 /*    let [mycom,proxyVue] = addComponent(this,HelloWorld,"#hello",`  <HelloWorld :msg="msg" ref="myRef" @click="myClick" :key="new Date().getTime().toString()" v-model:sk="myModel" :class="myClass" id="myId">
@@ -123,6 +102,33 @@ export default {
     proxyVue.myClick = ()=>{
       console.log(123)
     }*/
+
+
+
+/*        let [mycom,proxyVue] = addComponent(this,{
+render(h){
+  return h('div',"测试组件")
+}
+        },"#hello",`  <HelloWorld :msg="msg" ref="myRef" @click="myClick" :key="new Date().getTime().toString()" v-model:sk="myModel" :class="myClass" id="myId">
+            <p>123</p>
+            紫芜丘陵未有雪，我未执枪已十三年
+               <template v-slot:myslot="scope">测试作用域插槽{{scope.myslotProp}}</template>
+                      <template #myslot1="scope">测试作用域插槽{{scope.myslotProp}}</template>
+        </HelloWorld>`);*/
+
+    console.log(Vue)
+
+
+    Vue.component('myTestCom',Vue.extend({
+      render(createElement, hack) {
+        return createElement('h1','测试全局注册')
+      }
+    }))
+
+    console.log(Vue)
+    console.log(Vue.component)
+
+    console.log(Vue.component('myTestCom'))
 
   }
 }

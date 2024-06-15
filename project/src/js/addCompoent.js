@@ -38,7 +38,7 @@ export function addComponent(vue, compoenent, elString, templateString) {
             //插槽
             //是否有v-slot属性
             let sltoKey = Object.keys(obj.attributes).filter(item => /^(v-slot:)|#/.test(item))[0];
-            let afterSltoKey = sltoKey.replace(/^(v-slot:)|#/, "");
+            let afterSltoKey = sltoKey?.replace(/^(v-slot:)|#/, "");
             if (afterSltoKey && afterSltoKey !== 'default') {
                 //是否有参数
                 if (obj.attributes[sltoKey]) {
@@ -235,8 +235,23 @@ export function addComponent(vue, compoenent, elString, templateString) {
         if (!node || !node._vnodeConfig) {
             return '';
         }
-        if (isOneLevel) {
-            node._vnodeConfig[0] = compoenent;
+        if (typeof node._vnodeConfig[0] === "string"){
+            //判断是否存在全局注册组件
+            let rootVueCom = getComponent(node._vnodeConfig[0]);
+            //如果不存在
+            if (!rootVueCom){
+                if (isOneLevel){
+                    node._vnodeConfig[0] = compoenent
+                }
+
+            }else {
+                //如果存在
+                node._vnodeConfig[0] = rootVueCom;
+            }
+        }else {
+            if (isOneLevel){
+                node._vnodeConfig[0] = compoenent;
+            }
         }
         // let result = node._vnode;
         if (node.children && node.children.length > 0) {
@@ -362,7 +377,6 @@ function isExpression(str,collector) {
  * @returns {*}
  */
 function setJsFn(str, obj, prop) {
-    //todo 响应式
     let jsFn = isExpression.bind(this)(str)
     if (jsFn) {
         //如果是js表达式，赋值给表达式结果
@@ -442,8 +456,6 @@ function dealFn(fn,collector) {
             delete collector._fn;
         }.bind(this)
         return fnClone;
-
-
     }
 }
 
@@ -465,6 +477,30 @@ function addWatch(parentVue,collector) {
     })
 
 }
+
+/**
+ * @name 获取全局注册组件
+ * @param id 组件vue注册id
+ */
+function getComponent(id) {
+    // 将短横线替换为驼峰命名法
+    let componentName = id.replace(/-(\w)/g, function(match, p1) {
+        return p1.toUpperCase();
+    });
+
+    // 获取全局注册的组件
+    let component = Vue.component(componentName);
+
+    // 如果组件不存在，替换首字母大写后再次尝试获取
+    if (!component) {
+        componentName = componentName.charAt(0).toUpperCase() + componentName.slice(1);
+        component = Vue.component(componentName);
+    }
+    return component;
+}
+
+
+
 
 
 
