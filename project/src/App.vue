@@ -7,8 +7,10 @@
       <template v-slot:myslot="scope">测试具名插槽{{scope}}</template>
     </HelloWorld>
     <button @click="msg = '123' ">测试响应式</button>
+    <el-input v-model="abc"></el-input>
   </div>
 </template>
+
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
@@ -25,6 +27,8 @@ export default {
       msg:"Welcome to Your Vue.js App",
       myModel:"",
       myClass:"",
+      abc:'abc',
+      testColor:'red'
     }
   },
   methods:{
@@ -105,18 +109,16 @@ export default {
 
 
 
-/*        let [mycom,proxyVue] = addComponent(this,{
-render(h){
-  return h('div',"测试组件")
-}
-        },"#hello",`  <HelloWorld :msg="msg" ref="myRef" @click="myClick" :key="new Date().getTime().toString()" v-model:sk="myModel" :class="myClass" id="myId">
+        let [mycom,proxyVue] = addComponent(this,HelloWorld,"#hello",`  <HelloWorld :msg="msg" ref="myRef" @click="myClick" :key="new Date().getTime().toString()" v-model:sk="myModel" :class="myClass" id="myId" :class="[abc]" :style="{background:testColor}">
             <p>123</p>
             紫芜丘陵未有雪，我未执枪已十三年
                <template v-slot:myslot="scope">测试作用域插槽{{scope.myslotProp}}</template>
                       <template #myslot1="scope">测试作用域插槽{{scope.myslotProp}}</template>
-        </HelloWorld>`);*/
+        </HelloWorld>`);
 
-    console.log(Vue)
+/*addComponent(this,'el-input','#hello',`<el-input v-model="abc"></el-input>`)*/
+
+    /*console.log(Vue)
 
 
     Vue.component('myTestCom',Vue.extend({
@@ -128,13 +130,19 @@ render(h){
     console.log(Vue)
     console.log(Vue.component)
 
-    console.log(Vue.component('myTestCom'))
+    console.log(Vue.component('myTestCom'))*/
+
+    const self = this;
+    setTimeout(function () {
+      self.abc = ""
+      self.testColor = ''
+    },1000)
 
   }
 }
 </script>
 
-<style>
+<style scoped>
     #app {
         font-family: Avenir, Helvetica, Arial, sans-serif;
         -webkit-font-smoothing: antialiased;
@@ -142,5 +150,8 @@ render(h){
         text-align: center;
         color: #2c3e50;
         margin-top: 60px;
+    }
+    .abc{
+      color: red;
     }
 </style>
