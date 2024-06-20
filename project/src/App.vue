@@ -28,12 +28,13 @@ export default {
       myModel:"",
       myClass:"",
       abc:'abc',
-      testColor:'red'
+      testColor:'red',
+      vForArr:[1,2]
     }
   },
   methods:{
     myClick(){
-      console.log("触发了我的点击事件")
+      console.log("触发了我的点击事件");
       alert("触发了app传递给hello的点击事件")
     }
   },
@@ -106,17 +107,45 @@ export default {
     proxyVue.myClick = ()=>{
       console.log(123)
     }*/
-
-
-
-        let [mycom,proxyVue] = addComponent(this,HelloWorld,"#hello",`  <HelloWorld :msg="msg" ref="myRef" @click="myClick" :key="new Date().getTime().toString()" v-model:sk="myModel" :class="myClass" id="myId" :class="[abc]" :style="{background:testColor}">
+/*        let [mycom,proxyVue] = addComponent(this,HelloWorld,"#hello",`  <HelloWorld :msg="msg" ref="myRef" @click="myClick" :key="new Date().getTime().toString()" :class="myClass" id="myId" :class="[abc]" :style="{background:testColor}">
             <p>123</p>
             紫芜丘陵未有雪，我未执枪已十三年
+            <P v-for="(item,index) in vForArr" :key="index">{{item}}</P>
                <template v-slot:myslot="scope">测试作用域插槽{{scope.myslotProp}}</template>
                       <template #myslot1="scope">测试作用域插槽{{scope.myslotProp}}</template>
-        </HelloWorld>`);
+        </HelloWorld>`);*/
 
-/*addComponent(this,'el-input','#hello',`<el-input v-model="abc"></el-input>`)*/
+// addComponent(this,'el-input','#hello',`<el-input v-model="abc"></el-input>`)
+    const self = this;
+
+    let [myCom, proxy] = addComponent(this, {
+      props: {
+        value:{
+          type:String,
+          default:''
+        }
+      },
+      data(){
+        return{}
+      },
+      render(createElement, context) {
+        return createElement(Vue.component('ElInput'),{
+          on:{
+            input(value){
+              self.abc = value;
+            }
+          },
+          props:{
+            value:this.value
+          }
+        })
+      }
+    }, '#hello', `
+        <myCom :value="abc" style="font-size: 14px"></myCom>
+      `)
+
+
+
 
     /*console.log(Vue)
 
@@ -132,11 +161,10 @@ export default {
 
     console.log(Vue.component('myTestCom'))*/
 
-    const self = this;
-    setTimeout(function () {
+/*    setTimeout(function () {
       self.abc = ""
       self.testColor = ''
-    },1000)
+    },1000)*/
 
   }
 }

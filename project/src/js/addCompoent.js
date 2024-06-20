@@ -9,23 +9,40 @@ import Vue from "vue";
  * @returns {*} 返回父组件的代理对象
  */
 export function addComponent(vue, compoenent, elString, templateString) {
-    if (typeof compoenent === "string"){
+    if (typeof compoenent === "string") {
         compoenent = getComponent(compoenent);
     }
-    let valueKey =[];
+    let valueKey = [];
 //原生事件不要加，
     //js表达式相关逻辑处理没有
     //作用域插槽总配置项
     //注入和提供的处理
     let collector = {};
     let parentVue = vue;
-    vue = impleReactive(vue,collector);
+    vue = impleReactive(vue, collector);
     let scopedSlots = {};
     let myComp;
     //得到组件构造函数
     let Compoent = Vue.extend(compoenent);
     let tree = parseHTML(templateString);
     dealTree(tree[0], (obj, parent) => {
+        //v-for,的处理
+        //如果存在v-for
+        /*        if (obj.attributes['v-for']){
+                    let vForString = obj.attributes['v-for'];
+                    let wrods = vForString.split(' ');
+                    let itemString = '';
+                    let indexString = '';
+                    let arrString = '';
+                    if (wrods[0].includes(",")){
+                        wrods[0] = wrods[0].replace(/[(\)]/,"");
+                        itemString = wrods[0].split(",")[0];
+                        indexString = wrods[0].split(',')[1];
+                    } else {
+                        itemString = wrods[0].replace(/[(\)]/,"");
+                    }
+                    arrString = wrods[2];
+                }*/
         //如果父组件是作用域插槽
         let slotScope = "";
         if (parent?.slotKey) {
@@ -41,11 +58,6 @@ export function addComponent(vue, compoenent, elString, templateString) {
         let topClass = {};
         let topstyle = {};
         let domProps = {};//dom属性，domProps设置的属性会直接映射到DOM元素上，这意味着，domProps可以设置一些特殊的属性，例如value、checked等，而attrs则适用于一般的HTML属性。
-        //v-model, v-for,的处理
-
-
-
-
         if (obj.tagName === "template") {
             //插槽
             //是否有v-slot属性
@@ -86,7 +98,7 @@ export function addComponent(vue, compoenent, elString, templateString) {
                         //判断fn是否存在，不存在判断是否是js表达式
                         //判断js表达式
                         if (!fn) {
-                            let jsFn = isExpression.bind(vue)(obj.attributes[item],collector)
+                            let jsFn = isExpression.bind(vue)(obj.attributes[item], collector)
                             if (jsFn) {
                                 fn = jsFn;
                             }
@@ -97,7 +109,7 @@ export function addComponent(vue, compoenent, elString, templateString) {
                                 handleReactive(key, () => {
                                     //更新数据
                                     myComp.$off(eventName);
-                                    myComp.$on(eventName,vue[key])
+                                    myComp.$on(eventName, vue[key])
                                 }, collector)
                             })(eventName)
                         }
@@ -163,7 +175,7 @@ export function addComponent(vue, compoenent, elString, templateString) {
                     })()
                     ref = vue[obj.attributes[refValue]];
                 } else {
-                    let jsFn = isExpression.bind(vue)(obj.attributes[refValue],collector)
+                    let jsFn = isExpression.bind(vue)(obj.attributes[refValue], collector)
                     if (jsFn) {
                         //如果是js表达式
                         ref = jsFn;
@@ -178,7 +190,7 @@ export function addComponent(vue, compoenent, elString, templateString) {
                 if (vue[obj.attributes[keyValue]]) {
                     let key = obj.attributes[keyValue];
 
-                    (function(){
+                    (function () {
                         handleReactive(key, () => {
                             myComp['key'] = vue[key]
                         }, collector)
@@ -186,7 +198,7 @@ export function addComponent(vue, compoenent, elString, templateString) {
 
                     key = vue[obj.attributes[keyValue]];
                 } else {
-                    let jsFn = isExpression.bind(vue)(obj.attributes[keyValue],collector)
+                    let jsFn = isExpression.bind(vue)(obj.attributes[keyValue], collector)
                     if (jsFn) {
                         //如果是js表达式
                         key = jsFn;
@@ -196,67 +208,69 @@ export function addComponent(vue, compoenent, elString, templateString) {
                 }
             }
             //处理原生属性
-            let domPropsString = ['checked','value','innerHTML']//dom属性数组，
+            let domPropsString = ['checked', 'value', 'innerHTML']//dom属性数组，
             keys.filter(item => !/^(@|:|v-)/.test(item)).forEach(item => {
-                if (!domPropsString.includes(item)){
+                if (!domPropsString.includes(item)) {
                     //如果不是dom属性，就是html属性
                     attrs[item] = obj.attributes[item]
-                }else {
+                } else {
                     domProps[item] = obj.attributes[item]
                 }
             })
 
             //处理顶层class
-            function dealTopClassOrStyle(top,rel=/^(v-bind|:)class$/){
-                keys.filter(item =>rel.test(item)).forEach(item =>{
+            function dealTopClassOrStyle(top, rel = /^(v-bind|:)class$/) {
+                keys.filter(item => rel.test(item)).forEach(item => {
                     let value = obj.attributes[item]
-                  //只考虑三种写法，对象，数组，变量，
+                    //只考虑三种写法，对象，数组，变量，
                     //1.变量
-                    if(!/^([{\[])/.test(value)){
+                    if (!/^([{\[])/.test(value)) {
                         let rel = /^['"`].+['"`]$/
                         //判断是否为字符串
-                        if (rel.test(value)){
-                            top.fn =()=> value.replace(/['"`]/g,"")
+                        if (rel.test(value)) {
+                            top.fn = () => value.replace(/['"`]/g, "")
 
                         } else {
                             //如果存在改变量
-                            if(vue[value]){
-                                top.fn =function(){return vue[value]};
+                            if (vue[value]) {
+                                top.fn = function () {
+                                    return vue[value]
+                                };
                             }
                         }
-                    }else
+                    } else
                     //2.对象
-                    if(/^{/.test(value)){
+                    if (/^{/.test(value)) {
                         //如果是对象，“{  'sdf':kdslfj,"ksdf":"sdf"}”
                         //去掉大括号
-                        value = value.replace(/[{}]/g,"");
+                        value = value.replace(/[{}]/g, "");
                         //按照逗号分割
                         let arr = value.split(",");
-                        top.fn = function(){
+                        top.fn = function () {
                             let myobj = {};
-                            arr.forEach(item =>{
+                            arr.forEach(item => {
                                 let label = item.split(":")[0];
                                 let labelValue = item.split(":")[1]
                                 let isString = /^['"`].+['"`]$/
                                 //判断是否为true
                                 //不考虑表达式了
-                                if(!isString.test(labelValue) && vue[labelValue]){
+                                if (!isString.test(labelValue) && vue[labelValue]) {
                                     //实现响应式
-                                    if(rel === /^(v-bind|:)class$/){
+                                    if (rel === /^(v-bind|:)class$/) {
                                         myobj[label] = !!vue[labelValue]
-                                    }else {
+                                    } else {
                                         myobj[label] = vue[labelValue]
                                         //增加响应式
-                                        handleReactive(labelValue,()=>{
-                                          myComp.$el.style[label] = vue[labelValue]
-                                        },collector)
+                                        handleReactive(labelValue, () => {
+                                            myComp.$el.style[label] = vue[labelValue]
+                                        }, collector)
                                     }
-                                }else {
-                                    if(rel === /^(v-bind|:)class$/){
-                                        if(labelValue === 'true'){
+                                } else {
+                                    if (rel === /^(v-bind|:)class$/) {
+                                        if (labelValue === 'true') {
                                             myobj[label] = true;
                                         }
-                                    }else {
+                                    } else {
                                         myobj[label] = labelValue;
 
                                     }
@@ -264,24 +278,24 @@ export function addComponent(vue, compoenent, elString, templateString) {
                             })
                             return myobj
                         }
-                    }else
+                    } else
                     //3.数组
-                    if(/^\[/.test(value)){
-                     //不考虑js表达式
+                    if (/^\[/.test(value)) {
+                        //不考虑js表达式
                         //去掉中括号
-                        value = value.replace(/[\[\]]/g,"");
+                        value = value.replace(/[\[\]]/g, "");
                         let arr = value.split(",");
-                        top.fn = function(){
+                        top.fn = function () {
                             let myarr = [];
-                            arr.forEach(item   =>{
+                            arr.forEach(item => {
                                 //判断是否为字符串
                                 let rel = /^['"`].+['"`]$/
-                                if (rel.test(item)){
+                                if (rel.test(item)) {
                                     //如果是字符串
-                                    myarr.push(item.replace(/['"`]/g,""))
-                                }else {
+                                    myarr.push(item.replace(/['"`]/g, ""))
+                                } else {
                                     //判断是否为vue的属性
-                                    if(vue[item]) {
+                                    if (vue[item]) {
                                         //实现响应式
                                         myarr.push(vue[item])
                                     }
@@ -292,28 +306,29 @@ export function addComponent(vue, compoenent, elString, templateString) {
                     }
                 })
             }
-            dealTopClassOrStyle(topClass,/^(v-bind|:)class$/);
-            dealTopClassOrStyle(topstyle,/^(v-bind|:)style$/);
+
+            dealTopClassOrStyle(topClass, /^(v-bind|:)class$/);
+            dealTopClassOrStyle(topstyle, /^(v-bind|:)style$/);
 
 
             //处理v-model属性
-            function dealvModel(){
-                keys.filter(item =>/^v-model$/.test(item)).forEach(item =>{
-                  //存在v-model属性，
+            function dealvModel() {
+                keys.filter(item => /^v-model$/.test(item)).forEach(item => {
+                    //存在v-model属性，
                     let value = obj.attributes[item];
-                    if(jugeisStrign(value)){
+                    if (jugeisStrign(value)) {
                         //如果是字符串,不做处理
                         // domProps.value = value;
-                    }else {
+                    } else {
                         //如果不是字符串
-                        if (vue[value]){
-                       // props.value = vue[value]
+                        if (vue[value]) {
+                            // props.value = this.value
                             //实现响应式
                             let key = value;
                             (function () {
                                 handleReactive(key, () => {
                                     //更新数据
-                                    myComp.value = vue[key]
+                                     myComp.value = vue[key]
                                 }, collector)
                             })()
                             valueKey.push(value);
@@ -328,7 +343,7 @@ export function addComponent(vue, compoenent, elString, templateString) {
 
             dealvModel()
 
-            let options = {on, props, nativeOn, attrs, ref, key,class:topClass,style:topstyle,domProps,};
+            let options = {on, props, nativeOn, attrs, ref, key, class: topClass, style: topstyle, domProps,};
             if (typeof ref === "function") {
                 Object.defineProperty(options, 'ref', {
                     get() {
@@ -343,29 +358,28 @@ export function addComponent(vue, compoenent, elString, templateString) {
                     }
                 })
             }
-            if(typeof topClass.fn === "function"){
-                Object.defineProperty(options,'class',{
-                    get(){
+            if (typeof topClass.fn === "function") {
+                Object.defineProperty(options, 'class', {
+                    get() {
                         return topClass.fn();
                     }
                 })
 
             }
-            if(typeof topstyle.fn === "function"){
-                Object.defineProperty(options,'style',{
+            if (typeof topstyle.fn === "function") {
+                Object.defineProperty(options, 'style', {
                     get() {
                         return topstyle.fn();
                     }
                 })
             }
-            if(typeof domProps.fn === "function"){
-                Object.defineProperty(options,"domProps",{
+            if (typeof domProps.fn === "function") {
+                Object.defineProperty(options, "domProps", {
                     get() {
                         return domProps.fn();
                     }
                 })
             }
-
 
 
             if (Object.keys(on).length === 0) {
@@ -390,37 +404,35 @@ export function addComponent(vue, compoenent, elString, templateString) {
     myComp = new Compoent({
         _isComponent: true, parent: parentVue, _parentVnode: vNodesTree
     }).$mount(elString);
-    addWatch(parentVue,collector)
-    //触发更新
-    setTimeout(     valueKey.forEach(item =>{
+    addWatch(parentVue, collector)
+    // 触发更新
+    setTimeout(valueKey.forEach(item => {
         vue[item] = vue[item]
-    }),1000)
+    }), )
 
 
-
-
-    return [myComp,vue];
+    return [myComp, vue];
 
 
     function concatVNodes(node, isOneLevel = true) {
         if (!node || !node._vnodeConfig) {
             return '';
         }
-        if (typeof node._vnodeConfig[0] === "string"){
+        if (typeof node._vnodeConfig[0] === "string") {
             //判断是否存在全局注册组件
             let rootVueCom = getComponent(node._vnodeConfig[0]);
             //如果不存在
-            if (!rootVueCom){
-                if (isOneLevel){
+            if (!rootVueCom) {
+                if (isOneLevel) {
                     node._vnodeConfig[0] = compoenent
                 }
 
-            }else {
+            } else {
                 //如果存在
                 node._vnodeConfig[0] = rootVueCom;
             }
-        }else {
-            if (isOneLevel){
+        } else {
+            if (isOneLevel) {
                 node._vnodeConfig[0] = compoenent;
             }
         }
@@ -525,7 +537,7 @@ function convertToTemplateString(fixedString, dynamicIdentifier) {
 }
 
 
-function isExpression(str,collector) {
+function isExpression(str, collector) {
     try {
         //判断是否包含空格
         let rel = /[ .()]/;
@@ -534,7 +546,7 @@ function isExpression(str,collector) {
         }
         // 尝试将字符串解析为 JavaScript 代码
         let jsFn = new Function(`return ${str}`).bind(this);
-        return dealFn(jsFn,collector).bind(this);
+        return dealFn(jsFn, collector).bind(this);
     } catch (e) {
         // 如果抛出错误，则不是有效的表达式
         return false;
@@ -570,8 +582,8 @@ function impleReactive(obj, collector) {
     let proxy = new Proxy(obj, {
         get(target, p, receiver) {
             //进行依赖收集  ,不会弄
-            if (collector._fn && typeof collector._fn === "function"){
-                handleReactive(p,collector._fn,collector);
+            if (collector._fn && typeof collector._fn === "function") {
+                handleReactive(p, collector._fn, collector);
             }
             return Reflect.get(target, p)
         },
@@ -579,7 +591,7 @@ function impleReactive(obj, collector) {
             Reflect.set(target, p, value)
             //触发组件更新
             if (collector[p] && Array.isArray(collector[p])) {
-                collector[p].forEach(item =>{
+                collector[p].forEach(item => {
                     item.bind(obj)()
                 })
             }
@@ -604,8 +616,8 @@ function impleReactive(obj, collector) {
  */
 function handleReactive(key, callback, collector) {
     key = key.split(".")[0];
-    if (collector[key]){
-        if (!collector[key].includes(callback) && !collector[key].map(item =>item.toString()).includes(callback.toString())){
+    if (collector[key]) {
+        if (!collector[key].includes(callback) && !collector[key].map(item => item.toString()).includes(callback.toString())) {
             collector[key].push(callback);
         }
     } else {
@@ -619,8 +631,8 @@ function handleReactive(key, callback, collector) {
  * @param fn 要处理的函数
  * @param collector 收集器
  */
-function dealFn(fn,collector) {
-    if (fn && typeof fn === "function"){
+function dealFn(fn, collector) {
+    if (fn && typeof fn === "function") {
         let fnClone = function () {
             //记录原本函数
             collector._fn = fn;
@@ -638,15 +650,15 @@ function dealFn(fn,collector) {
  * @param parentVue 父组件
  * @param collector 收集器
  */
-function addWatch(parentVue,collector) {
-    Object.keys(collector).forEach(key =>{
-        parentVue.$watch(key,{
-            handler(){
-                collector[key].forEach(fn =>{
+function addWatch(parentVue, collector) {
+    Object.keys(collector).forEach(key => {
+        parentVue.$watch(key, {
+            handler() {
+                collector[key].forEach(fn => {
                     fn()
                 })
             },
-            deep:true,
+            deep: true,
         })
     })
 
@@ -658,7 +670,7 @@ function addWatch(parentVue,collector) {
  */
 function getComponent(id) {
     // 将短横线替换为驼峰命名法
-    let componentName = id.replace(/-(\w)/g, function(match, p1) {
+    let componentName = id.replace(/-(\w)/g, function (match, p1) {
         return p1.toUpperCase();
     });
 
@@ -681,10 +693,3 @@ function jugeisStrign(str) {
     let isString = /^['"`].+['"`]$/
     return isString.test(str);
 }
-
-
-
-
-
-
-
