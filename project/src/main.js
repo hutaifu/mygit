@@ -23,6 +23,8 @@ Vue.component(Input.name,Input)
  * Vue.use(Select)
  */
 
+Vue.devtools = true;
+
 
 
 
