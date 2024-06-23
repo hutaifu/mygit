@@ -127,6 +127,10 @@ export default {
                   <template #myslot1="scope">测试作用域插槽{{scope.myslotProp}}</template>
     </HelloWorld>`);*/
     myaddCom(this,'ElInput','hello',`<el-input v-model="abc" :class="abc"></el-input>`)
+
+    setTimeout(()=>{
+      this.abc = "abcdsf"
+    },3000)
   }
 }
 </script>
@@ -141,6 +145,6 @@ export default {
         margin-top: 60px;
     }
     .abc{
-      color: red;
+      width: 100px;
     }
 </style>
