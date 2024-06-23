@@ -126,7 +126,7 @@ export default {
            <template v-slot:myslot="scope">测试作用域插槽{{scope.myslotProp}}</template>
                   <template #myslot1="scope">测试作用域插槽{{scope.myslotProp}}</template>
     </HelloWorld>`);*/
-    myaddCom(this,'ElInput','hello',`<el-input v-model="abc"></el-input>`)
+    myaddCom(this,'ElInput','hello',`<el-input v-model="abc" :class="abc"></el-input>`)
   }
 }
 </script>

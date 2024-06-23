@@ -76,6 +76,12 @@ export default function addComponent(parentVue,addComponent,id,template) {
                 dealKey(parentVue,obj,key)
                 //处理class和html
                 dealClassAndStyle(obj,topClass,topstyle,parentVue);
+                if (topstyle.value){
+                    topstyle = topstyle.value;
+                }
+                if (topClass.value){
+                    topClass = topClass.value;
+                }
                 //处理原生事件属性
                 dealDomProps(obj,attrs,domProps);
                 //处理双向绑定
