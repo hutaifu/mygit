@@ -37,6 +37,9 @@ export default function addComponent(parentVue,addComponent,id,template) {
     }
     //解析模板字符串
     let tree = parseHTML(template);
+    //记录是否第一次，v-model第一次不会更新，？？？
+    let isOnce = true;
+    let modelKey = [];
 
     //形成闭包
     let render = ()=>{
@@ -50,13 +53,6 @@ export default function addComponent(parentVue,addComponent,id,template) {
                 slotScope = parent.attributes[parent.slotKey]
             }
             //声明配置项
-            //             model: {
-            //                   value: _vm.myModel,
-            //                   callback: function ($$v) {
-            //                     _vm.myModel = $$v
-            //                   },
-            //                   expression: "myModel",
-            //                 },
             let model = {};
             let on = {};//事件
             let nativeOn = {};//原生事件
@@ -83,7 +79,7 @@ export default function addComponent(parentVue,addComponent,id,template) {
                 //处理原生事件属性
                 dealDomProps(obj,attrs,domProps);
                 //处理双向绑定
-                dealvModel(obj,parentVue,model)
+                dealvModel(obj,parentVue,model,modelKey)
                 //合并配置项
                 let options = {on,nativeOn, attrs, ref, key, class: topClass, style: topstyle, domProps,model};
                 if (Object.keys(on).length === 0) {
@@ -115,6 +111,24 @@ export default function addComponent(parentVue,addComponent,id,template) {
     let myComp = new AddComponentConstr({
         _isComponent: true, parent: parentVue, _parentVnode: vNode
     }).$mount(`#${id}`);
+
+    if (isOnce){
+        if (modelKey.length !== 0){
+            setTimeout(()=>{
+                //触发第一次v-model更新，离谱
+                modelKey.forEach(key =>{
+                    let value = parentVue[key]
+                    parentVue[key] = "";
+                    setTimeout(()=>{
+                        parentVue[key] = value
+                    })
+                })
+            })
+        }
+        isOnce = false;
+    }
+
+
     function jugeidVnode(id,vnode) {
         if (vnode?.data?.attrs?.id === id){
             return true;

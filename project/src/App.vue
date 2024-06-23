@@ -7,7 +7,7 @@
       <template v-slot:myslot="scope">测试具名插槽{{scope}}</template>
     </HelloWorld>
     <button @click="msg = '123' ">测试响应式</button>
-<!--    <el-input v-model="abc"></el-input>-->
+    <el-input v-model="abc"></el-input>
   </div>
 </template>
 
@@ -120,12 +120,13 @@ export default {
       console.log(Cons);
     const self = this;*/
 
-    let myCom = myaddCom(this,HelloWorld,"hello",`  <HelloWorld :msg="msg" ref="myRef" @click="myClick" :key="new Date().getTime().toString()" v-model:sk="myModel" :class="myClass" id="myId">
+/*    let myCom = myaddCom(this,HelloWorld,"hello",`  <HelloWorld :msg="msg" ref="myRef" @click="myClick" :key="new Date().getTime().toString()" v-model:sk="myModel" :class="myClass" id="myId">
         <p>123</p>
         紫芜丘陵未有雪，我未执枪已十三年
            <template v-slot:myslot="scope">测试作用域插槽{{scope.myslotProp}}</template>
                   <template #myslot1="scope">测试作用域插槽{{scope.myslotProp}}</template>
-    </HelloWorld>`);
+    </HelloWorld>`);*/
+    myaddCom(this,'ElInput','hello',`<el-input v-model="abc"></el-input>`)
   }
 }
 </script>
