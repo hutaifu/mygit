@@ -1,5 +1,6 @@
 
-export default function dealDomProps(keys,attrs,domProps){
+export default function dealDomProps(obj,attrs,domProps){
+    let keys = Object.keys(obj.attributes);
     //处理原生属性
     let domPropsString = ['checked', 'value', 'innerHTML']//dom属性数组，
     keys.filter(item => !/^(@|:|v-)/.test(item)).forEach(item => {

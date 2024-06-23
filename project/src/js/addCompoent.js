@@ -132,11 +132,11 @@ export function addComponent(vue, compoenent, elString, templateString) {
                     let value = obj.attributes[item];
                     // 处理布尔类型
                     if (value === "false") {
-                        optionsPropertyObj[item] = false;
+                        optionsPropertyObj[afterItem] = false;
                     } else if (value === "true") {
-                        optionsPropertyObj[item] = true;
+                        optionsPropertyObj[afterItem] = true;
                     } else if (!isNaN(Number(value))) { // 检查是否为数字
-                        optionsPropertyObj[item] = Number(value); // 转换为数字
+                        optionsPropertyObj[afterItem] = Number(value); // 转换为数字
                     } else {
                         // 其他情况，假设是绑定的属性
                         if (vue[value]) {

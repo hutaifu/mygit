@@ -16,6 +16,7 @@
 import HelloWorld from './components/HelloWorld.vue'
 import {addComponent} from './js/addCompoent'
 import Vue from 'vue'
+import myaddCom from "./js/myAddCompont"
 
 export default {
   name: 'App',
@@ -53,7 +54,7 @@ export default {
   },
   mounted(){
 
-    //使用extend
+/*    //使用extend
     let _vm = this;
     let _c = this.$createElement;
     let _render = ()=>{
@@ -117,8 +118,14 @@ export default {
     }
       comVm.$mount("#hello"); // 手动挂载
       console.log(Cons);
-    const self = this;
+    const self = this;*/
 
+    let myCom = myaddCom(this,HelloWorld,"hello",`  <HelloWorld :msg="msg" ref="myRef" @click="myClick" :key="new Date().getTime().toString()" v-model:sk="myModel" :class="myClass" id="myId">
+        <p>123</p>
+        紫芜丘陵未有雪，我未执枪已十三年
+           <template v-slot:myslot="scope">测试作用域插槽{{scope.myslotProp}}</template>
+                  <template #myslot1="scope">测试作用域插槽{{scope.myslotProp}}</template>
+    </HelloWorld>`);
   }
 }
 </script>

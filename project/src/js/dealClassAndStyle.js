@@ -1,6 +1,7 @@
 
 
-export default function dealClassAndStyle(top,rel,keys,obj,topClass,topStyle,vue){
+export default function dealClassAndStyle(obj,topClass,topStyle,vue){
+    let keys = Object.keys(obj.attributes)
     dealTopClassOrStyle(topClass, /^(v-bind|:)class$/,keys,obj,vue);
     dealTopClassOrStyle(topStyle, /^(v-bind|:)style$/,keys,obj,vue);
 }
@@ -15,14 +16,12 @@ function dealTopClassOrStyle(top, rel = /^(v-bind|:)class$/,keys,obj,vue) {
             let rel = /^['"`].+['"`]$/
             //判断是否为字符串
             if (rel.test(value)) {
-                top.fn = () => value.replace(/['"`]/g, "")
+                top = value.replace(/['"`]/g, "")
 
             } else {
                 //如果存在改变量
                 if (vue[value]) {
-                    top.fn = function () {
-                        return vue[value]
-                    };
+                    top.fn = vue[value]
                 }
             }
         } else
@@ -33,7 +32,6 @@ function dealTopClassOrStyle(top, rel = /^(v-bind|:)class$/,keys,obj,vue) {
             value = value.replace(/[{}]/g, "");
             //按照逗号分割
             let arr = value.split(",");
-            top.fn = function () {
                 let myobj = {};
                 arr.forEach(item => {
                     let label = item.split(":")[0];
@@ -47,10 +45,6 @@ function dealTopClassOrStyle(top, rel = /^(v-bind|:)class$/,keys,obj,vue) {
                             myobj[label] = !!vue[labelValue]
                         } else {
                             myobj[label] = vue[labelValue]
-                            //增加响应式
-                            handleReactive(labelValue, () => {
-                                myComp.$el.style[label] = vue[labelValue]
-                            }, collector)
                         }
                     } else {
                         if (rel === /^(v-bind|:)class$/) {
@@ -59,12 +53,10 @@ function dealTopClassOrStyle(top, rel = /^(v-bind|:)class$/,keys,obj,vue) {
                             }
                         } else {
                             myobj[label] = labelValue;
-
                         }
                     }
                 })
-                return myobj
-            }
+                top = myobj
         } else
         //3.数组
         if (/^\[/.test(value)) {
@@ -72,7 +64,6 @@ function dealTopClassOrStyle(top, rel = /^(v-bind|:)class$/,keys,obj,vue) {
             //去掉中括号
             value = value.replace(/[\[\]]/g, "");
             let arr = value.split(",");
-            top.fn = function () {
                 let myarr = [];
                 arr.forEach(item => {
                     //判断是否为字符串
@@ -88,8 +79,8 @@ function dealTopClassOrStyle(top, rel = /^(v-bind|:)class$/,keys,obj,vue) {
                         }
                     }
                 })
-                return myarr;
-            }
+            top = myarr;
+
         }
     })
 }
