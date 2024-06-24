@@ -132,11 +132,11 @@ export function addComponent(vue, compoenent, elString, templateString) {
                     let value = obj.attributes[item];
                     // 处理布尔类型
                     if (value === "false") {
-                        optionsPropertyObj[afterItem] = false;
+                        optionsPropertyObj[item] = false;
                     } else if (value === "true") {
-                        optionsPropertyObj[afterItem] = true;
+                        optionsPropertyObj[item] = true;
                     } else if (!isNaN(Number(value))) { // 检查是否为数字
-                        optionsPropertyObj[afterItem] = Number(value); // 转换为数字
+                        optionsPropertyObj[item] = Number(value); // 转换为数字
                     } else {
                         // 其他情况，假设是绑定的属性
                         if (vue[value]) {
@@ -151,7 +151,7 @@ export function addComponent(vue, compoenent, elString, templateString) {
                             })(afterItem)
 
                         } else {
-                            setJsFn.bind(vue)(value, optionsPropertyObj, afterItem,collector)
+                            setJsFn.bind(vue)(value, optionsPropertyObj, afterItem)
                         }
                     }
                 });
@@ -560,8 +560,8 @@ function isExpression(str, collector) {
  * @param prop 赋值对象的属性
  * @returns {*}
  */
-function setJsFn(str, obj, prop,colloctor) {
-    let jsFn = isExpression.bind(this)(str,colloctor)
+function setJsFn(str, obj, prop) {
+    let jsFn = isExpression.bind(this)(str)
     if (jsFn) {
         //如果是js表达式，赋值给表达式结果
         Object.defineProperty(obj, prop, {

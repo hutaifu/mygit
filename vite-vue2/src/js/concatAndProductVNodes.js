@@ -1,5 +1,4 @@
-import getComponent from "@/js/getComponent";
-export default function concatVNodes(node,compoenent,scopedSlots,parentVue,isOneLevel = true) {
+function concatVNodes(node, isOneLevel = true) {
     if (!node || !node._vnodeConfig) {
         return '';
     }
@@ -25,8 +24,8 @@ export default function concatVNodes(node,compoenent,scopedSlots,parentVue,isOne
     if (node.children && node.children.length > 0) {
         let childrenVnod = [];
         node.children.forEach(child => {
-            childrenVnod.push(concatVNodes(child,null,scopedSlots,parentVue,false));
-            if (Object.keys(scopedSlots)?.includes(node.slotKey?.replace(/^(v-slot:)|#/,""))) {
+            childrenVnod.push(concatVNodes(child, false));
+            if (Object.keys(scopedSlots)?.includes(node.slotKey?.replace(/^(v-slot:)|#/, ""))) {
                 scopedSlots[node.slotKey.replace(/^(v-slot:)|#/, "")] = (props) => {
                     let str = JSON.stringify(childrenVnod[childrenVnod.length - 1]).replace("[[", "${").replace("]]", "}");
                     return JSON.parse(eval(`\`${str}\``));

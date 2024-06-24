@@ -1,7 +1,5 @@
-import {isExpression} from "@/js/jsExpress";
 // 匹配事件绑定
-export default function getEventBindings(obj,nativeOn,on,vue) {
-    let keys = Object.keys(obj.attributes)
+function getEventBindings(keys,obj,nativeOn,on,vue) {
     let regex = /(?:@|v-on:)([a-zA-Z]+)(?:\.([\w.]+))*(?![\w.-]*\.native(?:$|\B))/;
     let matchedKeys = keys.filter(item => regex.test(item));
     matchedKeys.forEach(item => {
@@ -15,11 +13,20 @@ export default function getEventBindings(obj,nativeOn,on,vue) {
             //判断fn是否存在，不存在判断是否是js表达式
             //判断js表达式
             if (!fn) {
-                let jsFn = isExpression.bind(vue)(obj.attributes[item])
+                let jsFn = isExpression.bind(vue)(obj.attributes[item], collector)
                 if (jsFn) {
-                    //如果是js表达式
                     fn = jsFn;
                 }
+            } else {
+                //实现响应式
+                let key = obj.attributes[item];
+                (function (eventName) {
+                    handleReactive(key, () => {
+                        //更新数据
+                        myComp.$off(eventName);
+                        myComp.$on(eventName, vue[key])
+                    }, collector)
+                })(eventName)
             }
             //是否为原生事件
             if (match[2] !== 'native') {

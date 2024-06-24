@@ -16,6 +16,7 @@
 import HelloWorld from './components/HelloWorld.vue'
 import {addComponent} from './js/addCompoent'
 import Vue from 'vue'
+import myaddCom from "./js/myAddCompont"
 
 export default {
   name: 'App',
@@ -52,120 +53,84 @@ export default {
     }
   },
   mounted(){
-    //使用extend
-/*      let Cons = Vue.extend(HelloWorld);
-      console.log(HelloWorld)
-      let comVm = new Cons({
-        _isComponent:true,
-        parent:this,
-        _parentVnode:this.$createElement('HelloWorld',{
-          scopedSlots:{
-            myslot:props => {return this.$createElement('h1',`测试作用域插槽${props.myslotProp}`)},
-          },on:{
-          click:function(){
-            console.log("js增加的点击事件")
-          },},
-          class: {
-      foo: true,
-      bar: false
-    },
-    key: 'myKey',
-    ref: 'myRef',
-    nativeOn: {
-      // click: this.nativeClickHandler
-    },//原生的事件会绑定在组件跟元素上，不是组件内部定义并且使用$emit触发的事件
-     attrs: {
-      id: 'foo'
-    }, // 普通的 HTML attribute
-    props:{
-      msg:this.msg
-    }
-        },['紫芜丘陵未有雪，我未执枪已十三年',/!*this.$createElement('template',{
-          slot:"myslot"
-        },['测试具名插槽'])*!/])
 
-      });
+/*    //使用extend
+    let _vm = this;
+    let _c = this.$createElement;
+    let _render = ()=>{
+      let Vnode = this.$createElement(
+              HelloWorld,
+              {
+                key: "5485454",
+                ref: "myRef",
+                class: _vm.myClass,
+                attrs: { msg: _vm.msg, id: "myIdJs" },
+                on: { click: _vm.myClick },
+                scopedSlots: _vm._u([
+                  {
+                    key: "myslot",
+                    fn: function (scope) {
+                      return [_vm._v("测试具名插槽" + _vm._s(scope))]
+                    },
+                  },
+                ]),
+                model: {
+                  value: _vm.myModel,
+                  callback: function ($$v) {
+                    _vm.myModel = $$v
+                  },
+                  expression: "myModel",
+                },
+              },
+              [_c("p", [_vm._v("123")])]
+          );
+      return Vnode;
+    }
+
+    let _vnode = _render();
+
+    let Cons = Vue.extend(HelloWorld);
+    console.log(HelloWorld)
+    let comVm = new Cons({
+      _isComponent:true,
+      parent:this,
+      _parentVnode:_vnode,
+    });
+    //替换当前组件虚拟节点
+    let index = this._vnode.children.findIndex(item => item?.data?.attrs?.id === 'hello');
+    if (index){
+      this._vnode.children[index] = _vnode;
+    }
+
+    _vnode.componentInstance = comVm;
+
+
+    let render = this.$options.render.bind(this);
+    this.$options.render = ()=>{
+      let vnode = render();
+      let child = _render();
+      //找到选择器id = hello的虚拟节点，替换掉
+      let index = vnode.children.findIndex(item => item?.data?.attrs?.id === 'hello');
+      if (index){
+        vnode.children[index] = child;
+      }
+      return vnode;
+    }
       comVm.$mount("#hello"); // 手动挂载
       console.log(Cons);
-      this.$watch('msg',{
-        handler(n,o){
-          comVm.msg = this.msg;
-          comVm.$forceUpdate();
-        },deep:false
-      });*/
+    const self = this;*/
 
-
-/*    let [mycom,proxyVue] = addComponent(this,HelloWorld,"#hello",`  <HelloWorld :msg="msg" ref="myRef" @click="myClick" :key="new Date().getTime().toString()" v-model:sk="myModel" :class="myClass" id="myId">
+/*    let myCom = myaddCom(this,HelloWorld,"hello",`  <HelloWorld :msg="msg" ref="myRef" @click="myClick" :key="new Date().getTime().toString()" v-model:sk="myModel" :class="myClass" id="myId">
         <p>123</p>
         紫芜丘陵未有雪，我未执枪已十三年
            <template v-slot:myslot="scope">测试作用域插槽{{scope.myslotProp}}</template>
                   <template #myslot1="scope">测试作用域插槽{{scope.myslotProp}}</template>
-    </HelloWorld>`);
+    </HelloWorld>`);*/
+    myaddCom(this,'ElInput','hello',`<el-input v-model="abc" :class="abc"></el-input>`)
 
-    console.log(proxyVue);
-    proxyVue.msg = '测试代理对象'
-    proxyVue.myClick = ()=>{
-      console.log(123)
-    }*/
-/*        let [mycom,proxyVue] = addComponent(this,HelloWorld,"#hello",`  <HelloWorld :msg="msg" ref="myRef" @click="myClick" :key="new Date().getTime().toString()" :class="myClass" id="myId" :class="[abc]" :style="{background:testColor}">
-            <p>123</p>
-            紫芜丘陵未有雪，我未执枪已十三年
-            <P v-for="(item,index) in vForArr" :key="index">{{item}}</P>
-               <template v-slot:myslot="scope">测试作用域插槽{{scope.myslotProp}}</template>
-                      <template #myslot1="scope">测试作用域插槽{{scope.myslotProp}}</template>
-        </HelloWorld>`);*/
-
-// addComponent(this,'el-input','#hello',`<el-input v-model="abc"></el-input>`)
-    const self = this;
-
-    let [myCom, proxy] = addComponent(this, {
-      props: {
-        value:{
-          type:String,
-          default:''
-        }
-      },
-      data(){
-        return{}
-      },
-      render(createElement, context) {
-        return createElement(Vue.component('ElInput'),{
-          on:{
-            input(value){
-              self.abc = value;
-            }
-          },
-          props:{
-            value:this.value
-          }
-        })
-      }
-    }, '#hello', `
-        <myCom :value="abc" style="font-size: 14px"></myCom>
-      `)
-
-
-
-
-    /*console.log(Vue)
-
-
-    Vue.component('myTestCom',Vue.extend({
-      render(createElement, hack) {
-        return createElement('h1','测试全局注册')
-      }
-    }))
-
-    console.log(Vue)
-    console.log(Vue.component)
-
-    console.log(Vue.component('myTestCom'))*/
-
-/*    setTimeout(function () {
-      self.abc = ""
-      self.testColor = ''
-    },1000)*/
-
+    setTimeout(()=>{
+      this.abc = "abcdsf"
+    },3000)
   }
 }
 </script>
@@ -180,6 +145,6 @@ export default {
         margin-top: 60px;
     }
     .abc{
-      color: red;
+      width: 100px;
     }
 </style>
