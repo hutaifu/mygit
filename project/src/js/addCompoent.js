@@ -151,7 +151,7 @@ export function addComponent(vue, compoenent, elString, templateString) {
                             })(afterItem)
 
                         } else {
-                            setJsFn.bind(vue)(value, optionsPropertyObj, afterItem)
+                            setJsFn.bind(vue)(value, optionsPropertyObj, afterItem,collector)
                         }
                     }
                 });
@@ -560,8 +560,8 @@ function isExpression(str, collector) {
  * @param prop 赋值对象的属性
  * @returns {*}
  */
-function setJsFn(str, obj, prop) {
-    let jsFn = isExpression.bind(this)(str)
+function setJsFn(str, obj, prop,colloctor) {
+    let jsFn = isExpression.bind(this)(str,colloctor)
     if (jsFn) {
         //如果是js表达式，赋值给表达式结果
         Object.defineProperty(obj, prop, {
