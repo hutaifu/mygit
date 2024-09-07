@@ -1,4 +1,4 @@
-import {isExpression} from "@/js/jsExpress";
+import {isExpression} from "@/js/myAddCompoent/jsExpress";
 // 匹配事件绑定
 export default function getEventBindings(obj,nativeOn,on,vue) {
     let keys = Object.keys(obj.attributes)

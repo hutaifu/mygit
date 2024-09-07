@@ -1,9 +1,9 @@
-import getComponent from "@/js/getComponent";
+import getComponent from "@/js/myAddCompoent/getComponent";
 export default function concatVNodes(node,compoenent,scopedSlots,parentVue,isOneLevel = true) {
     if (!node || !node._vnodeConfig) {
         return '';
     }
-    if (typeof node._vnodeConfig[0] === "string") {
+    if (typeof compoenent !== "function" && typeof node._vnodeConfig[0] === "string") {
         //判断是否存在全局注册组件
         let rootVueCom = getComponent(node._vnodeConfig[0]);
         //如果不存在

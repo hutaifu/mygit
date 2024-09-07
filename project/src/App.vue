@@ -2,21 +2,21 @@
   <div id="app" style="text-align:center">
     <img alt="Vue logo" src="./assets/logo.png">
     <div id="hello"></div>
+    <div id="elInput"></div>
     <HelloWorld :msg="msg" ref="myRef" @click="myClick" :key="new Date().getTime().toString()" v-model="myModel" :class="myClass" id="myId">
         <p>123</p>
       <template v-slot:myslot="scope">测试具名插槽{{scope}}</template>
     </HelloWorld>
     <button @click="msg = '123' ">测试响应式</button>
-    <el-input v-model="abc"></el-input>
+    <el-input v-model="abc" ref="templateMyElInputRef"></el-input>
   </div>
 </template>
 
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
-import {addComponent} from './js/addCompoent'
 import Vue from 'vue'
-import myaddCom from "./js/myAddCompont"
+import myaddCom from "./js/myAddCompoent/myAddCompont"
 
 export default {
   name: 'App',
@@ -54,15 +54,15 @@ export default {
   },
   mounted(){
 
-/*    //使用extend
-    let _vm = this;
+    //使用extend
+/*    let _vm = this;
     let _c = this.$createElement;
     let _render = ()=>{
       let Vnode = this.$createElement(
               HelloWorld,
               {
                 key: "5485454",
-                ref: "myRef",
+                ref: "testMyRef",
                 class: _vm.myClass,
                 attrs: { msg: _vm.msg, id: "myIdJs" },
                 on: { click: _vm.myClick },
@@ -90,7 +90,8 @@ export default {
     let _vnode = _render();
 
     let Cons = Vue.extend(HelloWorld);
-    console.log(HelloWorld)
+
+
     let comVm = new Cons({
       _isComponent:true,
       parent:this,
@@ -117,20 +118,30 @@ export default {
       return vnode;
     }
       comVm.$mount("#hello"); // 手动挂载
-      console.log(Cons);
+      // console.log(Cons);
     const self = this;*/
 
-/*    let myCom = myaddCom(this,HelloWorld,"hello",`  <HelloWorld :msg="msg" ref="myRef" @click="myClick" :key="new Date().getTime().toString()" v-model:sk="myModel" :class="myClass" id="myId">
+/*    let myCom = myaddCom(this,HelloWorld,"hello",`  <HelloWorld :msg="msg" ref="testMyRef" @click="myClick" :key="new Date().getTime().toString()" v-model:sk="myModel" :class="myClass" id="myId">
         <p>123</p>
         紫芜丘陵未有雪，我未执枪已十三年
            <template v-slot:myslot="scope">测试作用域插槽{{scope.myslotProp}}</template>
                   <template #myslot1="scope">测试作用域插槽{{scope.myslotProp}}</template>
     </HelloWorld>`);*/
-    myaddCom(this,'ElInput','hello',`<el-input v-model="abc" :class="abc"></el-input>`)
+
+
+
+
+
+    myaddCom(this,'ElInput','elInput',`<el-input v-model="abc" :class="abc" ref="myElInput"></el-input>`)
 
     setTimeout(()=>{
       this.abc = "abcdsf"
     },3000)
+
+
+
+
+
   }
 }
 </script>

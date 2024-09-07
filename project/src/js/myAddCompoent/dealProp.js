@@ -1,5 +1,5 @@
-import jugeisStrign from "@/js/jugeisDoubleString";
-import {isExpression} from "@/js/jsExpress";
+import jugeisStrign from "@/js/myAddCompoent/jugeisDoubleString";
+import {isExpression} from "@/js/myAddCompoent/jsExpress";
 // 获取prop属性并处理类型
 export default function getProp(attr,vue,obj) {
     let keys = Object.keys(obj.attributes);
