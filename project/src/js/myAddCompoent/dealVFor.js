@@ -1,7 +1,7 @@
 
 export default function dealVFor(obj){
     //v-for,的处理
-    //如果存在v-for
+    //接受一个抽象语法树节点对象，obj，attributes 属性，tagName 标签名称，
             if (obj.attributes['v-for']){
                 let vForString = obj.attributes['v-for'];
                 let wrods = vForString.split(' ');

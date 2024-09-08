@@ -34,6 +34,7 @@ export default function addComponent(parentVue, addComponent, id, template) {
     }
     //如果是字符串，判断有无对全局注册组件
     if (typeof addComponent === "string") {
+        //可能是否字符串，可能是组件构造函数
         AddComponentConstr = getComponent(addComponent)
     }
 
@@ -43,22 +44,13 @@ export default function addComponent(parentVue, addComponent, id, template) {
     //解析模板字符串
     //判断是否含有v-for属性
     let tree;
-    if (!template.includes("v-for")) {
-        //如果没有v-for属性，直接解析
-        tree = parseHTML(template);
-    }
-
+    tree = parseHTML(template);
     //形成闭包
     let render = () => {
-        if (!tree){
-         //如果有v-for属性，先处理v-for属性
-         let dealTempalte = dealVFor(template);
-         tree = parseHTML(dealTempalte);
-        }
         let scopedSlots = {};
         dealTree(tree[0], (obj, parent) => {
             //处理v-for语法
-            // dealVFor(obj)
+             dealVFor(obj)
             //如果父节点是作用域插槽
             let slotScope = "";
             if (parent?.slotKey) {

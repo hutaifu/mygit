@@ -19,5 +19,8 @@ export default function getComponent(id) {
         componentName = componentName.charAt(0).toUpperCase() + componentName.slice(1);
         component = Vue.component(componentName);
     }
+    if(!component){
+        component = id;
+    }
     return component;
 }

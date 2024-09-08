@@ -3,22 +3,19 @@ export default function concatVNodes(node,compoenent,scopedSlots,parentVue,isOne
     if (!node || !node._vnodeConfig) {
         return '';
     }
-    if (typeof compoenent !== "function" && typeof node._vnodeConfig[0] === "string") {
-        //判断是否存在全局注册组件
-        let rootVueCom = getComponent(node._vnodeConfig[0]);
-        //如果不存在
-        if (!rootVueCom) {
-            if (isOneLevel) {
-                node._vnodeConfig[0] = compoenent
-            }
+    //如果是第一层级
+    if (compoenent){
+        node._vnodeConfig[0] = compoenent;
+    }else {
+        //不是第一层级，并且标签名称是字符串
+        if ( !isOneLevel  && typeof node._vnodeConfig[0] === "string") {
+            //如果标签名称是字符串
+            //标签名称
+            //判断是否存在全局注册组件
+            let rootVueCom = getComponent(node._vnodeConfig[0]);
+            //如果不存在
+                node._vnodeConfig[0] = rootVueCom;
 
-        } else {
-            //如果存在
-            node._vnodeConfig[0] = rootVueCom;
-        }
-    } else {
-        if (isOneLevel) {
-            node._vnodeConfig[0] = compoenent;
         }
     }
     // let result = node._vnode;
