@@ -24,20 +24,25 @@
         let reg = /abc/i;//ignoreCase,忽略大小写
         let str1 = 'abcd';
         reg.test(str1);//str1里面是否含有正则表达式片段
-        let reg1 = new RegExp("abc","m")
+        let reg1 = new RegExp("abc","m")  //第一个参数， 字符串，或者正则对象   ， 第二个参数，写属性，'m','i','g'
 
-        let reg2 = new RegExp(reg);//reg 和 reg2地址不同
-        let reg3 = RegExp(reg);//地址相同
+        let reg2 = new RegExp(reg);//reg 和 reg2地址不同，加new,地址不同
+        let reg3 = RegExp(reg);//地址相同，不加new,连个正则地址相同，
 
-        let reg4 = /ad/g;
+        let reg4 = /ad/g; //全局匹配
         let str2 = 'dadadadadadadf'
-        str2.match(reg4);
+        str2.match(reg4); //返回数组，["ab","ab","ab","ab","ab"]
 
         let reg5 = /^a/gm; //多行匹配，匹配每一行的开头和结尾
-        let str3 = 'abcde\na';
-        str3.match(reg5)
+        let str3 = 'abcde\na'; //多行字符串
+        str3.match(reg5) //返回["a","a"]
 
-        //string.match()  返回符合正则的数组
+
+        //string.match();  返回符合正则的数组
+        //RegExp.test();//是否符合这个正则
+
+
+
         //表达式
         let reg6 = /[1234567890][1234567890][1234567890]/g;   //一个[]匹配一个字符
         let str4 = "123242ksjfl34lsfjdlk4r34dksf";
@@ -75,6 +80,11 @@
         //元字符  . === [^\r\n] //匹配除了换行符和行结束符外所有字符
 
 
+        //  \b   单词边界（单词的开头和结束）   \B 非单词边界
+
+
+
+
         //量词
         //  n+  变量n可以重复出现1到无数次 === {1，}  ,能匹配多个就不匹配少
         // n* === {0,}  //能匹配多个就不匹配少，
@@ -92,6 +102,8 @@
         let reg15 = /^abc$/;  
         let str115 = "abcabc";
         str15.match(reg15) //null,
+
+
         reg.exex();//一次一次的匹配，返回类数组，0：匹配的字符串，index:匹配的位置，input：剩余的字符串
 
         reg.lastIndex //游标的位置  可修改，如果不加全局匹配，lastIndex一直返回0
@@ -123,51 +135,14 @@
         let reg19 = /a(?=b)/g;   //查找后面是b的a,
         let reg20 = /a(?!b)/g;
 
+
+        //负向断言
+        let reg = /(?<=a)b/ //匹配前面紧跟着a的b
+
+
+
+
         //非贪婪匹配,量词后面加？
-        
-
-
-
-
-
-
-
-
-
-
-
-
-        
-
-        
-
-
-
-
-
-
-
-
-
-
-
-        
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     </script>
 </body>

@@ -1,4 +1,4 @@
-import jugeisStrign from "@/js/jugeisDoubleString";
+import jugeisStrign from "@/js/myAddCompoent/jugeisDoubleString";
 //处理v-model属性
 export default function dealvModel(obj,vue,model,modelKey) {
     let keys = Object.keys(obj.attributes);
