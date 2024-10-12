@@ -1,6 +1,6 @@
 import jugeisStrign from "@/js/myAddCompoent/jugeisDoubleString";
 //处理v-model属性
-export default function dealvModel(obj,vue,model,modelKey,watchProps) {
+export default function dealvModel(obj,vue,model,watchProps) {
     let keys = Object.keys(obj.attributes);
     keys.filter(item => /^v-model$/.test(item)).forEach(item => {
         //存在v-model属性，
@@ -11,7 +11,6 @@ export default function dealvModel(obj,vue,model,modelKey,watchProps) {
             //如果不是字符串
             if (vue[value]) {
                     model.value = vue[value];
-                    modelKey.push(value);
                     //记录监听
                     watchProps.push(value)
             }
