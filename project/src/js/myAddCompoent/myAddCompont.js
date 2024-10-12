@@ -38,6 +38,10 @@ export default function addComponent(parentVue, addComponent, id, template) {
         AddComponentConstr = getComponent(addComponent)
     }
 
+    //得到需要监听的属性
+    let watchProps = [];
+
+
     //记录是否第一次，v-model第一次不会更新，？？？
     let isOnce = true;
     let modelKey = [];
@@ -50,7 +54,7 @@ export default function addComponent(parentVue, addComponent, id, template) {
         let scopedSlots = {};
         dealTree(tree[0], (obj, parent) => {
             //处理v-for语法
-             dealVFor(obj)
+            //  dealVFor(obj)
             //如果父节点是作用域插槽
             let slotScope = "";
             if (parent?.slotKey) {
@@ -73,13 +77,13 @@ export default function addComponent(parentVue, addComponent, id, template) {
                 //处理事件绑定
                 getEventBindings(obj, nativeOn, on, parentVue);
                 //处理props
-                getProp(attrs, parentVue, obj)
+                getProp(attrs, parentVue, obj,watchProps);
                 //处理ref
-                ref = dealRef(obj, parentVue)
+                ref = dealRef(obj, parentVue,watchProps);
                 //处理key
-                key = dealKey(parentVue, obj)
+                key = dealKey(parentVue, obj,watchProps);
                 //处理class和html
-                dealClassAndStyle(obj, topClass, topstyle, parentVue);
+                dealClassAndStyle(obj, topClass, topstyle, parentVue,watchProps);
                 if (topstyle.value) {
                     topstyle = topstyle.value;
                 }
@@ -89,7 +93,7 @@ export default function addComponent(parentVue, addComponent, id, template) {
                 //处理原生事件属性
                 dealDomProps(obj, attrs, domProps);
                 //处理双向绑定
-                dealvModel(obj, parentVue, model, modelKey)
+                dealvModel(obj, parentVue, model, modelKey,watchProps)
                 //合并配置项
                 let options = {on, nativeOn, attrs, ref, key, class: topClass, style: topstyle, domProps, model};
                 if (Object.keys(on).length === 0) {
@@ -117,6 +121,19 @@ export default function addComponent(parentVue, addComponent, id, template) {
     }
     //得到一次渲染虚拟节点
     let vNode = render();
+
+    //添加监听
+    watchProps = [...new Set(watchProps)]
+    for(let item of watchProps){
+        parentVue.$watch(item,{
+            handler(){
+                parentVue.$forceUpdate()
+            },
+            deep:true,
+        })
+    }
+
+
 
     //需要调用一次extend方法，如果不调用，ref就会绑定在在原生dom元素上面，我也不知道为啥，奇奇怪怪的
         AddComponentConstr = Vue.extend(AddComponentConstr)

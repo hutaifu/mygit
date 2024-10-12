@@ -8,7 +8,7 @@
       <template v-slot:myslot="scope">测试具名插槽{{scope}}</template>
     </HelloWorld>
     <button @click="msg = '123' ">测试响应式</button>
-    <el-input v-model="abc" ref="templateMyElInputRef"></el-input>
+<!--    <el-input v-model="abc" ref="templateMyElInputRef"></el-input>-->
   </div>
 </template>
 

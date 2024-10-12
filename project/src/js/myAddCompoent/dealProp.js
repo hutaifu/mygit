@@ -1,7 +1,7 @@
 import jugeisStrign from "@/js/myAddCompoent/jugeisDoubleString";
 import {isExpression} from "@/js/myAddCompoent/jsExpress";
 // 获取prop属性并处理类型
-export default function getProp(attr,vue,obj) {
+export default function getProp(attr,vue,obj,watchProps) {
     let keys = Object.keys(obj.attributes);
     let rel = /^(:|v-bind:)/;
     let afterKeys = keys.filter(item => rel.test(item) && !/(ref|class|key|style)$/.test(item));
@@ -26,6 +26,8 @@ export default function getProp(attr,vue,obj) {
                 if (vue[value]) {
                     //如果是父组件的属性
                     attr[afterItem] = vue[value]; // 绑定属性
+                    //记录到监听信息中
+                    watchProps.push(value)
                 } else {
                     //是否为表达式
                     let fn = isExpression.bind(vue)(value);

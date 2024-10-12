@@ -1,11 +1,11 @@
-export default function dealClassAndStyle(obj, topClass, topStyle, vue) {
+export default function dealClassAndStyle(obj, topClass, topStyle, vue,watchProps) {
     let keys = Object.keys(obj.attributes)
-    dealTopClassOrStyle(topClass, /^(v-bind|:)class$/, keys, obj, vue);
-    dealTopClassOrStyle(topStyle, /^(v-bind|:)style$/, keys, obj, vue);
+    dealTopClassOrStyle(topClass, /^(v-bind|:)class$/, keys, obj, vue,watchProps);
+    dealTopClassOrStyle(topStyle, /^(v-bind|:)style$/, keys, obj, vue,watchProps);
 }
 
 //处理顶层class
-function dealTopClassOrStyle(top, rel = /^(v-bind|:)class$/, keys, obj, vue) {
+function dealTopClassOrStyle(top, rel = /^(v-bind|:)class$/, keys, obj, vue,watchProps) {
     keys.filter(item => rel.test(item)).forEach(item => {
         let value = obj.attributes[item]
         //只考虑三种写法，对象，数组，变量，
@@ -21,6 +21,9 @@ function dealTopClassOrStyle(top, rel = /^(v-bind|:)class$/, keys, obj, vue) {
                 if (vue[value]) {
                     top.type = 'string';
                     top.value = vue[value]
+
+                    //记录监听
+                    watchProps.push(value);
                 }
             }
         } else
@@ -42,8 +45,12 @@ function dealTopClassOrStyle(top, rel = /^(v-bind|:)class$/, keys, obj, vue) {
                     //实现响应式
                     if (rel === /^(v-bind|:)class$/) {
                         myobj[label] = !!vue[labelValue]
+                        //记录监听
+                        watchProps.push(labelValue);
                     } else {
                         myobj[label] = vue[labelValue]
+                        //记录监听
+                        watchProps.push(labelValue);
                     }
                 } else {
                     if (rel === /^(v-bind|:)class$/) {
@@ -74,6 +81,8 @@ function dealTopClassOrStyle(top, rel = /^(v-bind|:)class$/, keys, obj, vue) {
                     if (vue[item]) {
                         //实现响应式
                         myarr.push(vue[item])
+                        //记录响应式
+                        watchProps.push(item)
                     }
                 }
             })

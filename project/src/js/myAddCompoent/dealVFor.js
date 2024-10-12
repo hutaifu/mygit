@@ -1,20 +1,31 @@
 
-export default function dealVFor(obj){
-    //v-for,的处理
-    //接受一个抽象语法树节点对象，obj，attributes 属性，tagName 标签名称，
-            if (obj.attributes['v-for']){
-                let vForString = obj.attributes['v-for'];
-                let wrods = vForString.split(' ');
-                let itemString = '';
-                let indexString = '';
-                let arrString = '';
-                if (wrods[0].includes(",")){
-                    wrods[0] = wrods[0].replace(/[(\)]/,"");
-                    itemString = wrods[0].split(",")[0];
-                    indexString = wrods[0].split(',')[1];
-                } else {
-                    itemString = wrods[0].replace(/[(\)]/,"");
+export default function dealVFor(obj,parentVue,callback){
+            //v-for,的处理
+            //接受一个抽象语法树节点对象，obj，attributes 属性，tagName 标签名称，
+            if (obj.attributes && obj.attributes['v-for']){
+              let [itemString,indexString,arrString] = getKeyString(obj.attributes['v-for']);
+                //得到循环的集合
+                let arr = parentVue[arrString];
+              if (typeof arr === "object"){
+                  //进行循环
+                  for(let item in arr){
+                      //得到顺序
+                      let index;
+                      if (Array.isArray(arr)){
+                          index = arr.indexOf(item);
+                      }
+                      let obj = {[itemString]:item}
+                      if (indexString){
+                          obj[indexString] = index;
+                      }
+                      if (callback && typeof callback === "function"){
+                          callback(obj);
+                      }
+                  }
+              }
+            }else {
+                if (callback && typeof callback === "function"){
+                    callback()
                 }
-                arrString = wrods[2];
             }
 }

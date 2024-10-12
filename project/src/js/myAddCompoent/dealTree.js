@@ -3,6 +3,7 @@
  * @param tree 根节点
  * @param callback 会调函数
  * @param parent 父节点
+ * @param isStop
  */
 export default function dealTree(tree, callback, parent,isStop) {
         if (typeof tree === "object" && !isStop) {
