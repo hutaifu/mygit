@@ -14,12 +14,8 @@ export default function dealVFor(obj,parentVue,callback){
                       if (Array.isArray(arr)){
                           index = arr.indexOf(item);
                       }
-                      let obj = {[itemString]:item}
-                      if (indexString){
-                          obj[indexString] = index;
-                      }
                       if (callback && typeof callback === "function"){
-                          callback(obj);
+                          callback({itemString:indexString,indexString:indexString,item:item,index:index});
                       }
                   }
               }

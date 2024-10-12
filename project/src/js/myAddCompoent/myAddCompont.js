@@ -48,68 +48,69 @@ export default function addComponent(parentVue, addComponent, id, template) {
     let render = () => {
         let scopedSlots = {};
         dealTree(tree[0], (obj, parent) => {
+
             //处理v-for语法
-             dealVFor(obj,parentVue,(VForData)=>{
-                 //如果父节点是作用域插槽
-                 let slotScope = "";
-                 if (parent?.slotKey) {
-                     slotScope = parent.attributes[parent.slotKey]
-                 }
-                 //声明配置项
-                 let model = {};
-                 let on = {};//事件
-                 let nativeOn = {};//原生事件
-                 let key = "";//key
-                 let ref = "";//ref
-                 let attrs = {};//普通html属性，而attrs设置的属性则以HTML属性的形式添加到元素上,prop属性也在这里面
-                 let topClass = {};//顶层class
-                 let topstyle = {};//顶层style
-                 let domProps = {};//dom属性，domProps设置的属性会直接映射到DOM元素上，这意味着，domProps可以设置一些特殊的属性，例如value、checked等，而attrs则适用于一般的HTML属性。
-                 //处理插槽
-                 dealTemplateObj(obj, scopedSlots);
-                 //处理非插槽
-                 if (obj.attributes && obj.tagName !== 'template') {
-                     //处理事件绑定
-                     getEventBindings(obj, nativeOn, on, parentVue);
-                     //处理props
-                     getProp(attrs, parentVue, obj,watchProps);
-                     //处理ref
-                     ref = dealRef(obj, parentVue,watchProps);
-                     //处理key
-                     key = dealKey(parentVue, obj,watchProps);
-                     //处理class和html
-                     dealClassAndStyle(obj, topClass, topstyle, parentVue,watchProps);
-                     if (topstyle.value) {
-                         topstyle = topstyle.value;
-                     }
-                     if (topClass.value) {
-                         topClass = topClass.value;
-                     }
-                     //处理原生事件属性
-                     dealDomProps(obj, attrs, domProps);
-                     //处理双向绑定
-                     dealvModel(obj, parentVue, model,watchProps)
-                     //合并配置项
-                     let options = {on, nativeOn, attrs, ref, key, class: topClass, style: topstyle, domProps, model};
-                     if (Object.keys(on).length === 0) {
-                         delete options.on;
-                     }
-                     if (Object.keys(nativeOn).length === 0) {
-                         delete options.nativeOn;
-                     }
-                     if (Object.keys(model).length === 0) {
-                         delete options.model;
-                     }
-                     //合并h函数参数
-                     obj._vnodeConfig = [obj.tagName, options];
-                 } else if (obj.content) {
-                     //如果是文本节点，
-                     if (slotScope) {
-                         obj.content = convertToTemplateString(obj.content, slotScope)
-                     }
-                     obj._vnodeConfig = [obj.content];
-                 }
-             })
+             dealVFor(obj,parentVue)
+
+            //如果父节点是作用域插槽
+            let slotScope = "";
+            if (parent?.slotKey) {
+                slotScope = parent.attributes[parent.slotKey]
+            }
+            //声明配置项
+            let model = {};
+            let on = {};//事件
+            let nativeOn = {};//原生事件
+            let key = "";//key
+            let ref = "";//ref
+            let attrs = {};//普通html属性，而attrs设置的属性则以HTML属性的形式添加到元素上,prop属性也在这里面
+            let topClass = {};//顶层class
+            let topstyle = {};//顶层style
+            let domProps = {};//dom属性，domProps设置的属性会直接映射到DOM元素上，这意味着，domProps可以设置一些特殊的属性，例如value、checked等，而attrs则适用于一般的HTML属性。
+            //处理插槽
+            dealTemplateObj(obj, scopedSlots);
+            //处理非插槽
+            if (obj.attributes && obj.tagName !== 'template') {
+                //处理事件绑定
+                getEventBindings(obj, nativeOn, on, parentVue);
+                //处理props
+                getProp(attrs, parentVue, obj,watchProps);
+                //处理ref
+                ref = dealRef(obj, parentVue,watchProps);
+                //处理key
+                key = dealKey(parentVue, obj,watchProps);
+                //处理class和html
+                dealClassAndStyle(obj, topClass, topstyle, parentVue,watchProps);
+                if (topstyle.value) {
+                    topstyle = topstyle.value;
+                }
+                if (topClass.value) {
+                    topClass = topClass.value;
+                }
+                //处理原生事件属性
+                dealDomProps(obj, attrs, domProps);
+                //处理双向绑定
+                dealvModel(obj, parentVue, model,watchProps)
+                //合并配置项
+                let options = {on, nativeOn, attrs, ref, key, class: topClass, style: topstyle, domProps, model};
+                if (Object.keys(on).length === 0) {
+                    delete options.on;
+                }
+                if (Object.keys(nativeOn).length === 0) {
+                    delete options.nativeOn;
+                }
+                if (Object.keys(model).length === 0) {
+                    delete options.model;
+                }
+                //合并h函数参数
+                obj._vnodeConfig = [obj.tagName, options];
+            } else if (obj.content) {
+                //如果是文本节点，
+                if (slotScope) {
+                    obj.content = convertToTemplateString(obj.content, slotScope)
+                }
+                obj._vnodeConfig = [obj.content];
+            }
         })
         //得到虚拟节点
         let vNodesTree = concatVNodes(tree[0], AddComponentConstr, scopedSlots, parentVue);
