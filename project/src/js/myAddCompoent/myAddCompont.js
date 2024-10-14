@@ -50,7 +50,7 @@ export default function addComponent(parentVue, addComponent, id, template) {
         dealTree(tree[0], (obj, parent) => {
 
             //处理v-for语法
-             dealVFor(obj,parentVue)
+            let vForObj = dealVFor(obj,parentVue)
 
             //如果父节点是作用域插槽
             let slotScope = "";
@@ -104,6 +104,14 @@ export default function addComponent(parentVue, addComponent, id, template) {
                 }
                 //合并h函数参数
                 obj._vnodeConfig = [obj.tagName, options];
+
+
+                //如果存在vForobj对象，记录v-for信息
+                    if (vForObj){
+                        obj._vnodeConfig.vFor = vForObj;
+                    }
+
+
             } else if (obj.content) {
                 //如果是文本节点，
                 if (slotScope) {
@@ -143,7 +151,12 @@ export default function addComponent(parentVue, addComponent, id, template) {
             if (jugeidVnode(id, vnode)) {
                 //替换掉当前虚拟节点
                 let index = parent.children.findIndex(item => item === vnode)
-                parent.children[index] = dealafterVNode;
+                //如果是一个vFor数组
+                if (Array.isArray(dealafterVNode)){
+                    parent.children.splice(index,1,...dealafterVNode)
+                }else {
+                    parent.children[index] = dealafterVNode;
+                }
                 isStop = true;
             }
         }, null, false)

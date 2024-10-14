@@ -1,5 +1,5 @@
 
-export default function dealVFor(obj,parentVue,callback){
+export default function dealVFor(obj,parentVue){
             //v-for,的处理
             //接受一个抽象语法树节点对象，obj，attributes 属性，tagName 标签名称，
             if (obj.attributes && obj.attributes['v-for']){
@@ -7,21 +7,14 @@ export default function dealVFor(obj,parentVue,callback){
                 //得到循环的集合
                 let arr = parentVue[arrString];
               if (typeof arr === "object"){
-                  //进行循环
-                  for(let item in arr){
-                      //得到顺序
-                      let index;
-                      if (Array.isArray(arr)){
-                          index = arr.indexOf(item);
-                      }
-                      if (callback && typeof callback === "function"){
-                          callback({itemString:indexString,indexString:indexString,item:item,index:index});
-                      }
+                  //返回信息
+                  return {
+                      itemString,
+                      indexString,
+                      arr,
                   }
               }
             }else {
-                if (callback && typeof callback === "function"){
-                    callback()
-                }
+                return null;
             }
 }

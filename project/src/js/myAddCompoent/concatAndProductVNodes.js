@@ -1,4 +1,6 @@
 import getComponent from "@/js/myAddCompoent/getComponent";
+import {hasSymbol} from "vue";
+
 export default function concatVNodes(node,compoenent,scopedSlots,parentVue,isOneLevel = true) {
     if (!node || !node._vnodeConfig) {
         return '';
@@ -36,13 +38,79 @@ export default function concatVNodes(node,compoenent,scopedSlots,parentVue,isOne
             }
             node._vnodeConfig[1].scopedSlots = scopedSlots;
         }
+        //如果存在vFor属性
+        if (node._vnodeConfig.vFor){
+            return renderList(node._vnodeConfig.vFor.arr,function (item,index) {
+                return parentVue.$createElement(...node._vnodeConfig, childrenVnod);
+            })
+        }
+
+
         return parentVue.$createElement(...node._vnodeConfig, childrenVnod)
     } else {
         //末级节点
         if (node._vnodeConfig.length !== 1) {
+            //如果存在vFor属性
+            if (node._vnodeConfig.vFor){
+                return renderList(node._vnodeConfig.vFor.arr,function (item,index) {
+                    return parentVue.$createElement(...node._vnodeConfig);
+                })
+            }
+
             return parentVue.$createElement(...node._vnodeConfig)
         } else {
             return node._vnodeConfig;
         }
     }
+}
+
+
+/**
+ * Runtime helper for rendering v-for lists.
+ */
+function renderList(val, render) {
+    var ret = null, i, l, keys, key;
+    if (Array.isArray(val) || typeof val === 'string') {
+        ret = new Array(val.length);
+        for (i = 0,
+                 l = val.length; i < l; i++) {
+            ret[i] = render(val[i], i);
+        }
+    } else if (typeof val === 'number') {
+        ret = new Array(val);
+        for (i = 0; i < val; i++) {
+            ret[i] = render(i + 1, i);
+        }
+    } else if (isObject(val)) {
+        if (hasSymbol && val[Symbol.iterator]) {
+            ret = [];
+            var iterator = val[Symbol.iterator]();
+            var result = iterator.next();
+            while (!result.done) {
+                ret.push(render(result.value, ret.length));
+                result = iterator.next();
+            }
+        } else {
+            keys = Object.keys(val);
+            ret = new Array(keys.length);
+            for (i = 0,
+                     l = keys.length; i < l; i++) {
+                key = keys[i];
+                ret[i] = render(val[key], key, i);
+            }
+        }
+    }
+    if (!isDef(ret)) {
+        ret = [];
+    }
+    ret._isVList = true;
+    return ret;
+}
+
+function isObject(obj) {
+    return obj !== null && typeof obj === 'object';
+}
+
+function isDef(v) {
+    return v !== undefined && v !== null;
 }

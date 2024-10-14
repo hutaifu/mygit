@@ -8,7 +8,7 @@
       <template v-slot:myslot="scope">测试具名插槽{{scope}}</template>
     </HelloWorld>
     <button @click="msg = '123' ">测试响应式</button>
-<!--    <el-input v-model="abc" :class="abc" ref="templateMyElInputRef" v-for="item in vForArr"></el-input>-->
+    <el-input v-model="abc" :class="abc" ref="templateMyElInputRef" v-for="(item,index) in vForArr" :key="index"></el-input>
   </div>
 </template>
 
@@ -31,7 +31,7 @@ export default {
       myClass:"",
       abc:'abc',
       testColor:'red',
-      vForArr:[1,2]
+      vForArr:[1,2],
     }
   },
   methods:{
