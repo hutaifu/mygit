@@ -1,5 +1,5 @@
 import {isExpression} from "@/js/myAddCompoent/jsExpress";
-export default function dealRef(obj,vue,watchProps){
+export default function dealRef(obj,vue,watchProps,scope){
     let keys = Object.keys(obj.attributes)
     let refValue = keys.filter(item => /^(:|v-bind:)*ref$/.test(item))[0];
     if (refValue) {
@@ -8,10 +8,10 @@ export default function dealRef(obj,vue,watchProps){
             watchProps.push(obj.attributes[refValue])
             return  vue[obj.attributes[refValue]];
         } else {
-            let jsFn = isExpression.bind(vue)(obj.attributes[refValue])
+            let jsFn = isExpression.bind(vue)(obj.attributes[refValue],scope)
             if (jsFn) {
                 //如果是js表达式
-                return jsFn();
+                return jsFn;
             } else {
                 return obj.attributes[refValue];
             }

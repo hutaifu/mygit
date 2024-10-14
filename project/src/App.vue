@@ -8,7 +8,7 @@
       <template v-slot:myslot="scope">测试具名插槽{{scope}}</template>
     </HelloWorld>
     <button @click="msg = '123' ">测试响应式</button>
-    <el-input v-model="abc" :class="abc" ref="templateMyElInputRef" v-for="(item,index) in vForArr" :key="index"></el-input>
+<!--    <el-input v-model="abc" :class="abc" ref="templateMyElInputRef" v-for="(item,index) in vForArr" :key="index"></el-input>-->
   </div>
 </template>
 
@@ -120,7 +120,16 @@ export default {
 
 
 
-    myaddCom(this,'ElInput','elInput',`<el-input v-model="abc" v-for="item in vForArr" :class="abc" ref="myElInput"></el-input>`)
+    myaddCom(this,'ElInput','elInput',`<el-input v-model="abc" v-for="(item,index) in vForArr" :myprops="props" :class="abc" ref="myElInput" :key="index"></el-input>`);
+
+
+
+
+
+
+
+
+
 
     setTimeout(()=>{
       this.abc = "abcdsf"

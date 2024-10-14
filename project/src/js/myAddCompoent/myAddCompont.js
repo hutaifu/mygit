@@ -52,6 +52,22 @@ export default function addComponent(parentVue, addComponent, id, template) {
             //处理v-for语法
             let vForObj = dealVFor(obj,parentVue)
 
+            let scope = {};
+            //如果存在循环属性
+            if (vForObj){
+                //得到作用域
+                scope =
+                    {
+                        [vForObj.itemString]:"",
+                    }
+
+                //如果存在index
+                if (vForObj.indexString){
+                    scope[vForObj.indexString] = "";
+                }
+            }
+
+
             //如果父节点是作用域插槽
             let slotScope = "";
             if (parent?.slotKey) {
@@ -74,11 +90,11 @@ export default function addComponent(parentVue, addComponent, id, template) {
                 //处理事件绑定
                 getEventBindings(obj, nativeOn, on, parentVue);
                 //处理props
-                getProp(attrs, parentVue, obj,watchProps);
+                getProp(attrs, parentVue, obj,watchProps,scope);
                 //处理ref
-                ref = dealRef(obj, parentVue,watchProps);
+                ref = dealRef(obj, parentVue,watchProps,scope);
                 //处理key
-                key = dealKey(parentVue, obj,watchProps);
+                key = dealKey(parentVue, obj,watchProps,scope);
                 //处理class和html
                 dealClassAndStyle(obj, topClass, topstyle, parentVue,watchProps);
                 if (topstyle.value) {
