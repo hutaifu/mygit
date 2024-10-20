@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<canvas id="c1" width="600" height="400"></canvas>
+
+<script>
+    let c1 = document.getElementById("c1")
+    let ctx = c1.getContext("2d")
+    let path = new Path2D();
+
+    path.moveTo(300,200);
+    //2个控制点
+    path.bezierCurveTo(350,150,400,200,300,250);
+    path.bezierCurveTo(200,200,250,150,300,200);
+    ctx.stroke(path)
+
+    let chatPath = new Path2D();
+    chatPath.moveTo(200,300);
+    chatPath.quadraticCurveTo(150,300,150,200);
+    chatPath.quadraticCurveTo(150,100,300,100);
+    chatPath.quadraticCurveTo(450,100,450,200);
+    chatPath.quadraticCurveTo(450,300,250,300)
+    chatPath.quadraticCurveTo(250,350,150,350)
+    chatPath.quadraticCurveTo(200,350,200,300)
+
+    ctx.stroke(chatPath);
+    ctx.fill(path)
+
+    //创建一条折线
+    let polyline = new Path2D('M10 10 h 80 v 80 h -80 z')
+    ctx.stroke(polyline);
+
+
+</script>
+</body>
+</html>

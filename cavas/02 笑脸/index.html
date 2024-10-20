@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <canvas id="c1" width="600" height="4001">
+
+    </canvas>
+
+<script>
+    let c1 = document.getElementById("c1")
+    let ctx = c1.getContext("2d");
+
+    //圆心x，圆心y,半径，开始的角度，结束的角度，逆时针还是顺时针
+    ctx.arc(300,200,50,0,Math.PI * 2)
+    ctx.fill();
+
+
+
+
+
+</script>
+</body>
+</html>

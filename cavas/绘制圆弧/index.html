@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <canvas width="600" height="400" id="c1"></canvas>
+
+
+<script>
+    let c1 = document.getElementById("c1")
+    let ctx = c1.getContext("2d")
+    //第一个点
+    ctx.beginPath();
+    ctx.moveTo(300,225);
+    //第二个点，第三个点，及半径
+    ctx.arcTo(300,250,250,250,25);
+    ctx.stroke()
+    ctx.closePath()
+
+
+
+
+
+
+</script>
+</body>
+</html>

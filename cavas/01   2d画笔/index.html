@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<!--
+    id，标识元素的唯一性
+
+-->
+
+
+    <canvas id="c1" width="600" height="400"
+          style="width: 600px">
+
+    </canvas>
+
+
+<script>
+    //找到画布
+    let c1 = document.getElementById("c1")
+    //获取画笔，上下文对象
+    let ctx = c1.getContext("2d");
+    //绘制图形
+    //绘制矩形 fillRect ,位置x,位置y,宽度，高度
+    // ctx.fillRect(100,200,300,300);
+    //路径绘制矩形,x1,y1,宽度，高度，
+   /* ctx.strokeRect(100,100,200,100)
+    ctx.fillRect(200,150,200,100)*/
+
+    //清除
+    // ctx.clearRect(0,0,c1.clientWidth,c1.clientHeight);
+
+    //动态清除
+/*    let height = 0;
+    let inter = setInterval(()=>{
+        height++
+        ctx.clearRect(0,0,c1.clientWidth,height)
+        if (height > c1.clientHeight){
+            clearInterval(inter);
+        }
+    },10)*/
+
+    //拆开写法
+    ctx.beginPath()
+    ctx.rect(100,200,200,100)
+    ctx.stroke()
+    ctx.closePath()
+    ctx.beginPath();
+    ctx.rect(150,250,200,100)
+    ctx.fill()
+    ctx.closePath()
+
+
+</script>
+</body>
+</html>
