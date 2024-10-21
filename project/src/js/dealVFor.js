@@ -49,6 +49,12 @@ function dealVFor(template, vue) {
         let afterForString =   forString.replace(`v-for="${forProp}"`,"");
         //循环
         dealData(arrValue,(item,key)=>{
+            //匹配:,v-bind,v-model开头的属性
+            let rel = /(?<=(:)|(v-bind)|(v-model)|(v-slot)|(#slot)[a-zA-Z]*=).*/g
+
+
+
+
 
 
         })

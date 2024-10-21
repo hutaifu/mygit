@@ -1,3 +1,4 @@
+const e = require('express');
 const express = require('express')
 const fs = require('fs');
 const app = express();
@@ -8,7 +9,32 @@ app.get('/home',(req,res)=>{
 
 })
 
-app.get('/admin',(req,res)=>{
+
+//声明局部中间件
+let checkCodeMiddleware = (req,res,next) =>{
+    //判定url中是否code参数等于521
+    if(req.query.code === '521'){
+        next();
+    }else{
+        res.send("暗号观察");
+    }
+
+
+}
+
+
+//第二个参数，局部中间件
+app.get('/admin',checkCodeMiddleware,(req,res)=>{
+    //居中中间件实践
+    //判定rul的code中是否为521
+    // if(req.query.code === '521'){
+    //     res.send("后台首页")
+    // }else{
+    //     res.send("暗号错误")
+    // }
+
+
+
     res.send("后台首页")
 })
 
@@ -31,11 +57,6 @@ function record(req,res,next){
     //调用next
     next();
 }
-
-//局部中间件，放在路由参数后面
-// app.get('/jvbu',record,(req,res)=>{
-//
-// })
 
 
 

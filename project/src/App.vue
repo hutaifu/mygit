@@ -9,6 +9,19 @@
     </HelloWorld>
     <button @click="msg = '123' ">测试响应式</button>
 <!--    <el-input v-model="abc" :class="abc" ref="templateMyElInputRef" v-for="(item,index) in vForArr" :key="index"></el-input>-->
+    <div>
+      <el-button>
+
+        测试样式
+
+      </el-button>
+
+
+
+    </div>
+
+
+
   </div>
 </template>
 
