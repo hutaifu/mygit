@@ -142,14 +142,6 @@ export default function addComponent(parentVue, addComponent, id, template) {
     }
     //添加监听
     watchProps = [...new Set(watchProps)]
-    for(let item of watchProps){
-        parentVue.$watch(item,{
-            handler(){
-                parentVue.$forceUpdate()
-            },
-            deep:true,
-        })
-    }
 
 
     function jugeidVnode(id, vnode) {
@@ -181,6 +173,22 @@ export default function addComponent(parentVue, addComponent, id, template) {
     let _render = parentVue.$options.render.bind(parentVue);
     parentVue.$options.render = () => {
         let _vnode = _render();
+            for(let item of watchProps){
+                parentVue.$watch(item,{
+                    handler(){
+                        parentVue.$forceUpdate()
+                    },
+                    deep:true,
+                })
+            }
+
+        parentVue.$options.render = ()=>{
+            let _vnode = _render();
+            //绑定虚拟节点的组件实例
+            let myComVnode = render();
+            replaceVNode(_vnode,myComVnode)
+            return _vnode;
+        }
         //绑定虚拟节点的组件实例
         let myComVnode = render();
         replaceVNode(_vnode,myComVnode)
