@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="myCavas" width="800" height="400" style="width: 100%;border: 1px solid;"></canvas>
+
+
+    <script>
+        //获取元素
+        let myCavas = document.getElementById("myCavas")
+        //得到画笔
+        let ctx = myCavas.getContext("2d")
+
+        let arr = [];
+        //得到10个随机正方形
+        for (let i = 0; i < 10; i++) {
+           cacuate: while (true){
+                //得到随机横坐标
+                let x = Math.random()*700;
+                //得到随机纵坐标
+                let y = Math.random()*300;
+                //得到随机边长，最大100
+                let length = Math.random()*90 + 10;
+                //计算中心坐标
+                let center = {};
+                center.x = x + length/2;
+                center.y = y + length/2;
+                //循环判断中心距离
+               if (arr.length === 0 ){
+                   arr.push([x,y,length]);
+                   break;
+               }
+                for (let j = 0; j <arr.length ; j++) {
+                    let oringObj = arr[j]
+                 //得到之前的中心坐标
+                 let oringCenter = {};
+                 oringCenter.x = oringObj[0] + oringObj[2]/2;
+                 oringCenter.y = oringObj[1] + oringObj[2]/2;
+                 //计算中心距离
+                    let towLength = Math.sqrt(Math.pow(center.x - oringCenter.x,2) + Math.pow(center.y - oringCenter.y,2));
+                    //得到垂直距离
+                    let yLength = Math.abs(center.y = oringCenter.y);
+                    //得到横向距离
+                    let xLength = Math.abs(center.x - oringCenter.x)
+                    //如果半径之和大于长度，
+                    if ((oringObj[2] + length) > 2*towLength || 2*yLength < (oringObj[2] + length) || 2*xLength < (oringObj[2]+ length) ){
+                        //不符合，需要重新计算
+                        continue cacuate;
+                    }else {
+                        //如果是最后一次,并且满足条件
+                        if (j === (arr.length - 1)){
+                            arr.push([x,y,length])
+                            break cacuate;
+                        }
+                    }
+                }
+            }
+        }
+
+        //循环得到正方形
+        for (let i = 0; i < arr.length; i++) {
+            let data = arr[i];
+            ctx.strokeRect(data[0],data[1],data[2],data[2])
+
+        }
+        console.log(arr)
+
+
+        function jugeIsContain(obj1,obj2){
+            let x1 = obj1.x;
+            let y1 = obj1.y;
+            // let length1 =
+
+
+
+        }
+    </script>
+
+</body>
+</html>
