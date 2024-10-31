@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.jxd.bookmanger.dao.IBookTypeDao">
-<!-- List<VoBook> selectType();-->
-    <select id="selectType" resultType="voBook">
-        select typename,typeno from booktype
-    </select>
-</mapper>

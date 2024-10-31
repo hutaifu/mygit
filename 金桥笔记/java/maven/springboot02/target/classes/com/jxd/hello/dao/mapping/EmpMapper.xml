@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.jxd.hello.dao.EmpMapper">
-    <select id="selectAll" resultType="Emp">
-        select empno,ename,job,hiredate from emp order by empno
-         </select>
-</mapper>
